@@ -9604,6 +9604,16 @@ function renderOrDefer(filterText){
 function render(filterText){
   const searchZone = document.getElementById("searchZone");
   searchZone.style.display = (currentView === "chat" || currentView === "activity") ? "none" : "";
+  // Job search vs inventory search are different things — swap the
+  // placeholder and hide the job-status Sort By dropdown when it
+  // wouldn't mean anything on this tab.
+  if(currentView === "inventory"){
+    searchInput.placeholder = "Search material (steel, aluminum...) or a hardware part #";
+    filterRow.style.display = "none";
+  } else {
+    searchInput.placeholder = "Search traveler #, customer, PO #, part #, or part name";
+    filterRow.style.display = "";
+  }
   // Reset every view-specific layout class before each render so nothing
   // leaks between tabs (e.g. the staff view's narrower max-width showing
   // up on the Due Dates table).
