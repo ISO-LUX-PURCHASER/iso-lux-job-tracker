@@ -2573,12 +2573,41 @@
   .inv-card-row{
     display:flex;
     align-items:center;
+    flex-wrap:wrap;
     gap:14px;
   }
   .inv-card-label{
     flex:1;
     font-size:14px;
     font-weight:700;
+    color:var(--ink);
+  }
+  .inv-material-tag{
+    flex-shrink:0;
+    font-size:12.5px;
+    font-weight:800;
+    padding:6px 12px;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+  .inv-spec-grid{
+    flex:1;
+    display:flex;
+    gap:20px;
+  }
+  .inv-spec-field{
+    min-width:70px;
+  }
+  .inv-spec-label{
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+  }
+  .inv-spec-value{
+    font-size:13.5px;
+    font-weight:600;
     color:var(--ink);
   }
   .inv-card-qty{
@@ -13018,6 +13047,20 @@ function buildHistoryEntryRow(item, entry){
   return row;
 }
 
+// Colors pulled directly from the original spreadsheet's own cell
+// coloring for each material type — not invented, just carried over.
+const MATERIAL_COLORS = [
+  { match: /aluminum|al\s?5052|al\s?6061/i, bg: "#FF3668", text: "#fff" },
+  { match: /stainless/i, bg: "#6AA84F", text: "#fff" },
+  { match: /galvanized/i, bg: "#FF9900", text: "#fff" },
+  { match: /satin coat/i, bg: "#FFFF00", text: "#5C5000" },
+  { match: /mild steel/i, bg: "#E5E7EB", text: "#374151" }
+];
+function getMaterialColor(materialName){
+  const found = MATERIAL_COLORS.find(m => m.match.test(materialName || ""));
+  return found || { bg: "#E5E7EB", text: "#374151" };
+}
+
 function buildInventoryItemCard(item){
   const card = document.createElement("div");
   card.className = "inv-card";
@@ -13027,10 +13070,32 @@ function buildInventoryItemCard(item){
   const row = document.createElement("div");
   row.className = "inv-card-row";
 
-  const label = document.createElement("div");
-  label.className = "inv-card-label";
-  label.textContent = itemLabel(item);
-  row.appendChild(label);
+  if(item.type === "material"){
+    const colors = getMaterialColor(item.material);
+    const matTag = document.createElement("span");
+    matTag.className = "inv-material-tag";
+    matTag.style.background = colors.bg;
+    matTag.style.color = colors.text;
+    matTag.textContent = item.material;
+    row.appendChild(matTag);
+
+    const specGrid = document.createElement("div");
+    specGrid.className = "inv-spec-grid";
+    const thickField = document.createElement("div");
+    thickField.className = "inv-spec-field";
+    thickField.innerHTML = "<div class=\"inv-spec-label\">Thickness</div><div class=\"inv-spec-value\">" + (item.thickness || "—") + "</div>";
+    const sizeField = document.createElement("div");
+    sizeField.className = "inv-spec-field";
+    sizeField.innerHTML = "<div class=\"inv-spec-label\">Size</div><div class=\"inv-spec-value\">" + (item.size || "—") + "</div>";
+    specGrid.appendChild(thickField);
+    specGrid.appendChild(sizeField);
+    row.appendChild(specGrid);
+  } else {
+    const label = document.createElement("div");
+    label.className = "inv-card-label";
+    label.textContent = itemLabel(item);
+    row.appendChild(label);
+  }
 
   const qtyEl = document.createElement("div");
   qtyEl.className = "inv-card-qty" + (isLow ? " low" : "");
