@@ -2531,6 +2531,147 @@
     cursor:pointer;
   }
 
+  /* ---------- Inventory ---------- */
+  .inv-section{
+    margin-bottom:28px;
+  }
+  .inv-section-header{
+    font-size:16px;
+    font-weight:800;
+    color:var(--ink);
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--line);
+  }
+  .inv-section-count{
+    font-weight:600;
+    color:var(--ink-soft);
+    font-size:13px;
+  }
+  .inv-low-count{
+    font-weight:700;
+    color:var(--danger);
+    font-size:12.5px;
+    margin-left:6px;
+  }
+  .inv-empty{
+    color:var(--ink-soft);
+    font-size:13px;
+    padding:12px 0;
+  }
+  .inv-card{
+    background:#fff;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:8px;
+  }
+  .inv-card.inv-low{
+    border-color:var(--danger);
+    background:#FFF9F8;
+  }
+  .inv-card-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .inv-card-label{
+    flex:1;
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .inv-card-qty{
+    flex-shrink:0;
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .inv-card-qty.low{
+    color:var(--danger);
+  }
+  .inv-take-out-btn{
+    flex-shrink:0;
+    font-family:inherit;
+    font-size:12.5px;
+    font-weight:700;
+    padding:8px 14px;
+    border-radius:8px;
+    border:none;
+    background:var(--ink);
+    color:#fff;
+    cursor:pointer;
+  }
+  .inv-take-out-btn:hover{
+    background:var(--amber-dark);
+  }
+  .inv-low-tag{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--danger);
+    margin-top:6px;
+  }
+  .inv-history-toggle{
+    font-family:inherit;
+    font-size:12px;
+    font-weight:700;
+    color:var(--ink-soft);
+    background:none;
+    border:none;
+    cursor:pointer;
+    margin-top:8px;
+    padding:0;
+  }
+  .inv-history-toggle:hover{
+    color:var(--amber-dark);
+  }
+  .inv-history-box{
+    display:none;
+    margin-top:8px;
+    padding-top:8px;
+    border-top:1px dashed var(--line);
+  }
+  .inv-history-box.open{
+    display:block;
+  }
+  .inv-history-entry{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    padding:6px 0;
+    font-size:12.5px;
+  }
+  .inv-history-info{
+    flex:1;
+    color:var(--ink);
+  }
+  .inv-history-meta{
+    font-size:10.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .inv-edited-tag{
+    color:var(--amber-dark);
+    font-weight:700;
+  }
+  .inv-history-edit-btn{
+    flex-shrink:0;
+    font-family:inherit;
+    font-size:11px;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:6px;
+    border:1.5px solid var(--line);
+    background:#fff;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .inv-history-edit-btn:hover{
+    border-color:var(--amber);
+    color:var(--amber-dark);
+  }
+
   /* ---------- Barcode Labels ---------- */
   .barcode-hint{
     font-size:12px;
@@ -2944,6 +3085,7 @@
     <button data-view="list" class="active">Quick Update</button>
     <button data-view="due">Production Dashboard</button>
     <button data-view="barcodes">Barcodes</button>
+    <button data-view="inventory">Inventory</button>
     <button data-view="activity">Activity</button>
     <button data-view="chat">Messaging</button>
   </div>
@@ -3121,6 +3263,39 @@
     <div class="cj-actions">
       <button id="shipCancelBtn" class="login-btn-secondary">Cancel</button>
       <button id="shipSubmitBtn" class="login-btn-primary">Log Shipment</button>
+    </div>
+  </div>
+</div>
+
+<div class="settings-overlay" id="takeOutOverlay">
+  <div class="settings-box">
+    <div class="settings-header">
+      <div class="settings-title" id="takeOutTitle">Take Out Material</div>
+      <button id="takeOutCloseBtn" class="login-btn-secondary">Close</button>
+    </div>
+    <div class="cj-field" id="takeOutItemLabelWrap">
+      <label>Item</label>
+      <div class="ship-info-box" id="takeOutItemInfo"></div>
+    </div>
+    <div class="cj-row">
+      <div class="cj-field">
+        <label>Amount Taken Out</label>
+        <input id="takeOutAmount" type="text" placeholder="e.g. 2" />
+      </div>
+      <div class="cj-field" style="flex:2;">
+        <label>Job / Sub-Job #</label>
+        <input id="takeOutJob" type="text" list="takeOutJobList" placeholder="e.g. 135510-L1" />
+        <datalist id="takeOutJobList"></datalist>
+      </div>
+    </div>
+    <div class="cj-field">
+      <label>Notes (optional)</label>
+      <input id="takeOutNotes" type="text" placeholder="Optional detail" />
+    </div>
+    <div class="cj-error" id="takeOutError"></div>
+    <div class="cj-actions">
+      <button id="takeOutCancelBtn" class="login-btn-secondary">Cancel</button>
+      <button id="takeOutSubmitBtn" class="login-btn-primary">Confirm Take Out</button>
     </div>
   </div>
 </div>
@@ -9437,6 +9612,7 @@ function render(filterText){
   else if(currentView === "chat") renderChat();
   else if(currentView === "activity") renderActivityLog();
   else if(currentView === "barcodes") renderBarcodesTab(filterText);
+  else if(currentView === "inventory") renderInventoryTab(filterText);
   else renderJobList(filterText);
 }
 
@@ -12638,6 +12814,296 @@ async function seedJobsIfEmpty(){
     syncBadge.style.color = "#C0392B";
   }
 })();
+
+// ================= Inventory =================
+const MATERIAL_SEED = [{"type": "material", "material": "Mild Steel", "thickness": "24 GA", "size": "48\"x120\"", "qty": 11.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "20 GA", "size": "48\"x120\"", "qty": 2.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "20 GA", "size": "60\"x120\"", "qty": 7, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "18 GA", "size": "48\"x120\"", "qty": 3.75, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "18 GA", "size": "60\"x120\"", "qty": 5, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "16 GA", "size": "48\"x120\"", "qty": 6.4, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "16 GA", "size": "60\"x120\"", "qty": 6.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "14 GA", "size": "48\"x120\"", "qty": 14.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "13 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "11 GA", "size": "48\"x120\"", "qty": 3.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "14 GA", "size": "60\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "13 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "12 GA", "size": "60\"x120\"", "qty": 1.8, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel", "thickness": "10 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel HR", "thickness": "3/16\"", "size": "60\"x120\"", "qty": 1.5, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Mild Steel HR", "thickness": "1/4\"", "size": "48\"x48\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".032\"", "size": "", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".040\"", "size": "48\"x120\"", "qty": 6.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".050\"", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".060\"", "size": "48\"x120\"", "qty": 4.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".080\"", "size": "48\"x120\"", "qty": 5.9, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".090\"", "size": "48\"x120\"", "qty": 10.3, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".100\"", "size": "48\"x120\"", "qty": 2.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".125\"", "size": "", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".187\"", "size": "", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL5052-H32", "thickness": ".250\"", "size": "", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL6061-T6", "thickness": ".050\"", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL6061-T6", "thickness": ".060\"", "size": "48\"x120\"", "qty": 2.5, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL6061-T6", "thickness": ".080\"", "size": "48\"x120\"", "qty": 5.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL6061-T6", "thickness": ".090\"", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL6061-T6", "thickness": ".125\"", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "AL6061-T6", "thickness": ".250\"", "size": "48\"x96\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "24 GA", "size": "48\"x120\"", "qty": 3.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "22 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "20 GA", "size": "48\"x96\"", "qty": 5.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "18 GA", "size": "48\"x120\"", "qty": 3.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "16 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "16 GA", "size": "48\"x94\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "14 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "13 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "12 GA", "size": "48\"x120\"", "qty": 3.5, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "11 GA", "size": "48\"x120\"", "qty": 2.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": "10 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": ".187''", "size": "48\"x95\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-2B", "thickness": ".250'", "size": "", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "24 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "22 GA", "size": "48\"x120\"", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "20 GA", "size": "48\"x71\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "18 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "18 GA", "size": "48\"x60\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "16 GA", "size": "48\"x120\"", "qty": 4.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "16 GA", "size": "48\"x59\"", "qty": 5.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "14 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "14 GA", "size": "53\"x60\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "13 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "12 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "11 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 304-#4", "thickness": "10 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "20 GA", "size": "", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "14 GA", "size": "48\"x96\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "14 GA", "size": "48\"x102\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "16 GA", "size": "48\"x115\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "16 GA", "size": "48\"x76\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "18 GA", "size": "48\"x115\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316-2B", "thickness": "18 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "10 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "11 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "12 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "13 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "14 GA", "size": "50\"x69\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "16 GA", "size": "60\"x60\"", "qty": 2.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "18 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "20 GA", "size": "48\"x96\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "22 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Stainless Steel 316#4", "thickness": "24 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "22 GA", "size": "48\"x72\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "20 GA", "size": "48\"x120\"", "qty": 0.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "20 GA", "size": "48\"x88\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "18 GA", "size": "48\"x120\"", "qty": 2.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "16 GA", "size": "48\"x120\"", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "14 GA", "size": "48\"x120\"", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "12 GA", "size": "11\"x78\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "12 GA", "size": "48\"x120\"", "qty": 5.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "11 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Galvanized Steel", "thickness": "11GA", "size": "48\"x96\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "22 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "20 GA", "size": "", "qty": 0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "18 GA", "size": "48\"x120\"", "qty": 2.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "16 GA", "size": "48\"x120\"", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "14 GA", "size": "", "qty": 1.0, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "12 GA", "size": "48\"x120\"", "qty": 1.15, "lowStockThreshold": 1, "history": []}, {"type": "material", "material": "Satin Coat", "thickness": "11 GA", "size": "48\"x120\"", "qty": 0, "lowStockThreshold": 1, "history": []}];
+const HARDWARE_SEED = [{"type": "hardware", "partNumber": "KFB3-440-6ET", "qty": 3182.0, "lowStockThreshold": 200, "history": []}, {"type": "hardware", "partNumber": "SP-832-0", "qty": 134.0, "lowStockThreshold": 13, "history": []}, {"type": "hardware", "partNumber": "559-SP0322", "qty": 186.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "SP-832-1", "qty": 566.0, "lowStockThreshold": 57, "history": []}, {"type": "hardware", "partNumber": "SP-024-2", "qty": 64.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SP-032-0", "qty": 264.0, "lowStockThreshold": 26, "history": []}, {"type": "hardware", "partNumber": "SP-032-1", "qty": 31.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SP-032-2", "qty": 186.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "SP-0420-0", "qty": 85.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SP-632-2", "qty": 63.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SP-632-0", "qty": 497.0, "lowStockThreshold": 50, "history": []}, {"type": "hardware", "partNumber": "SP-632-1", "qty": 41.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-0624-2", "qty": 50.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-0420-2", "qty": 861.0, "lowStockThreshold": 86, "history": []}, {"type": "hardware", "partNumber": "S-632-3", "qty": 75.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-632-0", "qty": 14.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-032-3", "qty": 36.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-0813-1", "qty": 72.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-440-0", "qty": 49.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-440-32", "qty": 22.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-440-3", "qty": 826.0, "lowStockThreshold": 83, "history": []}, {"type": "hardware", "partNumber": "S-0420-2", "qty": 5.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S-0420-1", "qty": 190.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "S-832-3", "qty": 1570.0, "lowStockThreshold": 157, "history": []}, {"type": "hardware", "partNumber": "S-1124-1", "qty": 184.0, "lowStockThreshold": 18, "history": []}, {"type": "hardware", "partNumber": "S-1124-2", "qty": 6.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-43.1-8", "qty": 122.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "SO-4116-4", "qty": 467.0, "lowStockThreshold": 47, "history": []}, {"type": "hardware", "partNumber": "SO-8143-1", "qty": 78.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-6143-10", "qty": 765.0, "lowStockThreshold": 76, "history": []}, {"type": "hardware", "partNumber": "SO-440-12", "qty": 722.0, "lowStockThreshold": 72, "history": []}, {"type": "hardware", "partNumber": "SO-440-10", "qty": 825.0, "lowStockThreshold": 82, "history": []}, {"type": "hardware", "partNumber": "SO-440-14", "qty": 677.0, "lowStockThreshold": 68, "history": []}, {"type": "hardware", "partNumber": "SO-440-22", "qty": 21.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-440-24", "qty": 97.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-440-16", "qty": 1129.0, "lowStockThreshold": 113, "history": []}, {"type": "hardware", "partNumber": "SO-632-10", "qty": 815.0, "lowStockThreshold": 82, "history": []}, {"type": "hardware", "partNumber": "SO-632-4", "qty": 320.0, "lowStockThreshold": 32, "history": []}, {"type": "hardware", "partNumber": "S0-032-6", "qty": 3296.0, "lowStockThreshold": 200, "history": []}, {"type": "hardware", "partNumber": "SO-632-8", "qty": 27.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "S0-032-12", "qty": 626.0, "lowStockThreshold": 63, "history": []}, {"type": "hardware", "partNumber": "SO-032-24", "qty": 58.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-032-10", "qty": 78.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-032-14", "qty": 48.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO-632-34", "qty": 175.0, "lowStockThreshold": 18, "history": []}, {"type": "hardware", "partNumber": "SO-632-30", "qty": 17.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOA-63.1-18", "qty": 539.0, "lowStockThreshold": 54, "history": []}, {"type": "hardware", "partNumber": "SO4-8632-8", "qty": 100.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SO4-632-20", "qty": 61.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SL-632-2", "qty": 194.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "SL-0420-2 ZI", "qty": 64.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SL-440-2", "qty": 84.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SL832-2", "qty": 33.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "MS-20426AD6-5", "qty": 216.0, "lowStockThreshold": 22, "history": []}, {"type": "hardware", "partNumber": "MS-2046AD4-6A", "qty": 1149.0, "lowStockThreshold": 115, "history": []}, {"type": "hardware", "partNumber": "MS 20426AD5-3", "qty": 525.0, "lowStockThreshold": 52, "history": []}, {"type": "hardware", "partNumber": "MS-20426AD4-3", "qty": 5834.0, "lowStockThreshold": 200, "history": []}, {"type": "hardware", "partNumber": "MS20426AD-10", "qty": 696.0, "lowStockThreshold": 70, "history": []}, {"type": "hardware", "partNumber": "MS20426AD4-16", "qty": 665.0, "lowStockThreshold": 66, "history": []}, {"type": "hardware", "partNumber": "AC-0420-2", "qty": 112.0, "lowStockThreshold": 11, "history": []}, {"type": "hardware", "partNumber": "AC-632-1", "qty": 140.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "AC-832-2", "qty": 205.0, "lowStockThreshold": 20, "history": []}, {"type": "hardware", "partNumber": "AC-440-1", "qty": 20.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "MS-20426AD4-4", "qty": 2234.0, "lowStockThreshold": 200, "history": []}, {"type": "hardware", "partNumber": "AS-440-2", "qty": 339.0, "lowStockThreshold": 34, "history": []}, {"type": "hardware", "partNumber": "AS-440-1", "qty": 497.0, "lowStockThreshold": 50, "history": []}, {"type": "hardware", "partNumber": "AS-832-2", "qty": 399.0, "lowStockThreshold": 40, "history": []}, {"type": "hardware", "partNumber": "AS-032-1", "qty": 12.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "AS-032-2", "qty": 190.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "AS-832-1", "qty": 148.0, "lowStockThreshold": 15, "history": []}, {"type": "hardware", "partNumber": "AETS9-1032", "qty": 836.0, "lowStockThreshold": 84, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-28", "qty": 126.0, "lowStockThreshold": 13, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-22", "qty": 232.0, "lowStockThreshold": 23, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-14", "qty": 293.0, "lowStockThreshold": 29, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-20", "qty": 83.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-16", "qty": 122.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-10", "qty": 50.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-12", "qty": 125.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "BSOS-440-18", "qty": 28.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-8632-32", "qty": 57.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-6400-16", "qty": 47.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-14", "qty": 124.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-10", "qty": 30.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-18", "qty": 181.0, "lowStockThreshold": 18, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-12", "qty": 141.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-32", "qty": 39.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-20", "qty": 304.0, "lowStockThreshold": 30, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-24", "qty": 91.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-26", "qty": 66.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-22", "qty": 120.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "BSOS-6440-34", "qty": 2.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-24", "qty": 244.0, "lowStockThreshold": 24, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-10", "qty": 183.0, "lowStockThreshold": 18, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-12", "qty": 141.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-32", "qty": 76.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-22", "qty": 56.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-16", "qty": 85.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-632-14", "qty": 18.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSOS-032-12", "qty": 77.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-16", "qty": 393.0, "lowStockThreshold": 39, "history": []}, {"type": "hardware", "partNumber": "BSO-632-10", "qty": 272.0, "lowStockThreshold": 27, "history": []}, {"type": "hardware", "partNumber": "BSO-6440-18", "qty": 186.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "BSO-440-18", "qty": 151.0, "lowStockThreshold": 15, "history": []}, {"type": "hardware", "partNumber": "BSO-440-28", "qty": 132.0, "lowStockThreshold": 13, "history": []}, {"type": "hardware", "partNumber": "BSO-440-14", "qty": 111.0, "lowStockThreshold": 11, "history": []}, {"type": "hardware", "partNumber": "BSO-440--20", "qty": 186.0, "lowStockThreshold": 19, "history": []}, {"type": "hardware", "partNumber": "BSO-440-32", "qty": 117.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "BSO-440-24", "qty": 18.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-440--16", "qty": 23.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-832-18", "qty": 7.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-832-10", "qty": 75.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-032-34", "qty": 67.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-032-12", "qty": 214.0, "lowStockThreshold": 21, "history": []}, {"type": "hardware", "partNumber": "BSO-032-10", "qty": 69.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-22", "qty": 79.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-28", "qty": 667.0, "lowStockThreshold": 67, "history": []}, {"type": "hardware", "partNumber": "BSO-8632-16", "qty": 19.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-8632-10", "qty": 54.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-440-12", "qty": 11.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-440-10", "qty": 76.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-32", "qty": 51.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-30", "qty": 21.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-34", "qty": 104.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BSO-632-20", "qty": 127.0, "lowStockThreshold": 13, "history": []}, {"type": "hardware", "partNumber": "BS-0420-2", "qty": 198.0, "lowStockThreshold": 20, "history": []}, {"type": "hardware", "partNumber": "BS-832-2", "qty": 168.0, "lowStockThreshold": 17, "history": []}, {"type": "hardware", "partNumber": "BS-632-2", "qty": 57.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BS-440-1", "qty": 221.0, "lowStockThreshold": 22, "history": []}, {"type": "hardware", "partNumber": "BS-032-1", "qty": 202.0, "lowStockThreshold": 20, "history": []}, {"type": "hardware", "partNumber": "BS-032-2", "qty": 45.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "BS-440-2", "qty": 210.0, "lowStockThreshold": 21, "history": []}, {"type": "hardware", "partNumber": "B-0420-2", "qty": 263.0, "lowStockThreshold": 26, "history": []}, {"type": "hardware", "partNumber": "B-0420-1", "qty": 207.0, "lowStockThreshold": 21, "history": []}, {"type": "hardware", "partNumber": "B-632-2", "qty": 284.0, "lowStockThreshold": 28, "history": []}, {"type": "hardware", "partNumber": "FRBWW(3)7500P-10-D-4", "qty": 40.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FRBWW(3)7500P-10-D-4 (Washer)", "qty": 138.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "F-0420-3", "qty": 71.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "F-440-2", "qty": 388.0, "lowStockThreshold": 39, "history": []}, {"type": "hardware", "partNumber": "F-832-1", "qty": 211.0, "lowStockThreshold": 21, "history": []}, {"type": "hardware", "partNumber": "FHS-0420-8", "qty": 532.0, "lowStockThreshold": 53, "history": []}, {"type": "hardware", "partNumber": "FHS-0420-6", "qty": 244.0, "lowStockThreshold": 24, "history": []}, {"type": "hardware", "partNumber": "FHS-032-20", "qty": 807.0, "lowStockThreshold": 81, "history": []}, {"type": "hardware", "partNumber": "FHS-032-24", "qty": 37.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHS-0420-18", "qty": 8.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "MRP-1508", "qty": 38.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "MPR-1507", "qty": 271.0, "lowStockThreshold": 27, "history": []}, {"type": "hardware", "partNumber": "MPR-1507 (WASHER)", "qty": 86.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "CLS-0420-0", "qty": 15.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "CLS-0420-2", "qty": 137.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "CLS-0420-3", "qty": 11.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "CLA-832-2", "qty": 203.0, "lowStockThreshold": 20, "history": []}, {"type": "hardware", "partNumber": "CLA-440-2", "qty": 508.0, "lowStockThreshold": 51, "history": []}, {"type": "hardware", "partNumber": "CFHC-440-6", "qty": 106.0, "lowStockThreshold": 11, "history": []}, {"type": "hardware", "partNumber": "CFHC-440-4", "qty": 82.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "CFHC-440-8", "qty": 17.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "CFHC-440-12", "qty": 26.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "CLS-0428-2", "qty": 42.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-632-16", "qty": 461.0, "lowStockThreshold": 46, "history": []}, {"type": "hardware", "partNumber": "FH-632-24", "qty": 114.0, "lowStockThreshold": 11, "history": []}, {"type": "hardware", "partNumber": "FH-632-14", "qty": 171.0, "lowStockThreshold": 17, "history": []}, {"type": "hardware", "partNumber": "FH-632-20", "qty": 772.0, "lowStockThreshold": 77, "history": []}, {"type": "hardware", "partNumber": "FH-632-6", "qty": 349.0, "lowStockThreshold": 35, "history": []}, {"type": "hardware", "partNumber": "FH-632-12", "qty": 43.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-632-10", "qty": 87.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-832-10", "qty": 1244.0, "lowStockThreshold": 124, "history": []}, {"type": "hardware", "partNumber": "FH-832-12", "qty": 148.0, "lowStockThreshold": 15, "history": []}, {"type": "hardware", "partNumber": "FH-832-16", "qty": 62.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-256-6", "qty": 144.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "FH-440-8", "qty": 75.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-832-24 ZI", "qty": 98.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-832-4", "qty": 1587.0, "lowStockThreshold": 159, "history": []}, {"type": "hardware", "partNumber": "FH-832-5", "qty": 254.0, "lowStockThreshold": 25, "history": []}, {"type": "hardware", "partNumber": "FH-832-8", "qty": 166.0, "lowStockThreshold": 17, "history": []}, {"type": "hardware", "partNumber": "FH-832-14", "qty": 658.0, "lowStockThreshold": 66, "history": []}, {"type": "hardware", "partNumber": "FH-832-24 ZC", "qty": 90.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-832-6", "qty": 274.0, "lowStockThreshold": 27, "history": []}, {"type": "hardware", "partNumber": "FH-032-8", "qty": 33.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-032-6", "qty": 100.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-032-4", "qty": 1021.0, "lowStockThreshold": 102, "history": []}, {"type": "hardware", "partNumber": "FH-032-5", "qty": 6.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH-032-20", "qty": 150.0, "lowStockThreshold": 15, "history": []}, {"type": "hardware", "partNumber": "FH-032-24", "qty": 105.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHL-632-8", "qty": 35.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHLS-440-10", "qty": 58.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHLS-440-6", "qty": 13.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHLS-440-8", "qty": 31.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH4-0420-16", "qty": 11.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH4-440-6", "qty": 24.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FH4-440-8", "qty": 776.0, "lowStockThreshold": 78, "history": []}, {"type": "hardware", "partNumber": "FHS-256-8", "qty": 37.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "HFHB-0420-12X", "qty": 120.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "HNL-0420-CI", "qty": 500.0, "lowStockThreshold": 50, "history": []}, {"type": "hardware", "partNumber": "FE-832-MD", "qty": 115.0, "lowStockThreshold": 12, "history": []}, {"type": "hardware", "partNumber": "FE-440-MD", "qty": 345.0, "lowStockThreshold": 34, "history": []}, {"type": "hardware", "partNumber": "FE-632-MD", "qty": 53.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHA-D420-24", "qty": 185.0, "lowStockThreshold": 18, "history": []}, {"type": "hardware", "partNumber": "FHA-632-8", "qty": 197.0, "lowStockThreshold": 20, "history": []}, {"type": "hardware", "partNumber": "FHA-832-8", "qty": 67.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "FHA-0420-16", "qty": 50.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF11-032-2", "qty": 19.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF11-0420-0", "qty": 14.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF11-032-1", "qty": 161.0, "lowStockThreshold": 16, "history": []}, {"type": "hardware", "partNumber": "SKC-6060-10", "qty": 82.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SKC-6060-6", "qty": 248.0, "lowStockThreshold": 25, "history": []}, {"type": "hardware", "partNumber": "SKC-6060-8", "qty": 259.0, "lowStockThreshold": 26, "history": []}, {"type": "hardware", "partNumber": "SKC-F1.5", "qty": 44.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SSS-156-20", "qty": 6.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SSS-156-12", "qty": 19.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SSC-156-12", "qty": 15.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SCC-156-8", "qty": 130.0, "lowStockThreshold": 13, "history": []}, {"type": "hardware", "partNumber": "TSOS-256-500", "qty": 170.0, "lowStockThreshold": 17, "history": []}, {"type": "hardware", "partNumber": "TSOS-440-250", "qty": 51.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TSOS-256-437", "qty": 74.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TPS-187-6", "qty": 493.0, "lowStockThreshold": 49, "history": []}, {"type": "hardware", "partNumber": "TPS-187-10", "qty": 64.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TPS-187-16", "qty": 42.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TSO-256-500", "qty": 14.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "1026-062-AL-34", "qty": 484.0, "lowStockThreshold": 48, "history": []}, {"type": "hardware", "partNumber": "10-32X1/2 HEX", "qty": 28.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-632-12", "qty": 55.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-632-10", "qty": 232.0, "lowStockThreshold": 23, "history": []}, {"type": "hardware", "partNumber": "SOS-632-6", "qty": 129.0, "lowStockThreshold": 13, "history": []}, {"type": "hardware", "partNumber": "SOS-632-8", "qty": 80.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-8632-10", "qty": 177.0, "lowStockThreshold": 18, "history": []}, {"type": "hardware", "partNumber": "SOS-8632-16", "qty": 46.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-8632-8", "qty": 69.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-032-10", "qty": 69.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-032-24", "qty": 1.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-632-16", "qty": 33.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-6143-6", "qty": 21.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-4116-4", "qty": 163.0, "lowStockThreshold": 16, "history": []}, {"type": "hardware", "partNumber": "SOS-85.1-16", "qty": 2.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-8169-10", "qty": 98.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOS-8169-12", "qty": 60.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "SOSG-9632-8", "qty": 81.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TPXS-3MM-16", "qty": 34.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TFHS-832-12", "qty": 154.0, "lowStockThreshold": 15, "history": []}, {"type": "hardware", "partNumber": "TFH-024-8", "qty": 20.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "TFH-440-4", "qty": 110.0, "lowStockThreshold": 11, "history": []}, {"type": "hardware", "partNumber": "33610.0", "qty": 1383.0, "lowStockThreshold": 138, "history": []}, {"type": "hardware", "partNumber": "36020.0", "qty": 660.0, "lowStockThreshold": 66, "history": []}, {"type": "hardware", "partNumber": "KFE-440-4", "qty": 64.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "KFB3-632-6", "qty": 22.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "KFSE-632-12", "qty": 19.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PFP-M4-1L001", "qty": 5.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PFC2-440-40", "qty": 45.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PFC2-632-84", "qty": 6.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PFC2-632-62", "qty": 85.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PFC2P-832-72", "qty": 8.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "D5-PFSC35-44A", "qty": 69.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF31-32-3", "qty": 30.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF11-032-2", "qty": 81.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF11-832-1", "qty": 2.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PF11-832-2", "qty": 40.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "PTL2-04-4CN", "qty": 48.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "UL-256-1", "qty": 143.0, "lowStockThreshold": 14, "history": []}, {"type": "hardware", "partNumber": "559-F0321", "qty": 89.0, "lowStockThreshold": 10, "history": []}, {"type": "hardware", "partNumber": "RAA4-9-8", "qty": 47.0, "lowStockThreshold": 10, "history": []}];
+
+const inventoryCol = collection(db, "inventory");
+let inventoryCache = [];
+
+async function seedInventoryIfEmpty(){
+  const snap = await getDocs(inventoryCol);
+  if(!snap.empty) return;
+  for(const item of [...MATERIAL_SEED, ...HARDWARE_SEED]){
+    const newDoc = doc(inventoryCol);
+    await setDoc(newDoc, item);
+  }
+}
+
+(async function initInventorySync(){
+  try{
+    await seedInventoryIfEmpty();
+    let invSnapshotDebounce = null;
+    onSnapshot(inventoryCol, (snapshot)=>{
+      inventoryCache = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+      clearTimeout(invSnapshotDebounce);
+      invSnapshotDebounce = setTimeout(()=>{
+        if(currentView === "inventory") renderOrDefer(searchInput.value);
+      }, 80);
+    }, (err)=>{
+      console.error("Inventory listener error:", err);
+    });
+  }catch(err){
+    console.error("Inventory sync failed:", err);
+  }
+})();
+
+async function takeOutInventory(itemId, amount, jobRef, notes){
+  const item = inventoryCache.find(i => i.id === itemId);
+  if(!item) return;
+  const newQty = Math.max(0, (item.qty || 0) - amount);
+  const entry = {
+    id: "e" + Date.now() + Math.random().toString(36).slice(2, 7),
+    amount: amount,
+    job: jobRef || "",
+    notes: notes || "",
+    author: getCurrentAuthorLabel(),
+    timestamp: timestampNow(),
+    edited: false
+  };
+  const newHistory = [entry, ...(item.history || [])];
+  await updateDoc(doc(db, "inventory", itemId), { qty: newQty, history: newHistory });
+  logActivity({
+    jobId: "",
+    traveler: jobRef || "—",
+    customer: itemLabel(item),
+    field: "Inventory taken out",
+    oldValue: (item.qty || 0) + "",
+    newValue: newQty + " (−" + amount + ")"
+  });
+}
+
+// Editing a past take-out corrects stock by the DIFFERENCE between the
+// old and new amount, rather than blindly re-subtracting — so fixing a
+// typo doesn't quietly double-charge (or double-refund) the shelf count.
+async function editInventoryEntry(itemId, entryId, newAmount, newJobRef, newNotes){
+  const item = inventoryCache.find(i => i.id === itemId);
+  if(!item) return;
+  const history = [...(item.history || [])];
+  const idx = history.findIndex(e => e.id === entryId);
+  if(idx === -1) return;
+  const oldAmount = history[idx].amount || 0;
+  const delta = newAmount - oldAmount;
+  const newQty = Math.max(0, (item.qty || 0) + delta);
+  history[idx] = {
+    ...history[idx],
+    amount: newAmount,
+    job: newJobRef || "",
+    notes: newNotes || "",
+    edited: true,
+    editedAuthor: getCurrentAuthorLabel(),
+    editedTimestamp: timestampNow()
+  };
+  await updateDoc(doc(db, "inventory", itemId), { qty: newQty, history: history });
+  logActivity({
+    jobId: "",
+    traveler: newJobRef || "—",
+    customer: itemLabel(item),
+    field: "Inventory entry corrected",
+    oldValue: oldAmount + "",
+    newValue: newAmount + ""
+  });
+}
+
+function itemLabel(item){
+  if(item.type === "hardware") return item.partNumber;
+  return [item.material, item.thickness, item.size].filter(Boolean).join(" · ");
+}
+
+function formatQty(q){
+  const n = Number(q) || 0;
+  return Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/\.?0+$/, "");
+}
+
+// ---- Take Out modal (also doubles as the edit-a-past-entry modal) ----
+const takeOutOverlay = document.getElementById("takeOutOverlay");
+const takeOutTitle = document.getElementById("takeOutTitle");
+const takeOutItemInfo = document.getElementById("takeOutItemInfo");
+const takeOutAmount = document.getElementById("takeOutAmount");
+const takeOutJob = document.getElementById("takeOutJob");
+const takeOutJobList = document.getElementById("takeOutJobList");
+const takeOutNotes = document.getElementById("takeOutNotes");
+const takeOutError = document.getElementById("takeOutError");
+const takeOutCloseBtn = document.getElementById("takeOutCloseBtn");
+const takeOutCancelBtn = document.getElementById("takeOutCancelBtn");
+const takeOutSubmitBtn = document.getElementById("takeOutSubmitBtn");
+let takeOutCurrentItem = null;
+let takeOutEditEntry = null;
+
+function openTakeOutModal(item, editEntry){
+  takeOutCurrentItem = item;
+  takeOutEditEntry = editEntry || null;
+  takeOutError.textContent = "";
+  takeOutTitle.textContent = editEntry ? "Correct This Take-Out" : "Take Out " + (item.type === "hardware" ? "Hardware" : "Material");
+  takeOutItemInfo.innerHTML = "<strong>" + itemLabel(item) + "</strong> — currently " + formatQty(item.qty) + (item.type === "material" ? " sheets" : " pcs") + " on hand";
+  takeOutAmount.value = editEntry ? editEntry.amount : "";
+  takeOutJob.value = editEntry ? editEntry.job : "";
+  takeOutNotes.value = editEntry ? editEntry.notes : "";
+
+  takeOutJobList.innerHTML = "";
+  const allTravelers = [...new Set(jobsCache.filter(j=>!j.completed).flatMap(j => j.rows.map(r=>r.traveler)).filter(Boolean))].sort();
+  allTravelers.forEach(t=>{
+    const o = document.createElement("option");
+    o.value = t;
+    takeOutJobList.appendChild(o);
+  });
+
+  takeOutSubmitBtn.textContent = editEntry ? "Save Correction" : "Confirm Take Out";
+  takeOutOverlay.classList.add("open");
+  takeOutAmount.focus();
+}
+function closeTakeOutModal(){
+  takeOutOverlay.classList.remove("open");
+  takeOutCurrentItem = null;
+  takeOutEditEntry = null;
+}
+takeOutCloseBtn.addEventListener("click", closeTakeOutModal);
+takeOutCancelBtn.addEventListener("click", closeTakeOutModal);
+
+takeOutSubmitBtn.addEventListener("click", async ()=>{
+  takeOutError.textContent = "";
+  const amount = parseFloat(takeOutAmount.value);
+  if(!takeOutAmount.value.trim() || isNaN(amount) || amount <= 0){
+    takeOutError.textContent = "Enter how much is being taken out.";
+    return;
+  }
+  const jobRef = takeOutJob.value.trim();
+  if(!jobRef){
+    takeOutError.textContent = "Enter the job or sub-job # this is being used for.";
+    return;
+  }
+  takeOutSubmitBtn.disabled = true;
+  try{
+    if(takeOutEditEntry){
+      await editInventoryEntry(takeOutCurrentItem.id, takeOutEditEntry.id, amount, jobRef, takeOutNotes.value.trim());
+    } else {
+      await takeOutInventory(takeOutCurrentItem.id, amount, jobRef, takeOutNotes.value.trim());
+    }
+    closeTakeOutModal();
+  }catch(err){
+    console.error("Take out failed:", err);
+    takeOutError.textContent = "Something went wrong — check your connection and try again.";
+  }
+  takeOutSubmitBtn.disabled = false;
+});
+
+// ---- Item cards ----
+function buildHistoryEntryRow(item, entry){
+  const row = document.createElement("div");
+  row.className = "inv-history-entry";
+  const info = document.createElement("div");
+  info.className = "inv-history-info";
+  info.innerHTML = "<strong>−" + formatQty(entry.amount) + "</strong> for job <strong>" + (entry.job || "—") + "</strong>" +
+    (entry.notes ? " — " + entry.notes : "") +
+    "<div class=\"inv-history-meta\">" + entry.author + " · " + entry.timestamp +
+    (entry.edited ? " <span class=\"inv-edited-tag\">(corrected by " + entry.editedAuthor + ", " + entry.editedTimestamp + ")</span>" : "") +
+    "</div>";
+  row.appendChild(info);
+  const editBtn = document.createElement("button");
+  editBtn.className = "inv-history-edit-btn";
+  editBtn.textContent = "Edit";
+  editBtn.addEventListener("click", ()=> openTakeOutModal(item, entry));
+  row.appendChild(editBtn);
+  return row;
+}
+
+function buildInventoryItemCard(item){
+  const card = document.createElement("div");
+  card.className = "inv-card";
+  const isLow = (item.qty || 0) <= (item.lowStockThreshold || 0);
+  if(isLow) card.classList.add("inv-low");
+
+  const row = document.createElement("div");
+  row.className = "inv-card-row";
+
+  const label = document.createElement("div");
+  label.className = "inv-card-label";
+  label.textContent = itemLabel(item);
+  row.appendChild(label);
+
+  const qtyEl = document.createElement("div");
+  qtyEl.className = "inv-card-qty" + (isLow ? " low" : "");
+  qtyEl.textContent = formatQty(item.qty) + (item.type === "material" ? " sheets" : " pcs");
+  row.appendChild(qtyEl);
+
+  const takeOutBtn = document.createElement("button");
+  takeOutBtn.className = "inv-take-out-btn";
+  takeOutBtn.textContent = "Take Out";
+  takeOutBtn.addEventListener("click", ()=> openTakeOutModal(item));
+  row.appendChild(takeOutBtn);
+
+  card.appendChild(row);
+
+  if(isLow){
+    const lowTag = document.createElement("div");
+    lowTag.className = "inv-low-tag";
+    lowTag.textContent = "⚠ Low stock — at or below " + formatQty(item.lowStockThreshold) + " threshold";
+    card.appendChild(lowTag);
+  }
+
+  const history = item.history || [];
+  if(history.length){
+    const toggle = document.createElement("button");
+    toggle.className = "inv-history-toggle";
+    toggle.textContent = "▸ History (" + history.length + ")";
+    const histBox = document.createElement("div");
+    histBox.className = "inv-history-box";
+    toggle.addEventListener("click", ()=>{
+      const open = histBox.classList.toggle("open");
+      toggle.textContent = (open ? "▾" : "▸") + " History (" + history.length + ")";
+    });
+    history.forEach(entry=> histBox.appendChild(buildHistoryEntryRow(item, entry)));
+    card.appendChild(toggle);
+    card.appendChild(histBox);
+  }
+
+  return card;
+}
+
+function renderInventoryTab(filterText){
+  content.classList.add("wide");
+  content.classList.remove("customer-grid", "staff-search-view");
+  content.innerHTML = "";
+  const term = (filterText || "").trim().toLowerCase();
+
+  function matchesTerm(item){
+    if(!term) return true;
+    const haystack = (item.type === "hardware" ? item.partNumber : [item.material, item.thickness, item.size].join(" ")).toLowerCase();
+    return haystack.includes(term);
+  }
+
+  const material = inventoryCache.filter(i => i.type === "material" && matchesTerm(i))
+    .sort((a,b)=> itemLabel(a).localeCompare(itemLabel(b)));
+  const hardware = inventoryCache.filter(i => i.type === "hardware" && matchesTerm(i))
+    .sort((a,b)=> itemLabel(a).localeCompare(itemLabel(b)));
+
+  function buildSection(title, items){
+    const section = document.createElement("div");
+    section.className = "inv-section";
+    const header = document.createElement("div");
+    header.className = "inv-section-header";
+    const lowCount = items.filter(i => (i.qty || 0) <= (i.lowStockThreshold || 0)).length;
+    header.innerHTML = title + " <span class=\"inv-section-count\">(" + items.length + ")</span>" +
+      (lowCount ? " <span class=\"inv-low-count\">⚠ " + lowCount + " low</span>" : "");
+    section.appendChild(header);
+    if(items.length === 0){
+      const empty = document.createElement("div");
+      empty.className = "inv-empty";
+      empty.textContent = "Nothing matches here.";
+      section.appendChild(empty);
+    } else {
+      items.forEach(item => section.appendChild(buildInventoryItemCard(item)));
+    }
+    return section;
+  }
+
+  content.appendChild(buildSection("Material", material));
+  content.appendChild(buildSection("Hardware", hardware));
+
+  resultLine.textContent = (material.length + hardware.length) + " item" + ((material.length+hardware.length)===1?"":"s") + " shown";
+  clearBtn.style.display = term ? "block" : "none";
+}
 
 // ================= Messaging =================
 const CHAT_NAME_KEY = "chatDisplayName";
