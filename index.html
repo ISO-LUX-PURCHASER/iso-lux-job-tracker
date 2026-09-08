@@ -1498,6 +1498,48 @@
     color:var(--ink) !important;
   }
   .chat-attach-btn:disabled{ opacity:0.5; cursor:default; }
+  .chat-emoji-wrap{
+    position:relative;
+    flex:0 0 auto;
+  }
+  .chat-emoji-btn{
+    padding:8px 12px !important;
+    font-size:17px !important;
+    background:var(--surface) !important;
+    color:var(--ink) !important;
+    border-radius:8px;
+    border:1.5px solid var(--line);
+    cursor:pointer;
+  }
+  .chat-emoji-panel{
+    display:none;
+    position:absolute;
+    bottom:calc(100% + 8px);
+    right:0;
+    width:220px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.15);
+    padding:8px;
+    grid-template-columns:repeat(6, 1fr);
+    gap:4px;
+    z-index:30;
+  }
+  .chat-emoji-panel.open{
+    display:grid;
+  }
+  .chat-emoji-option{
+    font-size:19px;
+    padding:6px 0;
+    border:none;
+    background:none;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .chat-emoji-option:hover{
+    background:var(--surface);
+  }
   .chat-message-image{
     display:block;
     max-width:100%;
@@ -12714,6 +12756,71 @@ function renderChat(){
   const input = document.createElement("input");
   input.type = "text";
   input.placeholder = "Type a message…";
+
+  // Classic MSN-style: finish typing a text emoticon and it converts to
+  // a real emoji automatically. Cursor position is preserved so typing
+  // mid-sentence doesn't jump around.
+  const EMOTICON_MAP = [
+    [/:-?\)/g, "🙂"],
+    [/:-?D/g, "😄"],
+    [/:'\(/g, "😢"],
+    [/:-?\(/g, "🙁"],
+    [/;-?\)/g, "😉"],
+    [/;-?\(/g, "😢"],
+    [/:-?P/gi, "😛"],
+    [/:-?\|/g, "😐"],
+    [/:-?O/gi, "😮"],
+    [/<3/g, "❤️"]
+  ];
+  input.addEventListener("input", ()=>{
+    const caret = input.selectionStart;
+    const val = input.value;
+    let newVal = val;
+    EMOTICON_MAP.forEach(([regex, emoji])=>{ newVal = newVal.replace(regex, emoji); });
+    if(newVal !== val){
+      const delta = newVal.length - val.length;
+      input.value = newVal;
+      input.setSelectionRange(caret + delta, caret + delta);
+    }
+  });
+
+  // A visible emoji picker for anyone on desktop who doesn't know their
+  // OS's keyboard shortcut for the built-in emoji panel.
+  const emojiWrap = document.createElement("div");
+  emojiWrap.className = "chat-emoji-wrap";
+  const emojiBtn = document.createElement("button");
+  emojiBtn.type = "button";
+  emojiBtn.className = "chat-emoji-btn";
+  emojiBtn.textContent = "😊";
+  emojiBtn.title = "Insert an emoji";
+  const emojiPanel = document.createElement("div");
+  emojiPanel.className = "chat-emoji-panel";
+  const COMMON_EMOJIS = ["😀","😂","🙂","😉","😊","😍","🥳","👍","👎","🙏","👏","🎉","🔥","✅","❌","⚠️","💯","😢","😮","😴","🤔","👋","💪","📦","🚚","❤️"];
+  COMMON_EMOJIS.forEach(emoji=>{
+    const opt = document.createElement("button");
+    opt.type = "button";
+    opt.className = "chat-emoji-option";
+    opt.textContent = emoji;
+    opt.addEventListener("click", ()=>{
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+      input.value = input.value.slice(0, start) + emoji + input.value.slice(end);
+      input.focus();
+      input.setSelectionRange(start + emoji.length, start + emoji.length);
+      emojiPanel.classList.remove("open");
+    });
+    emojiPanel.appendChild(opt);
+  });
+  emojiBtn.addEventListener("click", (e)=>{
+    e.stopPropagation();
+    emojiPanel.classList.toggle("open");
+  });
+  document.addEventListener("click", (e)=>{
+    if(!emojiWrap.contains(e.target)) emojiPanel.classList.remove("open");
+  });
+  emojiWrap.appendChild(emojiBtn);
+  emojiWrap.appendChild(emojiPanel);
+
   const sendBtn = document.createElement("button");
   sendBtn.textContent = "Send";
 
@@ -12759,6 +12866,7 @@ function renderChat(){
   inputRow.appendChild(attachBtn);
   inputRow.appendChild(fileInput);
   inputRow.appendChild(input);
+  inputRow.appendChild(emojiWrap);
   inputRow.appendChild(sendBtn);
   wrap.appendChild(inputRow);
 
