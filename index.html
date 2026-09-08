@@ -9389,6 +9389,25 @@ function getDueUrgency(str){
 }
 
 const content = document.getElementById("content");
+// Safari on iOS (private browsing, certain privacy settings, some MDM
+// profiles) throws instead of returning null when localStorage is
+// restricted — and since a few reads below run immediately at page
+// load, an uncaught throw there would silently kill the entire script,
+// giving a blank page with nothing rendered at all. Route everything
+// through this so a restricted device just loses the "remember this"
+// conveniences instead of breaking the whole app.
+const safeStorage = {
+  getItem(key){
+    try{ return localStorage.getItem(key); }catch(e){ return null; }
+  },
+  setItem(key, val){
+    try{ localStorage.setItem(key, val); }catch(e){}
+  },
+  removeItem(key){
+    try{ localStorage.removeItem(key); }catch(e){}
+  }
+};
+
 const searchInput = document.getElementById("searchInput");
 const clearBtn = document.getElementById("clearBtn");
 const resultLine = document.getElementById("resultLine");
@@ -10289,14 +10308,14 @@ const RECENT_JOBS_KEY = "quickUpdateRecentJobs";
 function pushRecentJob(travelerNum){
   if(!travelerNum) return;
   let recents = [];
-  try{ recents = JSON.parse(localStorage.getItem(RECENT_JOBS_KEY) || "[]"); }catch(e){}
+  try{ recents = JSON.parse(safeStorage.getItem(RECENT_JOBS_KEY) || "[]"); }catch(e){}
   recents = recents.filter(t => t !== travelerNum);
   recents.unshift(travelerNum);
   if(recents.length > 8) recents.length = 8;
-  localStorage.setItem(RECENT_JOBS_KEY, JSON.stringify(recents));
+  safeStorage.setItem(RECENT_JOBS_KEY, JSON.stringify(recents));
 }
 function getRecentJobs(){
-  try{ return JSON.parse(localStorage.getItem(RECENT_JOBS_KEY) || "[]"); }catch(e){ return []; }
+  try{ return JSON.parse(safeStorage.getItem(RECENT_JOBS_KEY) || "[]"); }catch(e){ return []; }
 }
 
 // Tap a station instead of typing — shows every active job currently
@@ -10370,7 +10389,7 @@ function buildRecentJobsStrip(){
 // only needs to be set once.
 const QUICK_TAG_DEPARTMENTS = ["WELDING", "CLEAN UP", "BREAK PRESS", "HARDWARE", "SHIPPING", "LASER", "MACHINING"];
 const QUICK_TAG_DEPT_KEY = "quickUpdateDepartment";
-let quickUpdateDepartment = localStorage.getItem(QUICK_TAG_DEPT_KEY) || null;
+let quickUpdateDepartment = safeStorage.getItem(QUICK_TAG_DEPT_KEY) || null;
 
 // Shipping isn't really one action — asked every time someone's on this
 // department, not remembered, since "log a shipment" and "send to a
@@ -10380,8 +10399,8 @@ let shippingVendorBoxOpen = false;
 
 function setQuickUpdateDepartment(dept){
   quickUpdateDepartment = dept;
-  if(dept) localStorage.setItem(QUICK_TAG_DEPT_KEY, dept);
-  else localStorage.removeItem(QUICK_TAG_DEPT_KEY);
+  if(dept) safeStorage.setItem(QUICK_TAG_DEPT_KEY, dept);
+  else safeStorage.removeItem(QUICK_TAG_DEPT_KEY);
   showShippingChoice = false;
   shippingVendorBoxOpen = false;
   render(searchInput.value);
@@ -11011,7 +11030,7 @@ function setupDueTableResize(colgroup, table){
   }
 
   try{
-    const saved = JSON.parse(localStorage.getItem(DUE_TABLE_WIDTHS_KEY) || "null");
+    const saved = JSON.parse(safeStorage.getItem(DUE_TABLE_WIDTHS_KEY) || "null");
     if(saved && saved.length === cols.length){
       saved.forEach((w, i) => { cols[i].style.width = w + "px"; });
     }
@@ -11020,7 +11039,7 @@ function setupDueTableResize(colgroup, table){
 
   function saveWidths(){
     const widths = Array.from(cols).map(c => parseInt(c.style.width, 10) || 100);
-    localStorage.setItem(DUE_TABLE_WIDTHS_KEY, JSON.stringify(widths));
+    safeStorage.setItem(DUE_TABLE_WIDTHS_KEY, JSON.stringify(widths));
   }
 
   document.querySelectorAll("#content .col-resizer").forEach(handle=>{
@@ -13340,7 +13359,7 @@ const chatNameInput = document.getElementById("chatNameInput");
 const chatNameSaveBtn = document.getElementById("chatNameSaveBtn");
 
 function getChatName(){
-  return (localStorage.getItem(CHAT_NAME_KEY) || "").trim();
+  return (safeStorage.getItem(CHAT_NAME_KEY) || "").trim();
 }
 
 function openChatNameModal(){
@@ -13351,7 +13370,7 @@ function openChatNameModal(){
 function saveChatName(){
   const val = chatNameInput.value.trim();
   if(!val) return;
-  localStorage.setItem(CHAT_NAME_KEY, val);
+  safeStorage.setItem(CHAT_NAME_KEY, val);
   chatNameOverlay.classList.remove("open");
   if(currentView === "chat") renderChat();
 }
@@ -13365,7 +13384,7 @@ let messagesCache = [];
 // Tracked per device via localStorage, same pattern as the department
 // picker and Recently Viewed — there's no per-person login for chat.
 const LAST_READ_MSG_KEY = "lastReadMessageId";
-let lastReadMessageId = localStorage.getItem(LAST_READ_MSG_KEY) || null;
+let lastReadMessageId = safeStorage.getItem(LAST_READ_MSG_KEY) || null;
 let unreadFlashTimer = null;
 let unreadFlashOn = false;
 const originalDocTitle = document.title;
@@ -13413,7 +13432,7 @@ function stopUnreadFlash(){
 function markMessagesRead(){
   if(messagesCache.length === 0) return;
   lastReadMessageId = messagesCache[messagesCache.length - 1].id;
-  localStorage.setItem(LAST_READ_MSG_KEY, lastReadMessageId);
+  safeStorage.setItem(LAST_READ_MSG_KEY, lastReadMessageId);
   stopUnreadFlash();
   updateMessagingNavBadge();
 }
