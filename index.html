@@ -2532,6 +2532,75 @@
   }
 
   /* ---------- Inventory ---------- */
+  .inv-two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:start;
+  }
+  @media (max-width:900px){
+    .inv-two-col{
+      grid-template-columns:1fr;
+    }
+  }
+  .inv-left-col{
+    min-width:0;
+  }
+  .inv-right-col{
+    min-width:0;
+    background:var(--surface);
+    border-radius:12px;
+    padding:16px;
+    position:sticky;
+    top:16px;
+    max-height:calc(100vh - 140px);
+    overflow-y:auto;
+  }
+  .inv-job-search{
+    box-sizing:border-box;
+    width:100%;
+    font-family:inherit;
+    font-size:13.5px;
+    padding:9px 12px;
+    border-radius:8px;
+    border:1.5px solid var(--line);
+    margin-bottom:12px;
+  }
+  .inv-job-search:focus{
+    outline:none;
+    border-color:var(--amber);
+  }
+  .inv-job-usage-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .inv-job-usage-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 12px;
+  }
+  .inv-job-usage-title{
+    font-size:13.5px;
+    font-weight:800;
+    color:var(--danger);
+    margin-bottom:6px;
+  }
+  .inv-job-usage-line{
+    font-size:12.5px;
+    color:var(--ink);
+    padding:4px 0;
+    border-top:1px dashed var(--line);
+  }
+  .inv-job-usage-line:first-of-type{
+    border-top:none;
+  }
+  .inv-job-usage-meta{
+    font-size:10.5px;
+    color:var(--ink-soft);
+    margin-top:1px;
+  }
   .inv-section{
     margin-bottom:28px;
   }
@@ -13136,6 +13205,80 @@ function buildInventoryItemCard(item){
   return card;
 }
 
+function buildJobUsageColumn(){
+  const col = document.createElement("div");
+  col.className = "inv-right-col";
+
+  const header = document.createElement("div");
+  header.className = "inv-section-header";
+  header.textContent = "Material Used By Job";
+  col.appendChild(header);
+
+  const jobSearch = document.createElement("input");
+  jobSearch.type = "text";
+  jobSearch.className = "inv-job-search";
+  jobSearch.placeholder = "Filter by job #...";
+  col.appendChild(jobSearch);
+
+  const listWrap = document.createElement("div");
+  listWrap.className = "inv-job-usage-list";
+  col.appendChild(listWrap);
+
+  // Flatten every item's history into one list, then group by job — so
+  // opening this panel answers "what's been taken out for job X" without
+  // digging through each inventory item one at a time.
+  function rebuild(term){
+    listWrap.innerHTML = "";
+    const byJob = new Map();
+    inventoryCache.forEach(item=>{
+      (item.history || []).forEach(entry=>{
+        const job = entry.job || "(no job listed)";
+        if(!byJob.has(job)) byJob.set(job, { entries: [], latest: "" });
+        const g = byJob.get(job);
+        g.entries.push({ item, entry });
+        if(entry.timestamp > g.latest) g.latest = entry.timestamp;
+      });
+    });
+
+    let jobKeys = [...byJob.keys()];
+    if(term) jobKeys = jobKeys.filter(j => j.toLowerCase().includes(term));
+    jobKeys.sort((a,b) => byJob.get(b).latest.localeCompare(byJob.get(a).latest));
+
+    if(jobKeys.length === 0){
+      const empty = document.createElement("div");
+      empty.className = "inv-empty";
+      empty.textContent = term ? "No jobs match that search." : "No material has been taken out yet.";
+      listWrap.appendChild(empty);
+      return;
+    }
+
+    jobKeys.forEach(job=>{
+      const group = byJob.get(job);
+      const card = document.createElement("div");
+      card.className = "inv-job-usage-card";
+      const jobTitle = document.createElement("div");
+      jobTitle.className = "inv-job-usage-title";
+      jobTitle.textContent = job;
+      card.appendChild(jobTitle);
+      group.entries
+        .sort((a,b)=> b.entry.timestamp.localeCompare(a.entry.timestamp))
+        .forEach(({item, entry})=>{
+          const line = document.createElement("div");
+          line.className = "inv-job-usage-line";
+          line.innerHTML = "<strong>−" + formatQty(entry.amount) + "</strong> " + itemLabel(item) +
+            "<div class=\"inv-job-usage-meta\">" + entry.author + " · " + entry.timestamp + "</div>";
+          card.appendChild(line);
+        });
+      listWrap.appendChild(card);
+    });
+  }
+
+  jobSearch.addEventListener("input", ()=> rebuild(jobSearch.value.trim().toLowerCase()));
+  rebuild("");
+
+  return col;
+}
+
 function renderInventoryTab(filterText){
   content.classList.add("wide");
   content.classList.remove("customer-grid", "staff-search-view");
@@ -13173,8 +13316,18 @@ function renderInventoryTab(filterText){
     return section;
   }
 
-  content.appendChild(buildSection("Material", material));
-  content.appendChild(buildSection("Hardware", hardware));
+  const layout = document.createElement("div");
+  layout.className = "inv-two-col";
+
+  const leftCol = document.createElement("div");
+  leftCol.className = "inv-left-col";
+  leftCol.appendChild(buildSection("Material", material));
+  leftCol.appendChild(buildSection("Hardware", hardware));
+  layout.appendChild(leftCol);
+
+  layout.appendChild(buildJobUsageColumn());
+
+  content.appendChild(layout);
 
   resultLine.textContent = (material.length + hardware.length) + " item" + ((material.length+hardware.length)===1?"":"s") + " shown";
   clearBtn.style.display = term ? "block" : "none";
