@@ -87,6 +87,7 @@
     gap:2px;
   }
   .mode-toggle button{
+    position:relative;
     border:none;
     background:transparent;
     color:rgba(255,255,255,0.65);
@@ -101,6 +102,21 @@
   .mode-toggle button.active{
     background:#fff;
     color:var(--ink);
+  }
+  .nav-unread-dot{
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--danger);
+    border:1.5px solid var(--ink);
+    animation:navUnreadPulse 1.2s infinite;
+  }
+  @keyframes navUnreadPulse{
+    0%, 100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.5; transform:scale(0.8); }
   }
   .sync-pill{
     font-size:12px;
@@ -11481,6 +11497,7 @@ document.querySelectorAll("#modeToggle button").forEach(btn=>{
     document.querySelectorAll("#modeToggle button").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
     render(searchInput.value);
+    if(currentView === "chat") markMessagesRead();
   });
 });
 
@@ -12650,9 +12667,81 @@ chatNameInput.addEventListener("keydown", (e)=>{ if(e.key === "Enter") saveChatN
 const messagesCol = collection(db, "messages");
 let messagesCache = [];
 
+// ---- Unread message alerts (flashing tab title + nav badge) ----
+// Tracked per device via localStorage, same pattern as the department
+// picker and Recently Viewed — there's no per-person login for chat.
+const LAST_READ_MSG_KEY = "lastReadMessageId";
+let lastReadMessageId = localStorage.getItem(LAST_READ_MSG_KEY) || null;
+let unreadFlashTimer = null;
+let unreadFlashOn = false;
+const originalDocTitle = document.title;
+let isFirstMessagesLoad = true;
+
+function hasUnreadMessages(){
+  if(messagesCache.length === 0) return false;
+  const latest = messagesCache[messagesCache.length - 1];
+  return latest.id !== lastReadMessageId;
+}
+
+function updateMessagingNavBadge(){
+  const btn = document.querySelector('#modeToggle button[data-view="chat"]');
+  if(!btn) return;
+  let dot = btn.querySelector(".nav-unread-dot");
+  if(hasUnreadMessages()){
+    if(!dot){
+      dot = document.createElement("span");
+      dot.className = "nav-unread-dot";
+      btn.appendChild(dot);
+    }
+  } else if(dot){
+    dot.remove();
+  }
+}
+
+function startUnreadFlash(){
+  if(unreadFlashTimer) return;
+  unreadFlashTimer = setInterval(()=>{
+    unreadFlashOn = !unreadFlashOn;
+    document.title = unreadFlashOn ? "⚠️ New Message!" : originalDocTitle;
+  }, 1000);
+}
+
+function stopUnreadFlash(){
+  if(unreadFlashTimer){
+    clearInterval(unreadFlashTimer);
+    unreadFlashTimer = null;
+  }
+  document.title = originalDocTitle;
+}
+
+// Called whenever someone actually opens Messaging — that's the only
+// thing that counts as "read," same as a real chat app.
+function markMessagesRead(){
+  if(messagesCache.length === 0) return;
+  lastReadMessageId = messagesCache[messagesCache.length - 1].id;
+  localStorage.setItem(LAST_READ_MSG_KEY, lastReadMessageId);
+  stopUnreadFlash();
+  updateMessagingNavBadge();
+}
+
 onSnapshot(query(messagesCol, orderBy("createdAt", "asc")), (snapshot)=>{
   messagesCache = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-  if(currentView === "chat") renderChat();
+
+  // A brand-new device/browser shouldn't get flashed about the entire
+  // chat history the first time it loads — only genuinely new messages
+  // that arrive after that count as unread.
+  if(isFirstMessagesLoad){
+    isFirstMessagesLoad = false;
+    if(!lastReadMessageId) markMessagesRead();
+  }
+
+  if(currentView === "chat"){
+    renderChat();
+    markMessagesRead();
+  } else {
+    updateMessagingNavBadge();
+    if(hasUnreadMessages()) startUnreadFlash();
+  }
 }, (err)=>{
   console.error("Messages listener error:", err);
 });
