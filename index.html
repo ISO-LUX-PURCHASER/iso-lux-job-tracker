@@ -2532,6 +2532,76 @@
   }
 
   /* ---------- BETA Job sandbox ---------- */
+  .beta-cj-op-row{
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:8px;
+  }
+  .beta-cj-process-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .beta-cj-process-title{
+    font-size:12px;
+    font-weight:800;
+    color:var(--amber-dark);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .beta-cj-op-select{
+    width:100%;
+    box-sizing:border-box;
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:600;
+    padding:8px 10px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+    background:#fff;
+  }
+  .beta-cj-op-check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13.5px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .beta-cj-op-services{
+    margin-top:8px;
+    padding-top:8px;
+    padding-left:22px;
+    border-top:1px dashed var(--line);
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+  }
+  .beta-cj-service-check{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .beta-cj-service-hint{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    width:100%;
+  }
+  .beta-cj-service-freetext{
+    box-sizing:border-box;
+    width:100%;
+    font-family:inherit;
+    font-size:13px;
+    padding:7px 10px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+  }
   .beta-banner{
     background:#FFF3E0;
     border:2px dashed #E5A845;
@@ -2582,6 +2652,38 @@
     gap:10px;
     margin-bottom:10px;
   }
+  .beta-job-reset-btn{
+    margin-left:auto;
+    font-family:inherit;
+    font-size:11.5px;
+    font-weight:700;
+    padding:6px 12px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+    background:#fff;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .beta-job-reset-btn:hover{
+    background:var(--surface);
+    border-color:var(--amber);
+    color:var(--amber-dark);
+  }
+  .beta-job-delete-btn{
+    font-family:inherit;
+    font-size:11.5px;
+    font-weight:700;
+    padding:6px 12px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+    background:#fff;
+    color:var(--danger);
+    cursor:pointer;
+  }
+  .beta-job-delete-btn:hover{
+    background:var(--danger-bg);
+    border-color:var(--danger);
+  }
   .beta-job-cust{
     font-size:11px;
     font-weight:800;
@@ -2631,16 +2733,166 @@
   .beta-steps-row{
     display:flex;
     flex-wrap:wrap;
-    gap:6px;
+    align-items:center;
+    gap:2px;
+  }
+  .beta-detail-toggle{
+    font-family:inherit;
+    font-size:12px;
+    font-weight:700;
+    color:var(--ink-soft);
+    background:none;
+    border:none;
+    cursor:pointer;
+    margin-top:12px;
+    padding:0;
+  }
+  .beta-detail-toggle:hover{
+    color:var(--amber-dark);
+  }
+  .beta-detail-box{
+    display:none;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+  }
+  .beta-detail-box.open{
+    display:block;
+  }
+  .beta-detail-jobmeta{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+    line-height:1.5;
+  }
+  .beta-detail-step{
+    background:var(--surface);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:8px;
+  }
+  .beta-detail-rerun{
+    background:#FAF5FF;
+    border:1px dashed #9333EA;
+  }
+  .beta-detail-step-title{
+    font-size:12.5px;
+    font-weight:800;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .beta-detail-step-empty{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .beta-detail-step-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 20px;
+  }
+  .beta-detail-field{
+    min-width:100px;
+  }
+  .beta-detail-field-label{
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+  }
+  .beta-detail-field-value{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink);
   }
   .beta-step-chip{
     font-family:inherit;
     font-size:11px;
     font-weight:700;
-    padding:7px 11px;
-    border-radius:16px;
+    padding:8px 12px;
+    border-radius:4px;
     border:1.5px solid transparent;
+    cursor:default;
+    text-align:center;
+  }
+  .beta-step-by{
+    font-size:9px;
+    font-weight:600;
+    opacity:0.75;
+    margin-top:2px;
+  }
+  .beta-step-wait{
+    font-size:9px;
+    font-weight:600;
+    opacity:0.75;
+    margin-top:1px;
+  }
+  .beta-step-wait-flag{
+    color:var(--danger);
+    font-weight:800;
+    opacity:1;
+  }
+  .beta-step-scrap{
+    font-size:9px;
+    font-weight:600;
+    opacity:0.85;
+    margin-top:1px;
+  }
+  .beta-step-scrap-flag{
+    color:var(--danger);
+    font-weight:800;
+    opacity:1;
+  }
+  .beta-step-bottleneck{
+    box-shadow:0 0 0 2px var(--danger);
+  }
+  .beta-wait-warning{
+    color:var(--danger);
+    font-weight:700;
+  }
+  .beta-step-rerun{
+    border-style:dashed !important;
+    border-width:2px !important;
+    border-color:#9333EA !important;
+  }
+  .beta-rerun-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+  }
+  .beta-rerun-box{
+    background:#FAF5FF;
+    border:1.5px dashed #9333EA;
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:12px;
+  }
+  .beta-add-rerun-btn{
+    display:block;
+    font-family:inherit;
+    font-size:12.5px;
+    font-weight:700;
+    color:#9333EA;
+    background:#fff;
+    border:1.5px dashed #9333EA;
+    border-radius:8px;
+    padding:8px 14px;
     cursor:pointer;
+    margin-bottom:14px;
+  }
+  .beta-add-rerun-btn:hover{
+    background:#FAF5FF;
+  }
+  .beta-step-arrow{
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink-soft);
+    padding:0 4px;
+    flex-shrink:0;
   }
   .beta-step-excluded{
     background:#F3F4F6;
@@ -2651,6 +2903,16 @@
     background:#EDEFF2;
     color:#4B5563;
     border-color:#D1D5DB;
+  }
+  .beta-step-pending{
+    background:#DCEBFB;
+    color:#1D4ED8;
+    border-color:#93C5FD;
+  }
+  .beta-step-accepted{
+    background:#EBE0FB;
+    color:#6D28D9;
+    border-color:#C4B5FD;
   }
   .beta-step-in_progress{
     background:#FDECD1;
@@ -3072,6 +3334,24 @@
     padding:0;
   }
   .due-subs-expand-btn:hover{ background:var(--amber-dark); color:#fff; }
+  .due-add-sub-btn{
+    flex-shrink:0;
+    width:18px;
+    height:18px;
+    border-radius:5px;
+    border:none;
+    background:#DCFCE7;
+    color:#15803D;
+    font-size:12px;
+    font-weight:800;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    margin-left:4px;
+  }
+  .due-add-sub-btn:hover{ background:#15803D; color:#fff; }
   .due-controls-row{
     display:flex;
     gap:8px;
@@ -3271,6 +3551,31 @@
     border-radius:5px;
     cursor:text;
   }
+  .due-readonly-text{
+    display:block;
+    font-size:12px;
+    padding:3px 6px;
+    color:var(--ink);
+  }
+  .due-readonly-badge{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    padding:4px 9px;
+    border-radius:6px;
+    background:var(--surface);
+    color:var(--ink-soft);
+  }
+  .due-readonly-banner{
+    background:#EEF2FF;
+    border:1.5px solid #6366F1;
+    color:#3730A3;
+    font-size:13px;
+    font-weight:600;
+    padding:10px 16px;
+    border-radius:10px;
+    margin-bottom:14px;
+  }
   .due-table-input:hover{
     border-color:var(--line);
   }
@@ -3312,11 +3617,12 @@
 <div class="topbar">
   <div class="brand"><span class="brand-logo-wrap"><img src="data:image/png;base64,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M2rUKJ577jni4uIIDw8nNjaWqVOnMmTIEF5++WUKCwurHFdUVERYWBgrV65k165dHDt2rMr+9evX0759e6ZOnVrhpqmOXq/HaDRW/Lp168a0adP49NNPOX36tFP5oqIiFixYwMyZM2nXrh0ffPCB23uQkZHB888/T48ePRgzZgx2++X5po72VL07e++993L99dfzwgsvVLmXN998M8OGDXN7rupotVpiYmI8dpd1Ol3Fc4mKikKSJFq1aoXBYMBoNOLvX9VD6Gi7ju57TEwMo0aNYvfu3WzYsIGtW7d6LZ+vqLXCtFgslJWVYbPZGDduHJmZmVWU4t69e0lLS+O5556juLgYm83msp4jR46QmZnJgAEDuPnmm9myZQsFBQUuyxYXF6PX63nppZd45513+O677y5fQB38GZ6+PHa73SufDcCFCxfIyclh7NixdOvWjUWLFlFaWupUzmw2c+TIEV555ZVay2q1WrFaq0/arh2urtdms6FSqaoo36KiImJiYlz6g92hUqn47bffGDBgAJMnT65yjY6PlavzL1q0iB49ejgps7pQUFDAsWPHePvtt70qv3nzZk6ePMnEiRNd7h8xYgRHjhzh0KFDVbYLITh//jwjRoygbdu27Nixo8r++fPn8+yzzxITE4PF4n0yJpvNVvHhq86+ffvIzc3lwQcfpGfPnvz73/92W4/ZbOann37inXfe4fz583z88cdVZHfX7ufOncvhw4fJycnh/PnznDhxgjlz5ngtv4PKCromzGZzxXiIOyRJcqk/OnbsyJAhQ1ixYkWjd7trrW0CAwPR6XScOHECjUZDaWkps2fPrti/fft2IiMjCQkJIS8vz60DeN68eRUO9scee4zi4mKSkpJclvXz8yM/P5+YmBgmT57M669fXiwwMNC32ejDw8M5fvw4X3/9Nd988w2bN29m165dLhXh9OnT6dChA8HBwTz++OO0b9+enTt3OpU7e/Ysx48fJzEx0aey1ofg4GC0Wi3JycmkpaWRnZ3NmDFj6NixI3fccYfX9QQFBZGVlcWJEyd44YUX2LFjR0V7sFqtbp+/2WzmiSeeqLItIyODs2fPkpWVVauPxO+//05KSorbgZjqnDp1iqCgILeDdD169CAhIYH8/KpJNtVqNXl5eRw7dow+ffowd+7cCjnPnz9PXl4evXv3xmQyub1ulUpFSUkJxcXFFBUVcfjwYWbOnMmECRNcDiouWbKEQYMGodfrefbZZ9HpdFWs+MpIksTp06cJCwvjlVde4dVXX60YMAkODnarXDp37kyXLl14+eWXef311+nfvz+tW7d2ffOaCVarlW+++abexkRtqbXClCQJSZK4dOkSRqORJ554gl27dgHyqNumTZu47777sNvt2O12lxagxWIhOTmZPn36kJqaSlZWFrGxsaxcudLlOYUQFV+af/7zn6SmpjJt2jQAl4qsurzVccjkqgHp9XouXrxY4W7417/+xYwZM7h48aJT2aSkJHr16sXJkyc5d+4cfn5+vPXWW07lSkpKsFgstbI6Gprrr7+ewsJCHn30UYYNG0bbtm0ZOHAgmzdvrlU95UsDoFKp0Gq1LFmyhI8++giz2YzBYHCrOCwWi1MX7M033+Shhx7illtuYdSoUR6tj8o47q+3L48kSeh0OpcWHchujqCgIKf2IUkSpaWlpKWl8fTTT6NSqfjjjz8A2b3Upk2bCnlcXbckSfTs2ZOtW7cyYMAA2rdvz7hx4+jZsydvv/220zGlpaVs27aNdu3akZqayvnz57HZbHzyySdur83hOhozZgwJCQk89dRTAJhMJo8W4Lvvvsvnn3/ON998w7x589yWay4IIWpl0fqKOicQliQJPz8/7rrrLmbNmsXhw4fRarWo1WoeeOABSkpK3Db4nTt3curUKT755BMWLVqERqMhNzeXo0ePuj2f42Vw+JAef/xxXn/9dVq1auXSbHc0dne+PcClAjtz5gwDBw5k1apVHq8/KSmJtLQ0Fi5cyGeffYZKpSIrK4uIiAhMJlOV8I+4uDin0CFfYbVaEUK4/DCpVCpsNpvL55CcnIzBYGDz5s0EBgby17/+taLXUFsqd51Gjx7NvHnzGD16NKtWrSIgIMDth+nUqVNVts2ZMwe1Ws2sWbOYPXs2JpOpxnAkgISEBMLDw712zwQFBZGenk5WVpbLsLhz586Rlpbmsu1IkkRQUBAqlQqj0cjbb7/Np59+yoEDB5gyZQqAWwtTCMG5c+do164dDz30ECqVimHDhrl1gWzfvp2SkhI+/PBD5s+fT1BQEKdOnSIyMpKSkhKXvvvKbNy4kX79+nHkyBESEhLQ6XRulUx0dDTR0dHodDqf99oaAn9/fwYMGOD00W1o6hzQJISgtLSU1q1b07FjR7Zu3crGjRsrBjD8/PzcdgGWLl1K7969+eCDD5g9ezZvvvkmS5YsQafTuXVqV37Q/fv3p3v37jz55JPY7XaXD1itVmO328nLy3Pal5WVhVqtdvmyqFQqTCZTjdc/b9487r77bpYvX86cOXOYPXs2q1evprS0lJkzZ1YpazQaueGGG1i2bFmN9dYWrVaLXq93+4JqNBqn2EmQrReTyYTBYCA0NJRPP/2UlStX8sUXX9Tq/JXjQUG+f1u2bOHYsWOsX7+eAQMGUFZWPdebfE9mzJhRZZtGo0GlUhESEkJwcLDX09pat27NTTfd5LXsQ4cOJTIykpMnT7rcv2vXLsrKymjf3jkdkiRJFdf64osvcuHCBZKSkjCZTPTq1auinKu2L4QgNTWVXr16MXnyZJ555hmP/uLp06czadIkPvroo4o2tmzZMlJTU9m0aZNL2SrTsmVLRo4cWTGodv3113u0wnU6ncsBOm9xGFHelq1rudTUVL777jsefvhhn099rIlaK0xH9zg/P7/iRXj88cdZtGgRr732GrNmzQJkBWc2m52+aL/88gt79uzhn//8J7fffjuDBw9myJAh3HHHHfTt25dZs2Y5NTaz2ez0oP/973+ze/dunnrqKZcBwo5R8L/97W9Vuu1Wq5WNGzdy1113ufQpms1mly94ZX799Vd27tzJpEmTKq5h8ODBDBgwgEcffZTt27c7Wa+jR49m69atfPPNN071uRsYc8jjqSsfEhLC/fffz6ZNmyguvrxct81mY/LkyajVapfWrdVqJTs7u6LuG2+8kQkTJvDSSy85fTAcH0dX1onVasVsNle5x9HR0UyZMoWpU6eSlJREWFiY03GzZs1CrVbz7LPPOkVS2Gw2TCaTx/tSGUmSuPvuu1mxYgU//vij0/7qcrdp04Z+/frx4IMPOo1M//bbb7zyyis88cQTTn48IQQmk4msLHktuXvuuQeTycQdd9zBqFGjKnyortqrA6vV6uQbdcV///tfTp06xQsvvEC/fv0YOnQoAwcOZPjw4fTr14+1a9c6XVdRUZFTb2LOnDn06dOHO++8k8DAQI8KsbCwkEuXLtUomyuKi4uRJAmLxYI3YT2FhYU1vmeFhYWoVKqKuoqKivjpp5/o378//fr1Y/jw4XWStT7USWFKkoTdbq9o0IMHDyY2NpbExMSKWQsWi6WiXGUcVugtt9ziVPcbb7yBxWKp8IlWCKlSOXW3DAYD7733HgUFBW5H19euXUtJSQn9+vXj+++/Z/fu3QwdOpQ//viDl19+2aU5b7PZavxqrV+/nhYtWrgc4R07diwnTpxgyZIlVbaPHz+ee++9l6eeeooxY8bw3//+l2+//ZZnnnmGdevWuT2Xw0foieeeew6tVsttt93Gl19+yd69exk6dChHjx5l6dKlLo8pLi6u6LI7eOONN0hPT2fChAlVygoh3Pr7HKPt1ZXepEmTuO666zh9+rRLSz4hIYGFCxfy7bffkpiYyBdffEFSUhI7duxgw4YNJCQk1Mp6+Pvf/86gQYMYO3Ysjz32GP/3f//H119/zaRJk/j666+dyi9YsIC2bdvSvXt3Fi5cyM8//8zcuXO5/fbbufPOO3nzzTedjnH4zXJzcyu2jRw5kuDgYAYPHlylnCtLy/HSe3Ndc+bMIS4uzmn2FsADDzzA7t272bdvX5XtxcXFLj9qEydO5NKlS/zxxx8eu7DFxcVOoVTeEh0dTVpaGiNHjmTkyJEMGTKEoUOHcvjwYZflCwoKUKvVHu9FixYt2Lt3L/fffz/Dhw+nS5cuPPXUU9xyyy0sX7680a1Lr6geEZqTkyP27t0rli1bViXQ9j//+U+VAGyLxSI++eQTkZWVVbHNbreLTz75xOVsEsf+2bNni61bt1bZ/s0334jvvvvO5TFz584V69atc7lPCDnY+JFHHhEhISFCq9WKUaNGiby8PLfl9+/fL1avXu12vxBysO/evXvd7l+5cqXYuHGjy307duwQnTp1EoGBgSIoKEj06NFDfP/9927r+vnnn8WaNWs8yiOEPBtn3LhxIiQkROh0OnHPPfeI7Oxst+V37dolPv74Y6dg4T179og5c+Y4lV+xYoVITk522p6WliYWLlwocnJynPalp6eLxYsXOwXCVyYnJ0dMmDBBhIaGCn9/f6HX68Xo0aPF6dOnPV2uW7Zu3SoSExOFRqMRWq1W9O7d2+WMLgcffvihMBqNQq1WixYtWohPP/3UbdmSkhLx4YcfVpkIkJqaKtavX1+l3Pbt292213Xr1rmdNVaZBQsWiN9//93t/iVLloiDBw9W2fbLL7+IBQsWuCy/bds2sXjxYk/B3mLZsmVi7dq1NcrmipSUFDFz5kxx9913i7vvvlsMHTpUDB06VBw4cMBl+ePHj4u5c+d6nBm0f/9+8fLLL4vBgweLQYMGiddee02cO3fOG3EaLHC9WaZ3E+VWrK+wWq38+OOP2Gw2+vbt69ZaaiwyMjI4cuQI/v7+dOvWzWWXtS4IIfjhhx+w2WzceuutdRrAaSr27dvHpUuXCA8Pp3v37vVy5l+8eJFff/0VtVpNjx49avTLHTt2jDNnztC2bdtaB8wrNEsaLL1bs1SYDUFhYSF2u53Q0NCmFgWAS5cuVczE8SUFBQUIIZrNdXpLcXExFovF7WBcbanN/TWbzRQXFxMSEtLoo64KDYKiMBUUFBS8pMEUpoKCgoKCgoKCgoKCgoKCQpPw/wHoUJoXLESKgQAAAABJRU5ErkJggg==" alt="ISO-LUX Manufacturing" class="brand-logo" /></span><span class="brand-text">JOB TRACKER</span></div>
   <div class="mode-toggle" id="modeToggle">
+    <button data-view="betajob" id="betaJobNavBtn" style="display:none;">🧪 BETA Job</button>
+    <button data-view="betadash" id="betaDashNavBtn" style="display:none;">🧪 BETA Dashboard</button>
     <button data-view="list" class="active">Quick Update</button>
     <button data-view="due">Production Dashboard</button>
     <button data-view="barcodes">Barcodes</button>
     <button data-view="inventory">Inventory</button>
-    <button data-view="betajob">🧪 BETA Job</button>
     <button data-view="activity">Activity</button>
     <button data-view="chat">Messaging</button>
   </div>
@@ -3494,6 +3800,122 @@
     <div class="cj-actions">
       <button id="shipCancelBtn" class="login-btn-secondary">Cancel</button>
       <button id="shipSubmitBtn" class="login-btn-primary">Log Shipment</button>
+    </div>
+  </div>
+</div>
+
+<div class="settings-overlay" id="betaCreateJobOverlay">
+  <div class="settings-box">
+    <div class="settings-header">
+      <div class="settings-title">Create a Test Job (BETA)</div>
+      <button id="betaCjCloseBtn" class="login-btn-secondary">Close</button>
+    </div>
+    <div class="cj-row">
+      <div class="cj-field">
+        <label>Customer *</label>
+        <input id="betaCjCustomer" type="text" placeholder="Customer name" />
+      </div>
+      <div class="cj-field">
+        <label>Traveler # *</label>
+        <input id="betaCjTraveler" type="text" placeholder="e.g. 135999-L1" />
+      </div>
+    </div>
+    <div class="cj-row">
+      <div class="cj-field">
+        <label>PO#</label>
+        <input id="betaCjPo" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>Part#</label>
+        <input id="betaCjPart" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>Rev</label>
+        <input id="betaCjRev" type="text" />
+      </div>
+    </div>
+    <div class="cj-field">
+      <label>Part Name</label>
+      <input id="betaCjName" type="text" />
+    </div>
+    <div class="cj-row">
+      <div class="cj-field">
+        <label>Order Qty</label>
+        <input id="betaCjQty" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>B.O</label>
+        <input id="betaCjBo" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>Due Date</label>
+        <input id="betaCjDue" type="text" placeholder="e.g. October 1st 2026" />
+      </div>
+    </div>
+    <div class="cj-field">
+      <label>Notes</label>
+      <input id="betaCjNotes" type="text" />
+    </div>
+
+    <div class="cj-subs-section">
+      <div class="cj-subs-header">
+        <label>Process Routing</label>
+        <button type="button" id="betaCjAddProcessBtn" class="cj-add-sub-btn">+ Add Another Process</button>
+      </div>
+      <div class="cj-subs-hint">Build the job's routing one process at a time, in the order it actually happens. Some operations (Program, Clean Up) let you pick the specific service too.</div>
+      <div id="betaCjOpsList"></div>
+    </div>
+
+    <div class="cj-error" id="betaCjError"></div>
+    <div class="cj-actions">
+      <button id="betaCjCancelBtn" class="login-btn-secondary">Cancel</button>
+      <button id="betaCjSubmitBtn" class="login-btn-primary">Create Test Job</button>
+    </div>
+  </div>
+</div>
+
+<div class="settings-overlay" id="addSubOverlay">
+  <div class="settings-box">
+    <div class="settings-header">
+      <div class="settings-title" id="addSubTitle">Add Sub-Traveler</div>
+      <button id="addSubCloseBtn" class="login-btn-secondary">Close</button>
+    </div>
+    <div class="cj-field">
+      <label>Traveler # *</label>
+      <input id="addSubTraveler" type="text" placeholder="e.g. 135510-L2" />
+    </div>
+    <div class="cj-row">
+      <div class="cj-field">
+        <label>PO#</label>
+        <input id="addSubPo" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>Part#</label>
+        <input id="addSubPart" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>Rev</label>
+        <input id="addSubRev" type="text" />
+      </div>
+    </div>
+    <div class="cj-field">
+      <label>Part Name</label>
+      <input id="addSubName" type="text" />
+    </div>
+    <div class="cj-row">
+      <div class="cj-field">
+        <label>Order Qty</label>
+        <input id="addSubQty" type="text" />
+      </div>
+      <div class="cj-field">
+        <label>B.O</label>
+        <input id="addSubBo" type="text" />
+      </div>
+    </div>
+    <div class="cj-error" id="addSubError"></div>
+    <div class="cj-actions">
+      <button id="addSubCancelBtn" class="login-btn-secondary">Cancel</button>
+      <button id="addSubSubmitBtn" class="login-btn-primary">Add Sub-Traveler</button>
     </div>
   </div>
 </div>
@@ -5400,7 +5822,7 @@ const STARTER_JOBS = [
         "bo": "",
         "due": "September 9th 2026",
         "status": "IN QUEUE",
-        "location": "BREAK PRESS",
+        "location": "BRAKE PRESS",
         "requires": "",
         "notes": "38 pcs.",
         "updated": ""
@@ -5962,7 +6384,7 @@ const STARTER_JOBS = [
         "bo": "",
         "due": "July 27th 2026",
         "status": "IN PROGRESS",
-        "location": "BREAK PRESS",
+        "location": "BRAKE PRESS",
         "requires": "",
         "notes": "at breakpress",
         "updated": "Sep 5, 2026 2:36 AM"
@@ -5978,7 +6400,7 @@ const STARTER_JOBS = [
         "bo": "",
         "due": "",
         "status": "COMPLETE",
-        "location": "BREAK PRESS",
+        "location": "BRAKE PRESS",
         "requires": "READY",
         "notes": "",
         "updated": ""
@@ -5994,7 +6416,7 @@ const STARTER_JOBS = [
         "bo": "",
         "due": "",
         "status": "COMPLETE",
-        "location": "BREAK PRESS",
+        "location": "BRAKE PRESS",
         "requires": "READY",
         "notes": "",
         "updated": ""
@@ -7914,7 +8336,7 @@ const STARTER_JOBS = [
         "bo": "",
         "due": "June 1st 2026",
         "status": "IN PROGRESS",
-        "location": "BREAK PRESS",
+        "location": "BRAKE PRESS",
         "requires": "HARDWARE",
         "notes": "Aug 11th - Traveler at laser, material in stock , have to order hardware. / STARTING BENDING AT BREAKPRESS",
         "updated": "Sep 5, 2026 2:38 AM"
@@ -9008,7 +9430,7 @@ const STARTER_JOBS = [
         "bo": "",
         "due": "April 16th 2026",
         "status": "IN QUEUE",
-        "location": "BREAK PRESS",
+        "location": "BRAKE PRESS",
         "requires": "",
         "notes": "",
         "updated": "Sep 5, 2026 2:39 AM"
@@ -9403,7 +9825,7 @@ function getCustomerColors(fullName, fallbackBg){
 // what the app actually uses, so admin edits in Settings apply instantly
 // for everyone, including on already-open tabs.
 const DEFAULT_STATUS_OPTIONS = ["IDLE","IN QUEUE","IN PROGRESS","COMPLETION IN PROGRESS","COMPLETE"];
-const DEFAULT_LOCATION_OPTIONS = ["","OFFICE","SHIPPING","SHAINIT","CLEAN UP","BREAK PRESS","WELDING","HARDWARE","LASER","LASER (NESTED)","SAW","MACHINING","PRODUCTION LINE","SOLDERING","PUNCH PRESS","CREST TECH","ISO ANODIZING","R.B PAINT","GALV CAST","SUPERFINISH","NU VISION","VENDOR CABINET","VERSATILE","Vacuum Metalizing","Millennium","VASP"];
+const DEFAULT_LOCATION_OPTIONS = ["","OFFICE","SHIPPING","SHAINIT","CLEAN UP","BRAKE PRESS","WELDING","HARDWARE","LASER","LASER (NESTED)","SAW","MACHINING","PRODUCTION LINE","SOLDERING","PUNCH PRESS","CREST TECH","ISO ANODIZING","R.B PAINT","GALV CAST","SUPERFINISH","NU VISION","VENDOR CABINET","VERSATILE","Vacuum Metalizing","Millennium","VASP"];
 const DEFAULT_REQUIRES_OPTIONS = ["","HARDWARE","MATERIAL","H&M","READY TO START","CONVERT TO LASER","COMPLETE"];
 
 let STATUS_OPTIONS = [...DEFAULT_STATUS_OPTIONS];
@@ -9853,7 +10275,7 @@ function renderOrDefer(filterText){
 
 function render(filterText){
   const searchZone = document.getElementById("searchZone");
-  searchZone.style.display = (currentView === "chat" || currentView === "activity" || currentView === "betajob") ? "none" : "";
+  searchZone.style.display = (currentView === "chat" || currentView === "activity" || currentView === "betajob" || currentView === "betadash") ? "none" : "";
   // Job search vs inventory search are different things — swap the
   // placeholder and hide the job-status Sort By dropdown when it
   // wouldn't mean anything on this tab.
@@ -9874,6 +10296,7 @@ function render(filterText){
   else if(currentView === "barcodes") renderBarcodesTab(filterText);
   else if(currentView === "inventory") renderInventoryTab(filterText);
   else if(currentView === "betajob") renderBetaJobTab();
+  else if(currentView === "betadash") renderBetaDashboardTab();
   else renderJobList(filterText);
 }
 
@@ -10521,7 +10944,7 @@ function buildRecentJobsStrip(){
 // A curated subset of Location — the physical stations someone would
 // actually stand at. Remembered per-device so a shared shop tablet
 // only needs to be set once.
-const QUICK_TAG_DEPARTMENTS = ["WELDING", "CLEAN UP", "BREAK PRESS", "HARDWARE", "SHIPPING", "LASER", "MACHINING"];
+const QUICK_TAG_DEPARTMENTS = ["WELDING", "CLEAN UP", "BRAKE PRESS", "HARDWARE", "SHIPPING", "LASER", "MACHINING"];
 const QUICK_TAG_DEPT_KEY = "quickUpdateDepartment";
 let quickUpdateDepartment = safeStorage.getItem(QUICK_TAG_DEPT_KEY) || null;
 
@@ -11231,13 +11654,22 @@ function renderDueDates(filterText){
   content.innerHTML = "";
   const term = (filterText || "").trim().toLowerCase();
 
+  if(!canEditDashboard()){
+    const roBanner = document.createElement("div");
+    roBanner.className = "due-readonly-banner";
+    roBanner.textContent = "👁 View-only — make status, location, and note updates on the Quick Update tab instead.";
+    content.appendChild(roBanner);
+  }
+
   // Always-visible entry point for adding a job — same form as the Job
   // List tab used, brought over here since this is becoming the main tab.
-  const createBanner = document.createElement("button");
-  createBanner.className = "create-job-banner due-create-job-banner";
-  createBanner.innerHTML = '<span class="create-job-banner-icon">+</span><span class="create-job-banner-text">Create New Job</span>';
-  createBanner.addEventListener("click", ()=> openCreateJobModal(""));
-  content.appendChild(createBanner);
+  if(canEditDashboard()){
+    const createBanner = document.createElement("button");
+    createBanner.className = "create-job-banner due-create-job-banner";
+    createBanner.innerHTML = '<span class="create-job-banner-icon">+</span><span class="create-job-banner-text">Create New Job</span>';
+    createBanner.addEventListener("click", ()=> openCreateJobModal(""));
+    content.appendChild(createBanner);
+  }
 
   // Lets a GM (or anyone) see every sub-traveler across every job at
   // once, instead of clicking each job's arrow individually.
@@ -11263,11 +11695,13 @@ function renderDueDates(filterText){
   });
   controlRow.appendChild(expandAllBtn);
   controlRow.appendChild(collapseAllBtn);
-  const shipBtn = document.createElement("button");
-  shipBtn.className = "due-control-btn due-ship-btn";
-  shipBtn.textContent = "🚚 Log Shipment";
-  shipBtn.addEventListener("click", ()=> openShippingModal());
-  controlRow.appendChild(shipBtn);
+  if(canEditDashboard()){
+    const shipBtn = document.createElement("button");
+    shipBtn.className = "due-control-btn due-ship-btn";
+    shipBtn.textContent = "🚚 Log Shipment";
+    shipBtn.addEventListener("click", ()=> openShippingModal());
+    controlRow.appendChild(shipBtn);
+  }
 
   // A quick way to see every customer and how many jobs they have —
   // same overview the Job List cards give, just reachable from here too.
@@ -11419,7 +11853,7 @@ function renderDueDates(filterText){
     return 0;
   });
 
-  const canSignOff = isAdmin && myPermissions.signOff;
+  const canSignOff = canEditDashboard() && myPermissions.signOff;
   const DUE_COLUMNS = [
     { key: "customer", label: "Customer", width: 150 },
     { key: "traveler", label: "Traveler", width: 100 },
@@ -11472,12 +11906,31 @@ function renderDueDates(filterText){
 
   function badgeSelectCell(options, val, styleFn, onSave){
     const td = document.createElement("td");
+    if(!canEditDashboard()){
+      const pair = val ? styleFn(val) : null;
+      const span = document.createElement("span");
+      span.className = "due-readonly-badge";
+      span.textContent = val || "—";
+      if(pair){
+        span.style.background = getCSSVar(pair[0]);
+        span.style.color = getCSSVar(pair[1]);
+      }
+      td.appendChild(span);
+      return td;
+    }
     td.appendChild(buildChipSelect(options, val, styleFn, onSave));
     return td;
   }
 
   function editableCell(jobId, rowIndex, value, field, extraClass){
     const td = document.createElement("td");
+    if(!canEditDashboard()){
+      const span = document.createElement("span");
+      span.className = "due-readonly-text" + (extraClass ? " " + extraClass : "");
+      span.textContent = value || "";
+      td.appendChild(span);
+      return td;
+    }
     const input = document.createElement("input");
     input.type = "text";
     input.className = "due-table-input" + (extraClass ? " " + extraClass : "");
@@ -11506,7 +11959,9 @@ function renderDueDates(filterText){
     const travelerTd = editableCell(job.id, rowIndex, travelerOverride || row.traveler || mainForTraveler.traveler, "traveler", showsMainTravelerNumber ? "traveler-main-cell" : "");
     // Always reserve the arrow's space, even when this job has no
     // sub-travelers, so every traveler # lines up in the same spot.
-    const travInput = travelerTd.querySelector("input");
+    // This cell holds an <input> when editable, or a plain <span> when
+    // read-only — grab whichever is actually there.
+    const travInput = travelerTd.querySelector("input") || travelerTd.querySelector("span");
     const wrapDiv = document.createElement("div");
     wrapDiv.className = "due-traveler-expand-wrap";
     if(showExpandToggle){
@@ -11533,6 +11988,14 @@ function renderDueDates(filterText){
     }
     travelerTd.innerHTML = "";
     wrapDiv.appendChild(travInput);
+    if(row.isMain && canEditDashboard()){
+      const addSubBtn = document.createElement("button");
+      addSubBtn.className = "due-add-sub-btn";
+      addSubBtn.textContent = "+";
+      addSubBtn.title = "Add a sub-traveler to this job";
+      addSubBtn.addEventListener("click", ()=> openAddSubModal(job));
+      wrapDiv.appendChild(addSubBtn);
+    }
     travelerTd.appendChild(wrapDiv);
     tr.appendChild(travelerTd);
 
@@ -11552,10 +12015,15 @@ function renderDueDates(filterText){
     dueInput.className = "due-table-input";
     dueInput.value = dueSplit.date;
     dueInput.placeholder = "No due date";
-    dueInput.addEventListener("change", ()=>{
-      const newVal = dueSplit.label ? (dueSplit.label + " " + dueInput.value.trim()) : dueInput.value.trim();
-      saveRowField(job.id, rowIndex, "due", newVal);
-    });
+    if(canEditDashboard()){
+      dueInput.addEventListener("change", ()=>{
+        const newVal = dueSplit.label ? (dueSplit.label + " " + dueInput.value.trim()) : dueInput.value.trim();
+        saveRowField(job.id, rowIndex, "due", newVal);
+      });
+    } else {
+      dueInput.readOnly = true;
+      dueInput.tabIndex = -1;
+    }
     dueTd.appendChild(dueInput);
     if(lineNum){
       const lineCaption = document.createElement("div");
@@ -11577,12 +12045,14 @@ function renderDueDates(filterText){
     notesPreview.className = "due-notes-preview" + (row.notes ? "" : " empty");
     notesPreview.textContent = row.notes || "—";
     notesPreview.title = row.notes ? (row.notes + "\n" + (row.notesAuthor || "") + " · " + (row.notesTimestamp || "")) : "";
-    const notesBtn = document.createElement("button");
-    notesBtn.className = "due-notes-btn";
-    notesBtn.textContent = row.notes ? "Update" : "Add";
-    notesBtn.addEventListener("click", ()=> openNotesModal(job.id, rowIndex));
     notesInner.appendChild(notesPreview);
-    notesInner.appendChild(notesBtn);
+    if(canEditDashboard()){
+      const notesBtn = document.createElement("button");
+      notesBtn.className = "due-notes-btn";
+      notesBtn.textContent = row.notes ? "Update" : "Add";
+      notesBtn.addEventListener("click", ()=> openNotesModal(job.id, rowIndex));
+      notesInner.appendChild(notesBtn);
+    }
     notesTd.appendChild(notesInner);
     tr.appendChild(notesTd);
 
@@ -11722,7 +12192,7 @@ function renderCompletedJobs(filterText){
       meta.textContent = "Completed by " + (job.completedBy || "Unknown") + " · " + (job.completedAt || "");
       card.appendChild(meta);
 
-      if(isAdmin && myPermissions.signOff){
+      if(canEditDashboard() && myPermissions.signOff){
         const reopenBtn = document.createElement("button");
         reopenBtn.className = "reopen-btn";
         reopenBtn.textContent = "Reopen";
@@ -12009,8 +12479,37 @@ onAuthStateChanged(auth, async (user)=>{
   }
   renderAuthArea();
   renderSettingsLockState();
+  updateBetaTabAccess();
   render(searchInput.value);
 });
+
+// While the BETA area is still experimental, it's restricted to one
+// specific account — not just hidden from the nav, but actually blocked
+// even if someone lands on the view another way (e.g. logging out while
+// already on it).
+const BETA_ACCESS_EMAIL = "stefano@iso-lux.com";
+function hasBetaAccess(){
+  return isAdmin && currentUserEmail.toLowerCase() === BETA_ACCESS_EMAIL;
+}
+
+// Production Dashboard is now view-only for everyone except this one
+// account — regular status/location/notes updates happen on Quick
+// Update instead, which stays open to everyone as before.
+const DASHBOARD_EDIT_EMAIL = "stefano@iso-lux.com";
+function canEditDashboard(){
+  return isAdmin && currentUserEmail.toLowerCase() === DASHBOARD_EDIT_EMAIL;
+}
+
+function updateBetaTabAccess(){
+  const allowed = hasBetaAccess();
+  document.getElementById("betaJobNavBtn").style.display = allowed ? "" : "none";
+  document.getElementById("betaDashNavBtn").style.display = allowed ? "" : "none";
+  if(!allowed && (currentView === "betajob" || currentView === "betadash")){
+    currentView = "list";
+    document.querySelectorAll("#modeToggle button").forEach(b=>b.classList.remove("active"));
+    document.querySelector('#modeToggle button[data-view="list"]').classList.add("active");
+  }
+}
 
 // ================= Settings: manage dropdown options =================
 const settingsBtn = document.getElementById("settingsBtn");
@@ -12784,6 +13283,67 @@ function renderSettingsBody(){
 
   settingsBody.appendChild(custWrap);
 
+  // ---- One-time fix: "BREAK PRESS" -> "BRAKE PRESS" typo already saved
+  // on real jobs. This only needs running once — it's harmless to click
+  // again later, since it simply won't find anything left to fix.
+  const fixWrap = document.createElement("div");
+  fixWrap.className = "settings-group";
+  const fixH = document.createElement("h4");
+  fixH.textContent = "Data cleanup";
+  fixWrap.appendChild(fixH);
+  const fixHint = document.createElement("p");
+  fixHint.style.fontSize = "12px";
+  fixHint.style.color = "var(--ink-soft)";
+  fixHint.style.margin = "0 0 10px 0";
+  fixHint.textContent = "The Location option \"Break Press\" was misspelled — this corrects it to \"Brake Press\" everywhere: the dropdown list, and every existing job already tagged with it.";
+  fixWrap.appendChild(fixHint);
+  const fixBtn = document.createElement("button");
+  fixBtn.className = "cj-add-sub-btn";
+  fixBtn.textContent = "Fix \"Break Press\" → \"Brake Press\"";
+  const fixStatus = document.createElement("div");
+  fixStatus.style.fontSize = "12px";
+  fixStatus.style.marginTop = "8px";
+  fixBtn.addEventListener("click", async ()=>{
+    fixBtn.disabled = true;
+    fixStatus.textContent = "Working...";
+    try{
+      // Fix the dropdown option itself.
+      const locIdx = LOCATION_OPTIONS.indexOf("BREAK PRESS");
+      if(locIdx > -1){
+        LOCATION_OPTIONS[locIdx] = "BRAKE PRESS";
+        await saveOptionsToFirestore();
+      }
+      // Fix every real job that already has a row tagged with the typo.
+      const snap = await getDocs(jobsCol);
+      let fixedCount = 0;
+      for(const d of snap.docs){
+        const job = d.data();
+        let changed = false;
+        const newRows = (job.rows || []).map(r=>{
+          if(r.location === "BREAK PRESS"){
+            changed = true;
+            return { ...r, location: "BRAKE PRESS" };
+          }
+          return r;
+        });
+        if(changed){
+          await updateDoc(doc(db, "jobs", d.id), { rows: newRows });
+          fixedCount++;
+        }
+      }
+      fixStatus.textContent = "✓ Done — corrected " + fixedCount + " job" + (fixedCount === 1 ? "" : "s") + (locIdx > -1 ? " and the dropdown option" : "") + ".";
+      renderSettingsBody();
+      render(searchInput.value);
+    }catch(err){
+      console.error("Break Press fix failed:", err);
+      fixStatus.textContent = "Something went wrong — check your connection and try again.";
+    }
+    fixBtn.disabled = false;
+  });
+  fixWrap.appendChild(fixBtn);
+  fixWrap.appendChild(fixStatus);
+  settingsBody.appendChild(fixWrap);
+
   // ---- Location process order (drives the Job List "Group by Location" view) ----
   const locOrderWrap = document.createElement("div");
   locOrderWrap.className = "settings-group";
@@ -13178,6 +13738,91 @@ function formatQty(q){
 }
 
 // ---- Take Out modal (also doubles as the edit-a-past-entry modal) ----
+// ---- Add Sub-Traveler to an existing job (Production Dashboard) ----
+const addSubOverlay = document.getElementById("addSubOverlay");
+const addSubTitle = document.getElementById("addSubTitle");
+const addSubTraveler = document.getElementById("addSubTraveler");
+const addSubPo = document.getElementById("addSubPo");
+const addSubPart = document.getElementById("addSubPart");
+const addSubRev = document.getElementById("addSubRev");
+const addSubName = document.getElementById("addSubName");
+const addSubQty = document.getElementById("addSubQty");
+const addSubBo = document.getElementById("addSubBo");
+const addSubError = document.getElementById("addSubError");
+const addSubCloseBtn = document.getElementById("addSubCloseBtn");
+const addSubCancelBtn = document.getElementById("addSubCancelBtn");
+const addSubSubmitBtn = document.getElementById("addSubSubmitBtn");
+let addSubTargetJob = null;
+
+function openAddSubModal(job){
+  addSubTargetJob = job;
+  const main = job.rows.find(r=>r.isMain) || job.rows[0];
+  addSubTitle.textContent = "Add Sub-Traveler to " + main.traveler;
+  addSubTraveler.value = "";
+  addSubPo.value = "";
+  addSubPart.value = "";
+  addSubRev.value = "";
+  addSubName.value = "";
+  addSubQty.value = "";
+  addSubBo.value = "";
+  addSubError.textContent = "";
+  addSubOverlay.classList.add("open");
+  addSubTraveler.focus();
+}
+function closeAddSubModal(){
+  addSubOverlay.classList.remove("open");
+  addSubTargetJob = null;
+}
+addSubCloseBtn.addEventListener("click", closeAddSubModal);
+addSubCancelBtn.addEventListener("click", closeAddSubModal);
+
+addSubSubmitBtn.addEventListener("click", async ()=>{
+  addSubError.textContent = "";
+  const travelerVal = addSubTraveler.value.trim();
+  if(!travelerVal){
+    addSubError.textContent = "Traveler # is required.";
+    return;
+  }
+  if(!addSubTargetJob) return;
+  addSubSubmitBtn.disabled = true;
+  try{
+    const newRow = {
+      traveler: travelerVal,
+      isMain: false,
+      po: addSubPo.value.trim(),
+      part: addSubPart.value.trim(),
+      rev: addSubRev.value.trim(),
+      name: addSubName.value.trim(),
+      qty: addSubQty.value.trim(),
+      bo: addSubBo.value.trim(),
+      due: "",
+      status: "",
+      location: "",
+      requires: "",
+      notes: "",
+      notesAuthor: "",
+      notesTimestamp: "",
+      notesHistory: [],
+      updated: timestampNow()
+    };
+    const newRows = [...addSubTargetJob.rows, newRow];
+    await updateDoc(doc(db, "jobs", addSubTargetJob.id), { rows: newRows });
+    logActivity({
+      jobId: addSubTargetJob.id,
+      traveler: travelerVal,
+      customer: addSubTargetJob.customer,
+      field: "Sub-traveler added",
+      oldValue: "",
+      newValue: travelerVal + " added to existing job"
+    });
+    closeAddSubModal();
+  }catch(err){
+    console.error("Add sub-traveler failed:", err);
+    addSubError.textContent = "Something went wrong — check your connection and try again.";
+  }
+  addSubSubmitBtn.disabled = false;
+});
+
 const takeOutOverlay = document.getElementById("takeOutOverlay");
 const takeOutTitle = document.getElementById("takeOutTitle");
 const takeOutItemInfo = document.getElementById("takeOutItemInfo");
@@ -13438,7 +14083,15 @@ function buildJobUsageColumn(){
 // Which ones apply, and their order, genuinely varies job to job — this
 // tab exists purely to experiment with that idea on a few throwaway
 // test jobs before deciding whether/how to build it into the real app.
-const BETA_STEPS_ORDER = ["MATERIAL REQUIRED", "PROGRAM", "SHEAR", "BRAKE PRESS", "WELDING", "VENDOR", "FINISHING", "INSPECT"];
+const BETA_STEPS_ORDER = ["MATERIAL REQUIRED", "PROGRAM", "SHEAR", "BRAKE PRESS", "WELDING", "CLEAN UP", "VENDOR", "FINISHING", "INSPECT"];
+// Which specific services fall under each operation. Only PROGRAM and
+// CLEAN UP have real lists so far (from what was specified) — the rest
+// fall back to a free-text detail field in the create form until their
+// real service lists are defined.
+const BETA_OPERATION_SERVICES = {
+  "PROGRAM": ["LASER", "TURRET"],
+  "CLEAN UP": ["ORBITAL SAND", "GRINDING", "DEBURR"]
+};
 const betaJobsCol = collection(db, "betaJobs");
 let betaJobsCache = [];
 
@@ -13506,45 +14159,191 @@ async function seedBetaJobsIfEmpty(){
     await seedBetaJobsIfEmpty();
     onSnapshot(betaJobsCol, (snapshot)=>{
       betaJobsCache = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-      if(currentView === "betajob") renderBetaJobTab();
+      if(currentView === "betajob") renderBetaJobList();
+      if(currentView === "betadash") renderBetaDashboardTab();
     }, (err)=> console.error("Beta jobs listener error:", err));
   }catch(err){
     console.error("Beta jobs sync failed:", err);
   }
 })();
 
+// Every step now moves through 5 real stages, not just 3 — weighted
+// roughly by how far through that journey it is.
+const BETA_STATUS_WEIGHT = { not_started: 0, in_progress: 0.5, done: 1 };
 function betaProgress(job){
-  const included = (job.steps || []).filter(s => s.included);
-  if(included.length === 0) return 0;
-  const done = included.filter(s => s.status === "done").length;
-  const inProg = included.filter(s => s.status === "in_progress").length;
-  return Math.round(((done + inProg * 0.5) / included.length) * 100);
+  const steps = (job.steps || []).filter(s => s.included !== false);
+  if(steps.length === 0) return 0;
+  const total = steps.reduce((sum, s) => sum + (BETA_STATUS_WEIGHT[s.status] ?? 0), 0);
+  return Math.round((total / steps.length) * 100);
 }
 
-// One tap cycles a step through: excluded → not started → in progress
-// → done → back to excluded. Lets you both decide which stations apply
-// to a job AND track them, without separate controls for each.
-async function cycleBetaStep(jobId, stepName){
+// The job's current step is the first one not yet marked done — once
+// that's done, this naturally moves on to the next one. If every step
+// is done, it just returns the last one, complete.
+function getCurrentBetaStep(job){
+  const steps = (job.steps || []).filter(s => s.included !== false);
+  if(steps.length === 0) return { step: null, position: 0, index: -1, allDone: false };
+  const idx = steps.findIndex(s => s.status !== "done");
+  if(idx === -1) return { step: steps[steps.length - 1], position: steps.length, index: steps.length - 1, allDone: true };
+  return { step: steps[idx], position: idx + 1, index: idx, allDone: false };
+}
+
+// Test-only access rules for specific operations/services — add more
+// rows here any time another process needs to be locked to a specific
+// login. Checked by service first (e.g. Laser), then by operation name.
+const BETA_LOGIN_REQUIREMENTS = [
+  { matches: (step) => step.services && step.services.includes("LASER"), email: "laser@iso-lux.com" },
+  { matches: (step) => step.name === "MATERIAL REQUIRED", email: "stefano@iso-lux.com" }
+];
+function getRequiredLoginFor(step){
+  const rule = BETA_LOGIN_REQUIREMENTS.find(r => r.matches(step));
+  return rule ? rule.email : null;
+}
+
+// Signing in fires Firebase's own auth listener, which rebuilds the
+// whole tab on its own timing — this flag lets whichever render happens
+// next automatically re-open the same job instead of leaving someone
+// staring at a blank search box after they just logged in.
+let betaAutoSearchTraveler = null;
+
+// One combined form for a gate-locked step: password to sign in as the
+// required account, plus name and qty, submitted together — no need to
+// close a separate login popup and re-search the job afterward.
+function buildBetaLockedStepForm(container, requiredEmail, label, onAuthenticated){
+  const lockLine = document.createElement("div");
+  lockLine.className = "quick-tag-preview-change beta-wait-warning";
+  lockLine.textContent = "🔒 " + label + " can only be started while logged in as " + requiredEmail + ".";
+  container.appendChild(lockLine);
+
+  const pwWrap = document.createElement("div");
+  pwWrap.className = "quick-tag-preview-note-wrap";
+  const pwLabel = document.createElement("div");
+  pwLabel.className = "quick-tag-preview-note-label";
+  pwLabel.textContent = "Password for " + requiredEmail;
+  const pwInput = document.createElement("input");
+  pwInput.type = "password";
+  pwInput.className = "quick-tag-note-input";
+  pwWrap.appendChild(pwLabel);
+  pwWrap.appendChild(pwInput);
+  container.appendChild(pwWrap);
+
+  const errorLine = document.createElement("div");
+  errorLine.className = "quick-tag-feedback";
+  container.appendChild(errorLine);
+
+  const nameWrap = document.createElement("div");
+  nameWrap.className = "quick-tag-preview-note-wrap";
+  const nameLabel = document.createElement("div");
+  nameLabel.className = "quick-tag-preview-note-label";
+  nameLabel.textContent = "Your name";
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.className = "quick-tag-note-input";
+  nameWrap.appendChild(nameLabel);
+  nameWrap.appendChild(nameInput);
+  container.appendChild(nameWrap);
+
+  const qtyWrap = document.createElement("div");
+  qtyWrap.className = "quick-tag-preview-note-wrap";
+  const qtyLabel = document.createElement("div");
+  qtyLabel.className = "quick-tag-preview-note-label";
+  qtyLabel.textContent = "Qty";
+  const qtyInput = document.createElement("input");
+  qtyInput.type = "text";
+  qtyInput.className = "quick-tag-note-input";
+  qtyWrap.appendChild(qtyLabel);
+  qtyWrap.appendChild(qtyInput);
+  container.appendChild(qtyWrap);
+
+  const btnRow = document.createElement("div");
+  btnRow.className = "quick-tag-preview-actions";
+  const submitBtn = document.createElement("button");
+  submitBtn.className = "quick-tag-commit-btn";
+  submitBtn.textContent = "Log In & Start";
+  btnRow.appendChild(submitBtn);
+  container.appendChild(btnRow);
+
+  submitBtn.addEventListener("click", async ()=>{
+    errorLine.className = "quick-tag-feedback";
+    errorLine.textContent = "";
+    const who = nameInput.value.trim();
+    if(!who){
+      nameInput.style.borderColor = "var(--danger)";
+      errorLine.className = "quick-tag-feedback error";
+      errorLine.textContent = "Enter your name too.";
+      return;
+    }
+    if(!pwInput.value){
+      pwInput.style.borderColor = "var(--danger)";
+      errorLine.className = "quick-tag-feedback error";
+      errorLine.textContent = "Enter the password.";
+      return;
+    }
+    submitBtn.disabled = true;
+    try{
+      await signInWithEmailAndPassword(auth, requiredEmail, pwInput.value);
+    }catch(err){
+      submitBtn.disabled = false;
+      errorLine.className = "quick-tag-feedback error";
+      errorLine.textContent = "Login failed — check the password and try again.";
+      return;
+    }
+    await onAuthenticated(who, qtyInput.value.trim());
+  });
+  pwInput.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitBtn.click(); });
+}
+
+// A job's routing is an ordered sequence now, so a step is identified
+// by its position, not its name — the same operation can legitimately
+// appear more than once (e.g. Clean Up happening twice).
+async function cycleBetaStepAt(jobId, index){
   const job = betaJobsCache.find(j => j.id === jobId);
   if(!job) return;
-  const steps = job.steps.map(s=>{
-    if(s.name !== stepName) return s;
-    if(!s.included) return { name: s.name, included: true, status: "not_started" };
-    if(s.status === "not_started") return { name: s.name, included: true, status: "in_progress" };
-    if(s.status === "in_progress") return { name: s.name, included: true, status: "done" };
-    return { name: s.name, included: false, status: "not_started" };
+  const steps = job.steps.map((s, i)=>{
+    if(i !== index) return s;
+    const next = s.status === "not_started" ? "in_progress" : s.status === "in_progress" ? "done" : "not_started";
+    return { ...s, status: next };
   });
   await updateDoc(doc(db, "betaJobs", jobId), { steps });
 }
 
-function buildBetaStepChip(job, step){
-  const chip = document.createElement("button");
-  chip.className = "beta-step-chip";
-  if(!step.included) chip.classList.add("beta-step-excluded");
-  else chip.classList.add("beta-step-" + step.status);
-  chip.textContent = step.name;
-  chip.title = !step.included ? "Not part of this job — tap to add it" : "Tap to advance: " + step.status.replace("_", " ");
-  chip.addEventListener("click", ()=> cycleBetaStep(job.id, step.name));
+function formatDuration(ms){
+  const totalMin = Math.max(1, Math.round(ms / 60000));
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  return h > 0 ? (h + "h " + m + "m") : (m + "m");
+}
+
+function buildBetaStepChip(job, step, index, position){
+  const chip = document.createElement("div");
+  chip.className = "beta-step-chip beta-step-" + step.status;
+  const serviceText = (step.services && step.services.length) ? " (" + step.services.join(", ") + ")" : "";
+
+  let statusLabel = "";
+  let byLine = "";
+  let waitLine = "";
+  const longWait = typeof step.waitMinutes === "number" && step.waitMinutes >= 120;
+  if(longWait) chip.classList.add("beta-step-bottleneck");
+  if(typeof step.waitMinutes === "number"){
+    waitLine = "<div class=\"beta-step-wait" + (longWait ? " beta-step-wait-flag" : "") + "\">" + (longWait ? "⚠ " : "") + "Waited " + formatDuration(step.waitMinutes * 60000) + " to start</div>";
+  }
+  if(step.status === "in_progress"){
+    statusLabel = " — RUNNING";
+    byLine = (step.acceptedBy || "") + (step.qty ? " · Qty " + step.qty : "") + (step.startedAt ? " · " + formatDuration(Date.now() - step.startedAt) + " elapsed" : "");
+  } else if(step.status === "done"){
+    byLine = step.finishedBy ? "Finished by " + step.finishedBy + (step.totalMinutes ? " · " + formatDuration(step.totalMinutes * 60000) : "") : "";
+    if(step.goodQty || step.scrapQty){
+      const hasScrap = step.scrapQty && Number(step.scrapQty) > 0;
+      byLine += "<div class=\"beta-step-scrap" + (hasScrap ? " beta-step-scrap-flag" : "") + "\">" +
+        "Good: " + (step.goodQty || "0") + (hasScrap ? " · Scrap: " + step.scrapQty : "") + "</div>";
+    }
+  }
+
+  const nameLine = byLine ? "<div class=\"beta-step-by\">" + byLine + "</div>" : "";
+  const rerunPrefix = step.isRerun ? "🔁 RERUN: " : "";
+  if(step.isRerun) chip.classList.add("beta-step-rerun");
+  chip.innerHTML = "<div>" + rerunPrefix + position + ". " + step.name + serviceText + statusLabel + "</div>" + nameLine + waitLine;
+  chip.title = step.status.replace("_", " ") + (step.rerunReason ? " · " + step.rerunReason : "");
   return chip;
 }
 
@@ -13568,6 +14367,36 @@ function buildBetaJobCard(job){
   header.appendChild(custTag);
   header.appendChild(trav);
   header.appendChild(part);
+
+  const resetBtn = document.createElement("button");
+  resetBtn.className = "beta-job-reset-btn";
+  resetBtn.textContent = "🔄 Reset All Processes";
+  resetBtn.addEventListener("click", async ()=>{
+    if(!confirm("Reset every process on this job back to Not Started? Names, quantities, timers, and any reruns will all be cleared.")) return;
+    try{
+      const resetSteps = job.steps.map(s => ({ name: s.name, services: s.services || [], included: true, status: "not_started" }));
+      await updateDoc(doc(db, "betaJobs", job.id), { steps: resetSteps, reruns: [] });
+    }catch(err){
+      console.error("Reset test job failed:", err);
+      alert("Couldn't reset — check your connection and try again.");
+    }
+  });
+  header.appendChild(resetBtn);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "beta-job-delete-btn";
+  deleteBtn.textContent = "🗑 Delete";
+  deleteBtn.addEventListener("click", async ()=>{
+    if(!confirm("Delete this test job (" + job.traveler + ")? This can't be undone.")) return;
+    try{
+      await deleteDoc(doc(db, "betaJobs", job.id));
+    }catch(err){
+      console.error("Delete test job failed:", err);
+      alert("Couldn't delete — check your connection and try again.");
+    }
+  });
+  header.appendChild(deleteBtn);
+
   card.appendChild(header);
 
   const pct = betaProgress(job);
@@ -13589,41 +14418,1183 @@ function buildBetaJobCard(job){
 
   const stepsRow = document.createElement("div");
   stepsRow.className = "beta-steps-row";
-  BETA_STEPS_ORDER.forEach(name=>{
-    const step = job.steps.find(s => s.name === name) || { name, included: false, status: "not_started" };
-    stepsRow.appendChild(buildBetaStepChip(job, step));
+  let position = 0;
+  const visibleSteps = (job.steps || []).filter(s => s.included !== false);
+  visibleSteps.forEach((step, i)=>{
+    const realIndex = job.steps.indexOf(step);
+    position++;
+    stepsRow.appendChild(buildBetaStepChip(job, step, realIndex, position));
+    if(i < visibleSteps.length - 1){
+      const arrow = document.createElement("span");
+      arrow.className = "beta-step-arrow";
+      arrow.textContent = "→";
+      stepsRow.appendChild(arrow);
+    }
   });
   card.appendChild(stepsRow);
 
+  const activeReruns = (job.reruns || []).filter(r => r.status !== "done");
+  const doneReruns = (job.reruns || []).filter(r => r.status === "done");
+  if(activeReruns.length || doneReruns.length){
+    const rerunRow = document.createElement("div");
+    rerunRow.className = "beta-rerun-row";
+    [...activeReruns, ...doneReruns].forEach(rerun=>{
+      const chip = document.createElement("div");
+      chip.className = "beta-step-chip beta-step-rerun beta-step-" + rerun.status;
+      const statusLabel = rerun.status === "in_progress" ? " — RUNNING" : rerun.status === "done" ? " — DONE" : "";
+      chip.innerHTML = "<div>🔁 " + rerun.name + " (Qty " + rerun.qty + ")" + statusLabel + "</div>" +
+        "<div class=\"beta-step-by\">" + rerun.rerunReason + "</div>";
+      rerunRow.appendChild(chip);
+    });
+    card.appendChild(rerunRow);
+  }
+
+  // The chips are a compact summary — this is the actual full record:
+  // every name, quantity, timestamp, and scrap count ever logged on
+  // this job, for anyone who needs the real detail instead of a glance.
+  const detailToggle = document.createElement("button");
+  detailToggle.className = "beta-detail-toggle";
+  detailToggle.textContent = "🔍 View Full Details";
+  const detailBox = document.createElement("div");
+  detailBox.className = "beta-detail-box";
+  detailToggle.addEventListener("click", ()=>{
+    const open = detailBox.classList.toggle("open");
+    detailToggle.textContent = (open ? "▾" : "🔍") + " " + (open ? "Hide" : "View") + " Full Details";
+    if(open) rebuildDetailBox();
+  });
+
+  function rebuildDetailBox(){
+    detailBox.innerHTML = "";
+    const jobMeta = document.createElement("div");
+    jobMeta.className = "beta-detail-jobmeta";
+    jobMeta.innerHTML = "PO#: " + (job.po || "—") + " · Part#: " + (job.part || "—") + " · Rev: " + (job.rev || "—") +
+      " · Order Qty: " + (job.qty || "—") + " · B.O: " + (job.bo || "—") + " · Due: " + (job.due || "—") +
+      (job.notes ? "<br>Notes: " + job.notes : "");
+    detailBox.appendChild(jobMeta);
+
+    const visible = (job.steps || []).filter(s => s.included !== false);
+    visible.forEach((step, i)=>{
+      const row = document.createElement("div");
+      row.className = "beta-detail-step";
+      const title = document.createElement("div");
+      title.className = "beta-detail-step-title";
+      const serviceText = step.services && step.services.length ? " (" + step.services.join(", ") + ")" : "";
+      title.textContent = (step.isRerun ? "🔁 RERUN — " : "") + (i + 1) + ". " + step.name + serviceText + " — " + step.status.replace("_", " ").toUpperCase() + (step.rerunReason ? " (" + step.rerunReason + ")" : "");
+      row.appendChild(title);
+
+      const fields = [];
+      if(step.acceptedBy) fields.push(["Accepted by", step.acceptedBy]);
+      if(step.acceptedAt) fields.push(["Accepted at", step.acceptedAt]);
+      if(step.qty) fields.push(["Qty running", step.qty]);
+      if(typeof step.waitMinutes === "number") fields.push(["Wait before starting", formatDuration(step.waitMinutes * 60000)]);
+      if(step.startedAt) fields.push(["Started at", new Date(step.startedAt).toLocaleString()]);
+      if(step.status === "in_progress" && step.startedAt) fields.push(["Elapsed so far", formatDuration(Date.now() - step.startedAt)]);
+      if(step.finishedBy) fields.push(["Finished by", step.finishedBy]);
+      if(step.finishedAt) fields.push(["Finished at", step.finishedAt]);
+      if(typeof step.totalMinutes === "number") fields.push(["Total time", formatDuration(step.totalMinutes * 60000)]);
+      if(step.startedQty) fields.push(["Started qty", step.startedQty]);
+      if(step.goodQty) fields.push(["Good qty", step.goodQty]);
+      if(step.scrapQty) fields.push(["Scrap qty", step.scrapQty]);
+
+      if(fields.length === 0){
+        const none = document.createElement("div");
+        none.className = "beta-detail-step-empty";
+        none.textContent = "Nothing logged yet.";
+        row.appendChild(none);
+      } else {
+        const grid = document.createElement("div");
+        grid.className = "beta-detail-step-grid";
+        fields.forEach(([label, val])=>{
+          const f = document.createElement("div");
+          f.className = "beta-detail-field";
+          f.innerHTML = "<div class=\"beta-detail-field-label\">" + label + "</div><div class=\"beta-detail-field-value\">" + val + "</div>";
+          grid.appendChild(f);
+        });
+        row.appendChild(grid);
+      }
+      detailBox.appendChild(row);
+    });
+
+    (job.reruns || []).forEach(rerun=>{
+      const row = document.createElement("div");
+      row.className = "beta-detail-step beta-detail-rerun";
+      const title = document.createElement("div");
+      title.className = "beta-detail-step-title";
+      title.textContent = "🔁 RERUN — " + rerun.name + " — " + rerun.status.replace("_", " ").toUpperCase() + " (" + rerun.rerunReason + ")";
+      row.appendChild(title);
+
+      const fields = [];
+      fields.push(["Qty", rerun.qty]);
+      if(rerun.acceptedBy) fields.push(["Accepted by", rerun.acceptedBy]);
+      if(rerun.startedAt) fields.push(["Started at", new Date(rerun.startedAt).toLocaleString()]);
+      if(rerun.status === "in_progress" && rerun.startedAt) fields.push(["Elapsed so far", formatDuration(Date.now() - rerun.startedAt)]);
+      if(rerun.finishedBy) fields.push(["Finished by", rerun.finishedBy]);
+      if(rerun.finishedAt) fields.push(["Finished at", rerun.finishedAt]);
+      if(typeof rerun.totalMinutes === "number") fields.push(["Total time", formatDuration(rerun.totalMinutes * 60000)]);
+
+      const grid = document.createElement("div");
+      grid.className = "beta-detail-step-grid";
+      fields.forEach(([label, val])=>{
+        const f = document.createElement("div");
+        f.className = "beta-detail-field";
+        f.innerHTML = "<div class=\"beta-detail-field-label\">" + label + "</div><div class=\"beta-detail-field-value\">" + val + "</div>";
+        grid.appendChild(f);
+      });
+      row.appendChild(grid);
+      detailBox.appendChild(row);
+    });
+  }
+
+  card.appendChild(detailToggle);
+  card.appendChild(detailBox);
+
   return card;
 }
+
+// ---- Create Test Job modal ----
+const betaCreateJobOverlay = document.getElementById("betaCreateJobOverlay");
+const betaCjCustomer = document.getElementById("betaCjCustomer");
+const betaCjTraveler = document.getElementById("betaCjTraveler");
+const betaCjPo = document.getElementById("betaCjPo");
+const betaCjPart = document.getElementById("betaCjPart");
+const betaCjRev = document.getElementById("betaCjRev");
+const betaCjName = document.getElementById("betaCjName");
+const betaCjQty = document.getElementById("betaCjQty");
+const betaCjBo = document.getElementById("betaCjBo");
+const betaCjDue = document.getElementById("betaCjDue");
+const betaCjNotes = document.getElementById("betaCjNotes");
+const betaCjOpsList = document.getElementById("betaCjOpsList");
+const betaCjAddProcessBtn = document.getElementById("betaCjAddProcessBtn");
+const betaCjError = document.getElementById("betaCjError");
+const betaCjCloseBtn = document.getElementById("betaCjCloseBtn");
+const betaCjCancelBtn = document.getElementById("betaCjCancelBtn");
+const betaCjSubmitBtn = document.getElementById("betaCjSubmitBtn");
+let betaCjOpEntries = []; // [{ name, checkbox, serviceInputs: {checkboxes} or freeTextInput }]
+
+// Each process is added one at a time, in order — Process 1, Process
+// 2, etc. — rather than picked from a fixed checklist, since a job's
+// real routing is an ordered sequence and the same operation could
+// even repeat (e.g. Clean Up happening twice).
+let betaCjProcessCount = 0;
+
+function buildBetaServiceField(opName, wrap){
+  wrap.innerHTML = "";
+  const services = BETA_OPERATION_SERVICES[opName];
+  if(services && services.length){
+    const checks = services.map(svc=>{
+      const svcLabel = document.createElement("label");
+      svcLabel.className = "beta-cj-service-check";
+      const svcBox = document.createElement("input");
+      svcBox.type = "checkbox";
+      svcBox.value = svc;
+      svcLabel.appendChild(svcBox);
+      svcLabel.appendChild(document.createTextNode(" " + svc));
+      wrap.appendChild(svcLabel);
+      return svcBox;
+    });
+    return { serviceCheckboxes: checks, freeTextInput: null };
+  } else {
+    const hint = document.createElement("div");
+    hint.className = "beta-cj-service-hint";
+    hint.textContent = "No service list defined for this operation yet — add any detail here:";
+    const freeTextInput = document.createElement("input");
+    freeTextInput.type = "text";
+    freeTextInput.className = "beta-cj-service-freetext";
+    freeTextInput.placeholder = "Optional detail";
+    wrap.appendChild(hint);
+    wrap.appendChild(freeTextInput);
+    return { serviceCheckboxes: null, freeTextInput };
+  }
+}
+
+function addBetaProcessRow(){
+  betaCjProcessCount++;
+  const row = document.createElement("div");
+  row.className = "beta-cj-op-row";
+
+  const header = document.createElement("div");
+  header.className = "beta-cj-process-header";
+  const title = document.createElement("span");
+  title.className = "beta-cj-process-title";
+  title.textContent = "Process " + betaCjProcessCount;
+  const removeBtn = document.createElement("button");
+  removeBtn.type = "button";
+  removeBtn.className = "cj-sub-remove-btn";
+  removeBtn.textContent = "Remove";
+  header.appendChild(title);
+  header.appendChild(removeBtn);
+  row.appendChild(header);
+
+  const opSelect = document.createElement("select");
+  opSelect.className = "beta-cj-op-select";
+  BETA_STEPS_ORDER.forEach(opName=>{
+    const opt = document.createElement("option");
+    opt.value = opName;
+    opt.textContent = opName;
+    opSelect.appendChild(opt);
+  });
+  row.appendChild(opSelect);
+
+  const serviceWrap = document.createElement("div");
+  serviceWrap.className = "beta-cj-op-services";
+
+  const entry = { row, opSelect, serviceCheckboxes: null, freeTextInput: null };
+  function refreshServices(){
+    const result = buildBetaServiceField(opSelect.value, serviceWrap);
+    entry.serviceCheckboxes = result.serviceCheckboxes;
+    entry.freeTextInput = result.freeTextInput;
+  }
+  opSelect.addEventListener("change", refreshServices);
+  refreshServices();
+
+  row.appendChild(serviceWrap);
+
+  removeBtn.addEventListener("click", ()=>{
+    betaCjOpEntries = betaCjOpEntries.filter(e => e !== entry);
+    row.remove();
+    renumberBetaProcessRows();
+  });
+
+  betaCjOpsList.appendChild(row);
+  betaCjOpEntries.push(entry);
+}
+
+function renumberBetaProcessRows(){
+  betaCjOpEntries.forEach((entry, i)=>{
+    entry.row.querySelector(".beta-cj-process-title").textContent = "Process " + (i + 1);
+  });
+  betaCjProcessCount = betaCjOpEntries.length;
+}
+
+function openBetaCreateJobModal(){
+  betaCjCustomer.value = "";
+  betaCjTraveler.value = "";
+  betaCjPo.value = "";
+  betaCjPart.value = "";
+  betaCjRev.value = "";
+  betaCjName.value = "";
+  betaCjQty.value = "";
+  betaCjBo.value = "";
+  betaCjDue.value = "";
+  betaCjNotes.value = "";
+  betaCjError.textContent = "";
+  betaCjOpsList.innerHTML = "";
+  betaCjOpEntries = [];
+  betaCjProcessCount = 0;
+  addBetaProcessRow(); // start with one — "+ Add Another Process" adds more
+  betaCreateJobOverlay.classList.add("open");
+  betaCjCustomer.focus();
+}
+function closeBetaCreateJobModal(){
+  betaCreateJobOverlay.classList.remove("open");
+}
+betaCjCloseBtn.addEventListener("click", closeBetaCreateJobModal);
+betaCjCancelBtn.addEventListener("click", closeBetaCreateJobModal);
+betaCjAddProcessBtn.addEventListener("click", addBetaProcessRow);
+
+betaCjSubmitBtn.addEventListener("click", async ()=>{
+  betaCjError.textContent = "";
+  const customer = betaCjCustomer.value.trim();
+  const traveler = betaCjTraveler.value.trim();
+  if(!customer || !traveler){
+    betaCjError.textContent = "Customer and Traveler # are required.";
+    return;
+  }
+  if(betaCjOpEntries.length === 0){
+    betaCjError.textContent = "Add at least one process for this job.";
+    return;
+  }
+
+  // Order here is exactly the order they were added in — that order IS
+  // the job's routing, not just an unordered set of stations.
+  const steps = betaCjOpEntries.map(entry=>{
+    let services = [];
+    if(entry.serviceCheckboxes){
+      services = entry.serviceCheckboxes.filter(cb=>cb.checked).map(cb=>cb.value);
+    } else if(entry.freeTextInput && entry.freeTextInput.value.trim()){
+      services = [entry.freeTextInput.value.trim()];
+    }
+    return { name: entry.opSelect.value, included: true, status: "not_started", services };
+  });
+
+  betaCjSubmitBtn.disabled = true;
+  try{
+    const newDoc = doc(betaJobsCol);
+    await setDoc(newDoc, {
+      customer: customer,
+      traveler: traveler,
+      po: betaCjPo.value.trim(),
+      part: betaCjPart.value.trim(),
+      rev: betaCjRev.value.trim(),
+      partName: betaCjName.value.trim(),
+      qty: betaCjQty.value.trim(),
+      bo: betaCjBo.value.trim(),
+      due: betaCjDue.value.trim(),
+      notes: betaCjNotes.value.trim(),
+      color: "#9CA3AF",
+      steps: steps
+    });
+    closeBetaCreateJobModal();
+  }catch(err){
+    console.error("Create test job failed:", err);
+    betaCjError.textContent = "Something went wrong — check your connection and try again.";
+  }
+  betaCjSubmitBtn.disabled = false;
+});
+
+// ---- BETA Production Dashboard ----
+// Same spreadsheet-style table as the real Production Dashboard, same
+// one-row-per-line pattern (here, one row per process instead of per
+// shipment date) — just with Completion %, Operation, and Service
+// standing in for Status, Location, and Requires.
+function betaCompletionColorClass(pct){
+  if(pct >= 100) return "due-later-cell";
+  if(pct >= 34) return "due-soon-cell";
+  return "due-overdue-cell";
+}
+
+function renderBetaDashboardTab(){
+  content.classList.add("wide");
+  content.classList.remove("customer-grid", "staff-search-view");
+  content.innerHTML = "";
+
+  if(!hasBetaAccess()){
+    content.innerHTML = '<div class="no-results"><div class="big">Access restricted</div>This area is limited to one account while it\'s still experimental.</div>';
+    return;
+  }
+
+  const banner = document.createElement("div");
+  banner.className = "beta-banner";
+  banner.innerHTML = "🧪 <strong>This is a sandbox.</strong> A test version of Production Dashboard, showing only BETA Job test data — nothing here touches your real jobs.";
+  content.appendChild(banner);
+
+  const wrap = document.createElement("div");
+  wrap.className = "due-table-wrap";
+  const table = document.createElement("table");
+  table.className = "due-table";
+
+  const columns = [
+    { label: "Customer", width: 150 },
+    { label: "Traveler", width: 100 },
+    { label: "PO#", width: 100 },
+    { label: "Part#", width: 110 },
+    { label: "Rev", width: 55 },
+    { label: "Part Name", width: 160 },
+    { label: "Qty", width: 60 },
+    { label: "B.O", width: 60 },
+    { label: "Due Date", width: 130 },
+    { label: "Completion %", width: 110 },
+    { label: "Operation", width: 150 },
+    { label: "Service", width: 160 },
+    { label: "Notes", width: 200 }
+  ];
+  const colgroup = document.createElement("colgroup");
+  columns.forEach(col=>{
+    const c = document.createElement("col");
+    c.style.width = col.width + "px";
+    colgroup.appendChild(c);
+  });
+  table.appendChild(colgroup);
+
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+  columns.forEach(col=>{
+    const th = document.createElement("th");
+    th.textContent = col.label;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+
+betaJobsCache.forEach(job=>{
+    const pct = betaProgress(job);
+    const { step, position } = getCurrentBetaStep(job);
+    const tr = document.createElement("tr");
+
+    const custTd = document.createElement("td");
+    custTd.className = "due-cust-cell";
+    custTd.style.background = job.color || "#999";
+    custTd.style.color = "#000";
+    custTd.textContent = job.customer;
+    tr.appendChild(custTd);
+
+    const travTd = document.createElement("td");
+    travTd.className = "traveler-main-cell";
+    travTd.textContent = job.traveler;
+    tr.appendChild(travTd);
+
+    [job.po, job.part, job.rev, job.partName, job.qty, job.bo, job.due].forEach(val=>{
+      const td = document.createElement("td");
+      td.textContent = val || "";
+      tr.appendChild(td);
+    });
+
+    const pctTd = document.createElement("td");
+    pctTd.className = betaCompletionColorClass(pct);
+    pctTd.textContent = pct + "%";
+    tr.appendChild(pctTd);
+
+    const opTd = document.createElement("td");
+    const statusSuffix = { pending: " (PENDING)", accepted: " (ACCEPTED)", in_progress: " (RUNNING)" }[step && step.status] || "";
+    const bottleneckFlag = (step && typeof step.waitMinutes === "number" && step.waitMinutes >= 120) ? " ⚠ LONG WAIT" : "";
+    opTd.textContent = step ? position + ". " + step.name + statusSuffix + bottleneckFlag : "—";
+    tr.appendChild(opTd);
+
+    const svcTd = document.createElement("td");
+    svcTd.textContent = step && step.services && step.services.length ? step.services.join(", ") : "—";
+    tr.appendChild(svcTd);
+
+    const notesTd = document.createElement("td");
+    notesTd.textContent = job.notes || "";
+    tr.appendChild(notesTd);
+
+    tbody.appendChild(tr);
+  });
+
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  content.appendChild(wrap);
+
+  if(betaJobsCache.length === 0){
+    const empty = document.createElement("div");
+    empty.className = "no-results";
+    empty.textContent = "No test jobs yet — create one on the BETA Job tab.";
+    content.appendChild(empty);
+  }
+}
+
+// ---- "What job are you working on?" — the actual day-to-day flow ----
+// Find the job, see exactly where it is right now, and get prompted to
+// advance it — rather than browsing the whole test-job list to find it.
+function buildBetaFindJobPanel(){
+  const wrap = document.createElement("div");
+  wrap.className = "quick-tag-panel";
+
+  const header = document.createElement("div");
+  header.className = "quick-tag-header";
+  header.innerHTML = "<strong>What job are you working on?</strong>";
+  wrap.appendChild(header);
+
+  const row = document.createElement("div");
+  row.className = "quick-tag-row";
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "quick-tag-input";
+  input.placeholder = "Job or traveler #";
+  const findBtn = document.createElement("button");
+  findBtn.className = "quick-tag-btn";
+  findBtn.textContent = "Find It";
+  row.appendChild(input);
+  row.appendChild(findBtn);
+  wrap.appendChild(row);
+
+  const result = document.createElement("div");
+  result.className = "quick-tag-preview";
+  wrap.appendChild(result);
+
+  function showResult(job){
+    result.innerHTML = "";
+    result.classList.add("open");
+
+    const info = document.createElement("div");
+    info.className = "quick-tag-preview-info";
+    info.innerHTML = "<strong>" + job.traveler + "</strong> — " + job.customer + (job.partName ? " · " + job.partName : "");
+    result.appendChild(info);
+
+    // Always available, not just a one-time popup right after Finished —
+    // that moment is easy to miss (or the need for a rerun might only
+    // become obvious later), so this has to be reachable any time.
+    const addRerunBtn = document.createElement("button");
+    addRerunBtn.className = "beta-add-rerun-btn";
+    addRerunBtn.textContent = "+ Add Rerun";
+    addRerunBtn.addEventListener("click", ()=> showRerunPicker(job));
+    result.appendChild(addRerunBtn);
+
+    // Reruns are a separate, parallel track — shown and workable here no
+    // matter what the main routing's current step is doing, so rework
+    // never has to wait on (or block) the good parts moving forward.
+    (job.reruns || []).filter(r => r.status !== "done").forEach(rerun=>{
+      const rerunBox = document.createElement("div");
+      rerunBox.className = "beta-rerun-box";
+      const rerunTitle = document.createElement("div");
+      rerunTitle.className = "quick-tag-preview-change";
+      rerunTitle.innerHTML = "🔁 <strong>Rerun: " + rerun.name + "</strong> — Qty " + rerun.qty + " (" + rerun.rerunReason + ")";
+      rerunBox.appendChild(rerunTitle);
+
+      if(rerun.status === "not_started"){
+        const requiredEmail = getRequiredLoginFor(rerun);
+        if(requiredEmail && (!isAdmin || currentUserEmail.toLowerCase() !== requiredEmail)){
+          buildBetaLockedStepForm(rerunBox, requiredEmail, "This rerun", async (who, qty)=>{
+            betaAutoSearchTraveler = job.traveler;
+            const newReruns = job.reruns.map(r => r.id === rerun.id ? { ...r, status: "in_progress", acceptedBy: who, qty: qty || r.qty, startedAt: Date.now() } : r);
+            await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
+          });
+          result.appendChild(rerunBox);
+          return;
+        }
+        const btnRow = document.createElement("div");
+        btnRow.className = "quick-tag-preview-actions";
+        const acceptBtn = document.createElement("button");
+        acceptBtn.className = "quick-tag-commit-btn";
+        acceptBtn.textContent = "✓ Accept & Start Rerun";
+        btnRow.appendChild(acceptBtn);
+        rerunBox.appendChild(btnRow);
+        acceptBtn.addEventListener("click", ()=>{
+          btnRow.remove();
+          const nameWrap = document.createElement("div");
+          nameWrap.className = "quick-tag-preview-note-wrap";
+          const nameLabel = document.createElement("div");
+          nameLabel.className = "quick-tag-preview-note-label";
+          nameLabel.textContent = "Your name";
+          const nameInput = document.createElement("input");
+          nameInput.type = "text";
+          nameInput.className = "quick-tag-note-input";
+          nameWrap.appendChild(nameLabel);
+          nameWrap.appendChild(nameInput);
+          rerunBox.appendChild(nameWrap);
+          const confirmRow = document.createElement("div");
+          confirmRow.className = "quick-tag-preview-actions";
+          const confirmBtn = document.createElement("button");
+          confirmBtn.className = "quick-tag-commit-btn";
+          confirmBtn.textContent = "Confirm";
+          confirmRow.appendChild(confirmBtn);
+          rerunBox.appendChild(confirmRow);
+          nameInput.focus();
+          confirmBtn.addEventListener("click", async ()=>{
+            const who = nameInput.value.trim();
+            if(!who){ nameInput.style.borderColor = "var(--danger)"; return; }
+            confirmBtn.disabled = true;
+            const newReruns = job.reruns.map(r => r.id === rerun.id ? { ...r, status: "in_progress", acceptedBy: who, startedAt: Date.now() } : r);
+            await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
+            showResult({ ...job, reruns: newReruns });
+          });
+        });
+      } else if(rerun.status === "in_progress"){
+        const elapsed = rerun.startedAt ? formatDuration(Date.now() - rerun.startedAt) : "—";
+        const runLine = document.createElement("div");
+        runLine.className = "quick-tag-preview-change";
+        runLine.innerHTML = "⏱ Running — " + (rerun.acceptedBy || "") + " · " + elapsed + " elapsed.";
+        rerunBox.appendChild(runLine);
+        const btnRow = document.createElement("div");
+        btnRow.className = "quick-tag-preview-actions";
+        const finishBtn = document.createElement("button");
+        finishBtn.className = "quick-tag-commit-btn";
+        finishBtn.textContent = "✓ Finished Rerun";
+        btnRow.appendChild(finishBtn);
+        rerunBox.appendChild(btnRow);
+        finishBtn.addEventListener("click", ()=>{
+          btnRow.remove();
+          const nameWrap = document.createElement("div");
+          nameWrap.className = "quick-tag-preview-note-wrap";
+          const nameLabel = document.createElement("div");
+          nameLabel.className = "quick-tag-preview-note-label";
+          nameLabel.textContent = "Your name, to log this rerun as finished";
+          const nameInput = document.createElement("input");
+          nameInput.type = "text";
+          nameInput.className = "quick-tag-note-input";
+          nameWrap.appendChild(nameLabel);
+          nameWrap.appendChild(nameInput);
+          rerunBox.appendChild(nameWrap);
+          const confirmRow = document.createElement("div");
+          confirmRow.className = "quick-tag-preview-actions";
+          const confirmBtn = document.createElement("button");
+          confirmBtn.className = "quick-tag-commit-btn";
+          confirmBtn.textContent = "Confirm";
+          confirmRow.appendChild(confirmBtn);
+          rerunBox.appendChild(confirmRow);
+          nameInput.focus();
+          confirmBtn.addEventListener("click", async ()=>{
+            const who = nameInput.value.trim();
+            if(!who){ nameInput.style.borderColor = "var(--danger)"; return; }
+            confirmBtn.disabled = true;
+            const totalMinutes = rerun.startedAt ? Math.round((Date.now() - rerun.startedAt) / 60000) : 0;
+            const newReruns = job.reruns.map(r => r.id === rerun.id ? { ...r, status: "done", finishedBy: who, finishedAt: timestampNow(), totalMinutes } : r);
+            await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
+            showResult({ ...job, reruns: newReruns });
+          });
+        });
+      }
+      result.appendChild(rerunBox);
+    });
+
+    const { step, position, index, allDone } = getCurrentBetaStep(job);
+
+    if(!step){
+      const none = document.createElement("div");
+      none.className = "quick-tag-preview-change";
+      none.textContent = "This job has no processes set up yet.";
+      result.appendChild(none);
+      return;
+    }
+
+    const serviceText = step.services && step.services.length ? " (" + step.services.join(", ") + ")" : "";
+    if(allDone){
+      const statusLine = document.createElement("div");
+      statusLine.className = "quick-tag-preview-change";
+      statusLine.innerHTML = "🎉 <strong>This job is complete.</strong> Last step: " + position + ". " + step.name + serviceText;
+      result.appendChild(statusLine);
+      return;
+    }
+
+    const statusLine = document.createElement("div");
+    statusLine.className = "quick-tag-preview-change";
+    statusLine.innerHTML = "Currently at: <strong>" + position + ". " + step.name + serviceText + "</strong> — " + step.status.replace("_", " ");
+    result.appendChild(statusLine);
+
+    function applyUpdate(newStep){
+      const newSteps = job.steps.map((s, i)=> i === index ? newStep : s);
+      return updateDoc(doc(db, "betaJobs", job.id), { steps: newSteps }).then(()=>{
+        showResult({ ...job, steps: newSteps });
+      });
+    }
+
+    function buildNamePrompt(promptLabel, onConfirm, extraFieldsFn){
+      const actionArea = document.createElement("div");
+      let extra = null;
+      if(extraFieldsFn) extra = extraFieldsFn(actionArea);
+
+      const nameWrap = document.createElement("div");
+      nameWrap.className = "quick-tag-preview-note-wrap";
+      const nameLabel = document.createElement("div");
+      nameLabel.className = "quick-tag-preview-note-label";
+      nameLabel.textContent = promptLabel;
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.className = "quick-tag-note-input";
+      nameInput.placeholder = "Type your name";
+      nameWrap.appendChild(nameLabel);
+      nameWrap.appendChild(nameInput);
+      actionArea.appendChild(nameWrap);
+
+      const confirmRow = document.createElement("div");
+      confirmRow.className = "quick-tag-preview-actions";
+      const confirmBtn = document.createElement("button");
+      confirmBtn.className = "quick-tag-commit-btn";
+      confirmBtn.textContent = "Confirm";
+      const cancelBtn = document.createElement("button");
+      cancelBtn.className = "quick-tag-cancel-btn";
+      cancelBtn.textContent = "Cancel";
+      confirmRow.appendChild(confirmBtn);
+      confirmRow.appendChild(cancelBtn);
+      actionArea.appendChild(confirmRow);
+
+      confirmBtn.addEventListener("click", async ()=>{
+        const who = nameInput.value.trim();
+        if(!who){
+          nameInput.style.borderColor = "var(--danger)";
+          nameInput.placeholder = "Name is required";
+          return;
+        }
+        confirmBtn.disabled = true;
+        await onConfirm(who, extra);
+      });
+      cancelBtn.addEventListener("click", ()=> showResult(job));
+
+      result.appendChild(actionArea);
+      nameInput.focus();
+    }
+
+    // ---- not started: accept it, log the qty, and start the timer — all in one visit ----
+    if(step.status === "not_started"){
+      // Test-only restriction: certain operations/services can only be
+      // started while logged in as one specific account — not tied to
+      // whoever the current admin session happens to be otherwise.
+      const requiredEmail = getRequiredLoginFor(step);
+      if(requiredEmail && (!isAdmin || currentUserEmail.toLowerCase() !== requiredEmail)){
+        buildBetaLockedStepForm(result, requiredEmail, step.name + serviceText, async (who, qty)=>{
+          betaAutoSearchTraveler = job.traveler;
+          const prevStep = index > 0 ? job.steps[index - 1] : null;
+          const waitMinutes = (prevStep && prevStep.finishedAtMs) ? Math.round((Date.now() - prevStep.finishedAtMs) / 60000) : null;
+          const newSteps = job.steps.map((s, i)=> i === index ? { ...s, status: "in_progress", acceptedBy: who, acceptedAt: timestampNow(), qty: qty, startedAt: Date.now(), waitMinutes: waitMinutes } : s);
+          await updateDoc(doc(db, "betaJobs", job.id), { steps: newSteps });
+        });
+        return;
+      }
+
+      const ask = document.createElement("div");
+      ask.className = "quick-tag-preview-change";
+      ask.textContent = "Ready to start " + step.name + serviceText + "?";
+      result.appendChild(ask);
+
+      // Surfaced the moment someone looks at this job, before they even
+      // accept it — that's what actually catches a job sitting cut and
+      // forgotten on the floor, not just a number buried after the fact.
+      const prevStep = index > 0 ? job.steps[index - 1] : null;
+      if(prevStep && prevStep.finishedAtMs){
+        const waitingMs = Date.now() - prevStep.finishedAtMs;
+        const waitLine = document.createElement("div");
+        waitLine.className = "quick-tag-preview-change" + (waitingMs > 2 * 60 * 60 * 1000 ? " beta-wait-warning" : "");
+        waitLine.textContent = "This job has been waiting " + formatDuration(waitingMs) + " since " + prevStep.name + " finished.";
+        result.appendChild(waitLine);
+      }
+
+      const btnRow = document.createElement("div");
+      btnRow.className = "quick-tag-preview-actions";
+      const acceptBtn = document.createElement("button");
+      acceptBtn.className = "quick-tag-commit-btn";
+      acceptBtn.textContent = "✓ Accept & Start";
+      btnRow.appendChild(acceptBtn);
+      result.appendChild(btnRow);
+
+      acceptBtn.addEventListener("click", ()=>{
+        btnRow.remove();
+        ask.remove();
+        buildNamePrompt("Your name", async (who, qtyInput)=>{
+          const qty = qtyInput.value.trim();
+          // How long this job sat idle since the previous step finished —
+          // the whole point being to catch exactly the "cut and forgotten
+          // on the floor" gap, not just how long the work itself takes.
+          const prevStep = index > 0 ? job.steps[index - 1] : null;
+          const waitMinutes = (prevStep && prevStep.finishedAtMs) ? Math.round((Date.now() - prevStep.finishedAtMs) / 60000) : null;
+          await applyUpdate({ ...step, status: "in_progress", acceptedBy: who, acceptedAt: timestampNow(), qty: qty, startedAt: Date.now(), waitMinutes: waitMinutes });
+        }, (actionArea)=>{
+          const qtyWrap = document.createElement("div");
+          qtyWrap.className = "quick-tag-preview-note-wrap";
+          const qtyLabel = document.createElement("div");
+          qtyLabel.className = "quick-tag-preview-note-label";
+          qtyLabel.textContent = "Qty you're running" + (job.qty ? " (order qty is " + job.qty + ")" : "");
+          const qtyInput = document.createElement("input");
+          qtyInput.type = "text";
+          qtyInput.className = "quick-tag-note-input";
+          qtyInput.placeholder = "e.g. 50";
+          qtyWrap.appendChild(qtyLabel);
+          qtyWrap.appendChild(qtyInput);
+          actionArea.appendChild(qtyWrap);
+          if(job.qty){
+            const warn = document.createElement("div");
+            warn.className = "quick-tag-feedback";
+            qtyInput.addEventListener("input", ()=>{
+              if(qtyInput.value.trim() && qtyInput.value.trim() !== String(job.qty)){
+                warn.className = "quick-tag-feedback error";
+                warn.textContent = "That doesn't match the order qty of " + job.qty + " — double check before confirming.";
+              } else {
+                warn.className = "quick-tag-feedback";
+                warn.textContent = "";
+              }
+            });
+            actionArea.appendChild(warn);
+          }
+          return qtyInput;
+        });
+      });
+      return;
+    }
+
+    // ---- in_progress: timer running ----
+    if(step.status === "in_progress"){
+      const runningLine = document.createElement("div");
+      runningLine.className = "quick-tag-preview-change";
+      const elapsed = step.startedAt ? formatDuration(Date.now() - step.startedAt) : "—";
+      runningLine.innerHTML = "⏱ <strong>Running</strong> — " + (step.acceptedBy || "") + (step.qty ? " · Qty " + step.qty : "") + " · " + elapsed + " elapsed so far.";
+      result.appendChild(runningLine);
+
+      const btnRow = document.createElement("div");
+      btnRow.className = "quick-tag-preview-actions";
+      const finishBtn = document.createElement("button");
+      finishBtn.className = "quick-tag-commit-btn";
+      finishBtn.textContent = "✓ Finished";
+      btnRow.appendChild(finishBtn);
+      result.appendChild(btnRow);
+
+      // Parts get damaged or need rework at these specific operations —
+      // not something that happens at Program/Laser, so no reason to
+      // ask there and add friction for no benefit.
+      const needsScrapTracking = ["BRAKE PRESS", "WELDING", "CLEAN UP"].includes(step.name);
+
+      finishBtn.addEventListener("click", ()=>{
+        btnRow.remove();
+        buildNamePrompt("Your name, to log this as finished", async (who, qtyFields)=>{
+          const totalMinutes = step.startedAt ? Math.round((Date.now() - step.startedAt) / 60000) : 0;
+          const update = { ...step, status: "done", finishedBy: who, finishedAt: timestampNow(), finishedAtMs: Date.now(), totalMinutes };
+          let scrapQty = 0;
+          if(qtyFields){
+            update.startedQty = qtyFields.startedInput.value.trim();
+            update.goodQty = qtyFields.goodInput.value.trim();
+            update.scrapQty = qtyFields.scrapInput.value.trim();
+            scrapQty = parseFloat(update.scrapQty) || 0;
+          }
+          const newSteps = job.steps.map((s, i)=> i === index ? update : s);
+          await updateDoc(doc(db, "betaJobs", job.id), { steps: newSteps });
+          const updatedJob = { ...job, steps: newSteps };
+          if(scrapQty > 0){
+            showRerunPrompt(updatedJob, scrapQty, index);
+          } else {
+            showResult(updatedJob);
+          }
+        }, needsScrapTracking ? (actionArea)=>{
+          function qtyField(label, prefill){
+            const wrap = document.createElement("div");
+            wrap.className = "quick-tag-preview-note-wrap";
+            const lbl = document.createElement("div");
+            lbl.className = "quick-tag-preview-note-label";
+            lbl.textContent = label;
+            const inp = document.createElement("input");
+            inp.type = "text";
+            inp.className = "quick-tag-note-input";
+            if(prefill) inp.value = prefill;
+            wrap.appendChild(lbl);
+            wrap.appendChild(inp);
+            actionArea.appendChild(wrap);
+            return inp;
+          }
+          const startedInput = qtyField("Started Qty", step.qty || "");
+          const goodInput = qtyField("Good / Remaining Qty", "");
+          const scrapInput = qtyField("Scrap Qty", "");
+          return { startedInput, goodInput, scrapInput };
+        } : null);
+      });
+    }
+  }
+
+  // Scrap at a downstream operation often means going back to an
+  // earlier one (e.g. Brake Press scrap needs replacement parts cut on
+  // Program/Laser again) — this inserts a brand-new step right after
+  // where the scrap happened, rather than reopening and overwriting the
+  // original step's own history.
+  // Reachable from the "+ Add Rerun" button at any time — lets someone
+  // pick which already-done step the rework relates to, instead of
+  // needing to catch a one-time prompt right when scrap was logged.
+  function showRerunPicker(job){
+    result.innerHTML = "";
+    result.classList.add("open");
+
+    const info = document.createElement("div");
+    info.className = "quick-tag-preview-info";
+    info.innerHTML = "<strong>" + job.traveler + "</strong> — " + job.customer + (job.partName ? " · " + job.partName : "");
+    result.appendChild(info);
+
+    const doneSteps = job.steps.map((s, i) => ({ s, i })).filter(x => x.s.status === "done" && x.s.scrapQty && Number(x.s.scrapQty) > 0);
+    if(doneSteps.length === 0){
+      const none = document.createElement("div");
+      none.className = "quick-tag-preview-change";
+      none.textContent = "No scrap has been logged on this job yet — a rerun only makes sense once there's something to replace.";
+      result.appendChild(none);
+      const backBtn = document.createElement("button");
+      backBtn.className = "quick-tag-cancel-btn";
+      backBtn.textContent = "Back";
+      backBtn.addEventListener("click", ()=> showResult(job));
+      result.appendChild(backBtn);
+      return;
+    }
+
+    const ask = document.createElement("div");
+    ask.className = "quick-tag-preview-change";
+    ask.textContent = "Which step is this rework related to?";
+    result.appendChild(ask);
+
+    const fromWrap = document.createElement("div");
+    fromWrap.className = "quick-tag-preview-note-wrap";
+    const fromLabel = document.createElement("div");
+    fromLabel.className = "quick-tag-preview-note-label";
+    fromLabel.textContent = "Rework needed because of";
+    const fromSelect = document.createElement("select");
+    fromSelect.className = "quick-tag-note-input";
+    doneSteps.slice().reverse().forEach(({ s, i })=>{
+      const opt = document.createElement("option");
+      opt.value = i;
+      opt.textContent = s.name + (s.scrapQty ? " (scrap logged: " + s.scrapQty + ")" : "");
+      fromSelect.appendChild(opt);
+    });
+    fromWrap.appendChild(fromLabel);
+    fromWrap.appendChild(fromSelect);
+    result.appendChild(fromWrap);
+
+    const opWrap = document.createElement("div");
+    opWrap.className = "quick-tag-preview-note-wrap";
+    const opLabel = document.createElement("div");
+    opLabel.className = "quick-tag-preview-note-label";
+    opLabel.textContent = "Which process needs to rerun?";
+    const opSelect = document.createElement("select");
+    opSelect.className = "quick-tag-note-input";
+    BETA_STEPS_ORDER.forEach(name=>{
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      opSelect.appendChild(opt);
+    });
+    opWrap.appendChild(opLabel);
+    opWrap.appendChild(opSelect);
+    result.appendChild(opWrap);
+
+    // Program/Clean Up need their actual service picked too — a rerun
+    // that's secretly a Laser job with no service recorded would slip
+    // right past the Laser-terminal login check entirely.
+    const svcWrap = document.createElement("div");
+    svcWrap.className = "quick-tag-preview-note-wrap";
+    result.appendChild(svcWrap);
+    let serviceCheckboxes = [];
+    function refreshRerunServices(){
+      svcWrap.innerHTML = "";
+      serviceCheckboxes = [];
+      const services = BETA_OPERATION_SERVICES[opSelect.value];
+      if(!services || !services.length) return;
+      const svcLabel = document.createElement("div");
+      svcLabel.className = "quick-tag-preview-note-label";
+      svcLabel.textContent = "Which service?";
+      svcWrap.appendChild(svcLabel);
+      services.forEach(svc=>{
+        const label = document.createElement("label");
+        label.className = "beta-cj-service-check";
+        const box = document.createElement("input");
+        box.type = "checkbox";
+        box.value = svc;
+        label.appendChild(box);
+        label.appendChild(document.createTextNode(" " + svc));
+        svcWrap.appendChild(label);
+        serviceCheckboxes.push(box);
+      });
+    }
+    opSelect.addEventListener("change", refreshRerunServices);
+    refreshRerunServices();
+
+    const qtyWrap = document.createElement("div");
+    qtyWrap.className = "quick-tag-preview-note-wrap";
+    const qtyLabel = document.createElement("div");
+    qtyLabel.className = "quick-tag-preview-note-label";
+    qtyLabel.textContent = "Qty to rerun";
+    const qtyInput = document.createElement("input");
+    qtyInput.type = "text";
+    qtyInput.className = "quick-tag-note-input";
+    const selectedStep = job.steps[doneSteps[doneSteps.length - 1].i];
+    if(selectedStep.scrapQty) qtyInput.value = selectedStep.scrapQty;
+    fromSelect.addEventListener("change", ()=>{
+      const chosen = job.steps[parseInt(fromSelect.value, 10)];
+      if(chosen.scrapQty) qtyInput.value = chosen.scrapQty;
+    });
+    qtyWrap.appendChild(qtyLabel);
+    qtyWrap.appendChild(qtyInput);
+    result.appendChild(qtyWrap);
+
+    const btnRow = document.createElement("div");
+    btnRow.className = "quick-tag-preview-actions";
+    const addBtn = document.createElement("button");
+    addBtn.className = "quick-tag-commit-btn";
+    addBtn.textContent = "+ Add Rerun Step";
+    const cancelBtn = document.createElement("button");
+    cancelBtn.className = "quick-tag-cancel-btn";
+    cancelBtn.textContent = "Cancel";
+    btnRow.appendChild(addBtn);
+    btnRow.appendChild(cancelBtn);
+    result.appendChild(btnRow);
+
+    addBtn.addEventListener("click", async ()=>{
+      addBtn.disabled = true;
+      const fromStep = job.steps[parseInt(fromSelect.value, 10)];
+      const rerun = {
+        id: "r" + Date.now() + Math.random().toString(36).slice(2, 7),
+        name: opSelect.value,
+        services: serviceCheckboxes.filter(cb => cb.checked).map(cb => cb.value),
+        status: "not_started",
+        qty: qtyInput.value.trim(),
+        rerunReason: "Rework from " + fromStep.name
+      };
+      const newReruns = [...(job.reruns || []), rerun];
+      await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
+      showResult({ ...job, reruns: newReruns });
+    });
+    cancelBtn.addEventListener("click", ()=> showResult(job));
+  }
+
+  function showRerunPrompt(job, scrapQty, afterIndex){
+    result.innerHTML = "";
+    result.classList.add("open");
+
+    const info = document.createElement("div");
+    info.className = "quick-tag-preview-info";
+    info.innerHTML = "<strong>" + job.traveler + "</strong> — " + job.customer + (job.partName ? " · " + job.partName : "");
+    result.appendChild(info);
+
+    const ask = document.createElement("div");
+    ask.className = "quick-tag-preview-change beta-wait-warning";
+    ask.textContent = scrapQty + " pcs scrapped. Does this job need to go back through an earlier process to replace them?";
+    result.appendChild(ask);
+
+    const opWrap = document.createElement("div");
+    opWrap.className = "quick-tag-preview-note-wrap";
+    const opLabel = document.createElement("div");
+    opLabel.className = "quick-tag-preview-note-label";
+    opLabel.textContent = "Which process needs to rerun?";
+    const opSelect = document.createElement("select");
+    opSelect.className = "quick-tag-note-input";
+    // Earlier steps in THIS job's own routing are almost always the
+    // relevant choice, so they're listed first — but any operation can
+    // be picked in case the rework needs something not already used.
+    const earlierOps = job.steps.slice(0, afterIndex).map(s => s.name);
+    const seen = new Set();
+    [...earlierOps, ...BETA_STEPS_ORDER].forEach(name=>{
+      if(seen.has(name)) return;
+      seen.add(name);
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name + (earlierOps.includes(name) ? " (used earlier on this job)" : "");
+      opSelect.appendChild(opt);
+    });
+    opWrap.appendChild(opLabel);
+    opWrap.appendChild(opSelect);
+    result.appendChild(opWrap);
+
+    // Program/Clean Up need their actual service picked too — a rerun
+    // that's secretly a Laser job with no service recorded would slip
+    // right past the Laser-terminal login check entirely.
+    const svcWrap = document.createElement("div");
+    svcWrap.className = "quick-tag-preview-note-wrap";
+    result.appendChild(svcWrap);
+    let serviceCheckboxes = [];
+    function refreshRerunServices(){
+      svcWrap.innerHTML = "";
+      serviceCheckboxes = [];
+      const services = BETA_OPERATION_SERVICES[opSelect.value];
+      if(!services || !services.length) return;
+      const svcLabel = document.createElement("div");
+      svcLabel.className = "quick-tag-preview-note-label";
+      svcLabel.textContent = "Which service?";
+      svcWrap.appendChild(svcLabel);
+      services.forEach(svc=>{
+        const label = document.createElement("label");
+        label.className = "beta-cj-service-check";
+        const box = document.createElement("input");
+        box.type = "checkbox";
+        box.value = svc;
+        label.appendChild(box);
+        label.appendChild(document.createTextNode(" " + svc));
+        svcWrap.appendChild(label);
+        serviceCheckboxes.push(box);
+      });
+    }
+    opSelect.addEventListener("change", refreshRerunServices);
+    refreshRerunServices();
+
+    const qtyWrap = document.createElement("div");
+    qtyWrap.className = "quick-tag-preview-note-wrap";
+    const qtyLabel = document.createElement("div");
+    qtyLabel.className = "quick-tag-preview-note-label";
+    qtyLabel.textContent = "Qty to rerun";
+    const qtyInput = document.createElement("input");
+    qtyInput.type = "text";
+    qtyInput.className = "quick-tag-note-input";
+    qtyInput.value = String(scrapQty);
+    qtyWrap.appendChild(qtyLabel);
+    qtyWrap.appendChild(qtyInput);
+    result.appendChild(qtyWrap);
+
+    const btnRow = document.createElement("div");
+    btnRow.className = "quick-tag-preview-actions";
+    const addBtn = document.createElement("button");
+    addBtn.className = "quick-tag-commit-btn";
+    addBtn.textContent = "+ Add Rerun Step";
+    const skipBtn = document.createElement("button");
+    skipBtn.className = "quick-tag-cancel-btn";
+    skipBtn.textContent = "Skip";
+    btnRow.appendChild(addBtn);
+    btnRow.appendChild(skipBtn);
+    result.appendChild(btnRow);
+
+    addBtn.addEventListener("click", async ()=>{
+      addBtn.disabled = true;
+      const rerun = {
+        id: "r" + Date.now() + Math.random().toString(36).slice(2, 7),
+        name: opSelect.value,
+        services: serviceCheckboxes.filter(cb => cb.checked).map(cb => cb.value),
+        status: "not_started",
+        qty: qtyInput.value.trim(),
+        rerunReason: "Scrap from " + job.steps[afterIndex].name
+      };
+      // A separate track, not spliced into the main sequence — the good
+      // parts keep moving through the rest of the routing on their own
+      // schedule instead of waiting on this rework to finish.
+      const newReruns = [...(job.reruns || []), rerun];
+      await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
+      showResult({ ...job, reruns: newReruns });
+    });
+    skipBtn.addEventListener("click", ()=> showResult(job));
+  }
+
+  function submitFind(){
+    const val = input.value.trim().toLowerCase();
+    if(!val) return;
+    const job = betaJobsCache.find(j => j.traveler.toLowerCase() === val);
+    if(!job){
+      result.innerHTML = "";
+      result.classList.remove("open");
+      const err = document.createElement("div");
+      err.className = "quick-tag-feedback error";
+      err.textContent = "Couldn't find a test job with that traveler #.";
+      result.appendChild(err);
+      result.classList.add("open");
+      return;
+    }
+    showResult(job);
+  }
+  findBtn.addEventListener("click", submitFind);
+  input.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitFind(); });
+
+  // If a locked step's login+action form just completed (which forces a
+  // fresh render of this whole panel via Firebase's own auth listener),
+  // jump straight back to that same job instead of leaving a blank box.
+  if(betaAutoSearchTraveler){
+    const t = betaAutoSearchTraveler;
+    betaAutoSearchTraveler = null;
+    input.value = t;
+    submitFind();
+  }
+
+  return wrap;
+}
+
+let betaJobListContainer = null;
 
 function renderBetaJobTab(){
   content.classList.add("wide");
   content.classList.remove("customer-grid", "staff-search-view");
   content.innerHTML = "";
 
+  if(!hasBetaAccess()){
+    content.innerHTML = '<div class="no-results"><div class="big">Access restricted</div>This area is limited to one account while it\'s still experimental.</div>';
+    return;
+  }
+
   const banner = document.createElement("div");
   banner.className = "beta-banner";
   banner.innerHTML = "🧪 <strong>This is a sandbox.</strong> These are test jobs only — nothing here touches Production Dashboard, Quick Update, or your real job data in any way. Use it to try out step-by-step progress tracking before we decide how (or whether) to build it for real.";
   content.appendChild(banner);
 
+  content.appendChild(buildBetaFindJobPanel());
+
+  const createBanner = document.createElement("button");
+  createBanner.className = "create-job-banner";
+  createBanner.innerHTML = '<span class="create-job-banner-icon">+</span><span class="create-job-banner-text">Create Test Job</span>';
+  createBanner.addEventListener("click", ()=> openBetaCreateJobModal());
+  content.appendChild(createBanner);
+
   const legend = document.createElement("div");
   legend.className = "beta-legend";
-  legend.innerHTML = "<span class=\"beta-legend-item\"><span class=\"beta-legend-dot beta-step-excluded\"></span>Not part of this job</span>" +
-    "<span class=\"beta-legend-item\"><span class=\"beta-legend-dot beta-step-not_started\"></span>Not started</span>" +
+  legend.innerHTML = "<span class=\"beta-legend-item\"><span class=\"beta-legend-dot beta-step-not_started\"></span>Not started</span>" +
     "<span class=\"beta-legend-item\"><span class=\"beta-legend-dot beta-step-in_progress\"></span>In progress</span>" +
     "<span class=\"beta-legend-item\"><span class=\"beta-legend-dot beta-step-done\"></span>Done</span>" +
-    "<span class=\"beta-legend-hint\">Tap any station to cycle it through these — including turning it on/off for that job.</span>";
+    "<span class=\"beta-legend-hint\">These are read-only here — use \"What job are you working on?\" above to actually advance a step (it'll ask for your name too).</span>";
   content.appendChild(legend);
 
+  // A separate, stable container for the job cards — live updates only
+  // ever touch this, never the search panel above. Rebuilding the whole
+  // tab on every save was wiping out prompts (like the rerun ask) a
+  // split second after they appeared, before anyone could see them.
+  betaJobListContainer = document.createElement("div");
+  content.appendChild(betaJobListContainer);
+  renderBetaJobList();
+}
+
+function renderBetaJobList(){
+  if(!betaJobListContainer) return;
+  betaJobListContainer.innerHTML = "";
   if(betaJobsCache.length === 0){
     const empty = document.createElement("div");
     empty.className = "no-results";
     empty.textContent = "Loading test jobs...";
-    content.appendChild(empty);
+    betaJobListContainer.appendChild(empty);
   } else {
-    betaJobsCache.forEach(job => content.appendChild(buildBetaJobCard(job)));
+    betaJobsCache.forEach(job => betaJobListContainer.appendChild(buildBetaJobCard(job)));
   }
 }
 
