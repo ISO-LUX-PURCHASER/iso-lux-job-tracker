@@ -2532,6 +2532,210 @@
   }
 
   /* ---------- BETA Job sandbox ---------- */
+  .beta-cj-sub-field{
+    margin-bottom:8px;
+  }
+  .beta-cj-sub-field-label{
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    margin-bottom:3px;
+  }
+  .beta-cj-sub-field input{
+    box-sizing:border-box;
+    width:100%;
+    font-family:inherit;
+    font-size:13px;
+    padding:7px 10px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+  }
+  .beta-job-info-line{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .beta-subs-expand-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:4px 0 10px 0;
+  }
+  .beta-subs-expand-btn{
+    width:20px;
+    height:20px;
+    font-size:11px;
+  }
+  .beta-subs-expand-label{
+    font-size:12px;
+    font-weight:700;
+    color:var(--amber-dark);
+  }
+  .beta-subs-container{
+    display:none;
+    padding-left:14px;
+    border-left:2px solid var(--amber);
+  }
+  .beta-subs-container.open{
+    display:block;
+  }
+  .beta-row-steps-block{
+    background:var(--surface);
+    border-radius:10px;
+    padding:10px 12px;
+    margin-bottom:10px;
+  }
+  .beta-row-steps-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .beta-row-steps-trav{
+    font-size:13px;
+    font-weight:800;
+    color:var(--danger);
+  }
+  .beta-row-steps-name{
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .beta-shipment-list{
+    margin-top:8px;
+    padding-top:8px;
+    border-top:1px dashed var(--line);
+  }
+  .beta-shipment-title{
+    font-size:11px;
+    font-weight:700;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .beta-shipment-line{
+    font-size:12.5px;
+    color:var(--ink);
+    padding:3px 0;
+  }
+  .beta-ops-manager{
+    margin-bottom:16px;
+  }
+  .beta-ops-manager-toggle{
+    font-family:inherit;
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--surface);
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    padding:9px 14px;
+    cursor:pointer;
+  }
+  .beta-ops-manager-toggle:hover{
+    border-color:var(--amber);
+  }
+  .beta-ops-manager-body{
+    display:none;
+    margin-top:10px;
+    padding:14px;
+    background:var(--surface);
+    border-radius:10px;
+  }
+  .beta-ops-manager-body.open{
+    display:block;
+  }
+  .beta-ops-manager-row{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:10px;
+  }
+  .beta-ops-manager-row-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:800;
+    font-size:13px;
+    margin-bottom:8px;
+  }
+  .beta-ops-remove-btn{
+    font-family:inherit;
+    font-size:11px;
+    font-weight:700;
+    color:var(--danger);
+    background:none;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:4px 9px;
+    cursor:pointer;
+  }
+  .beta-ops-remove-btn:hover{
+    background:var(--danger-bg);
+    border-color:var(--danger);
+  }
+  .beta-ops-service-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:8px;
+  }
+  .beta-ops-service-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    font-weight:700;
+    background:var(--surface);
+    border-radius:14px;
+    padding:4px 6px 4px 10px;
+  }
+  .beta-ops-service-chip button{
+    font-family:inherit;
+    font-size:12px;
+    font-weight:800;
+    color:var(--ink-soft);
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0 4px;
+  }
+  .beta-ops-service-chip button:hover{
+    color:var(--danger);
+  }
+  .beta-ops-add-row{
+    display:flex;
+    gap:8px;
+  }
+  .beta-ops-add-row input{
+    flex:1;
+    box-sizing:border-box;
+    font-family:inherit;
+    font-size:12.5px;
+    padding:7px 10px;
+    border-radius:7px;
+    border:1.5px solid var(--line);
+  }
+  .beta-ops-add-row button{
+    flex-shrink:0;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:700;
+    padding:7px 12px;
+    border-radius:7px;
+    border:none;
+    background:var(--ink);
+    color:#fff;
+    cursor:pointer;
+  }
+  .beta-ops-add-op-row{
+    margin-top:6px;
+  }
+  .beta-ops-add-op-row button{
+    background:#15803D;
+  }
   .beta-cj-op-row{
     border:1.5px solid var(--line);
     border-radius:8px;
@@ -3822,6 +4026,10 @@
     </div>
     <div class="cj-row">
       <div class="cj-field">
+        <label>Drawing</label>
+        <input id="betaCjDrawing" type="text" />
+      </div>
+      <div class="cj-field">
         <label>PO#</label>
         <input id="betaCjPo" type="text" />
       </div>
@@ -3859,11 +4067,29 @@
 
     <div class="cj-subs-section">
       <div class="cj-subs-header">
-        <label>Process Routing</label>
+        <label>Process Routing (main traveler)</label>
         <button type="button" id="betaCjAddProcessBtn" class="cj-add-sub-btn">+ Add Another Process</button>
       </div>
       <div class="cj-subs-hint">Build the job's routing one process at a time, in the order it actually happens. Some operations (Program, Clean Up) let you pick the specific service too.</div>
       <div id="betaCjOpsList"></div>
+    </div>
+
+    <div class="cj-subs-section">
+      <div class="cj-subs-header">
+        <label>Sub-Travelers</label>
+        <button type="button" id="betaCjAddSubBtn" class="cj-add-sub-btn">+ Add Sub-Traveler</button>
+      </div>
+      <div class="cj-subs-hint">Optional — each sub-traveler gets its own identity fields AND its own separate process routing, since a sub-part can go through completely different stations than the main part.</div>
+      <div id="betaCjSubsList"></div>
+    </div>
+
+    <div class="cj-subs-section">
+      <div class="cj-subs-header">
+        <label>Shipment Dates</label>
+        <button type="button" id="betaCjAddShipDateBtn" class="cj-add-sub-btn">+ Add Shipment Date</button>
+      </div>
+      <div class="cj-subs-hint">If this job ships in multiple batches on different dates, add each one here with its own quantity. The Due Date field above becomes the first shipment automatically.</div>
+      <div id="betaCjShipDatesList"></div>
     </div>
 
     <div class="cj-error" id="betaCjError"></div>
@@ -11654,7 +11880,7 @@ function renderDueDates(filterText){
   content.innerHTML = "";
   const term = (filterText || "").trim().toLowerCase();
 
-  if(!canEditDashboard()){
+  if(!canFullyEditDashboard() && !canEditStatusLocationNotes()){
     const roBanner = document.createElement("div");
     roBanner.className = "due-readonly-banner";
     roBanner.textContent = "👁 View-only — make status, location, and note updates on the Quick Update tab instead.";
@@ -11663,7 +11889,7 @@ function renderDueDates(filterText){
 
   // Always-visible entry point for adding a job — same form as the Job
   // List tab used, brought over here since this is becoming the main tab.
-  if(canEditDashboard()){
+  if(canFullyEditDashboard()){
     const createBanner = document.createElement("button");
     createBanner.className = "create-job-banner due-create-job-banner";
     createBanner.innerHTML = '<span class="create-job-banner-icon">+</span><span class="create-job-banner-text">Create New Job</span>';
@@ -11695,7 +11921,7 @@ function renderDueDates(filterText){
   });
   controlRow.appendChild(expandAllBtn);
   controlRow.appendChild(collapseAllBtn);
-  if(canEditDashboard()){
+  if(canEditStatusLocationNotes()){
     const shipBtn = document.createElement("button");
     shipBtn.className = "due-control-btn due-ship-btn";
     shipBtn.textContent = "🚚 Log Shipment";
@@ -11853,7 +12079,7 @@ function renderDueDates(filterText){
     return 0;
   });
 
-  const canSignOff = canEditDashboard() && myPermissions.signOff;
+  const canSignOff = canEditStatusLocationNotes() && myPermissions.signOff;
   const DUE_COLUMNS = [
     { key: "customer", label: "Customer", width: 150 },
     { key: "traveler", label: "Traveler", width: 100 },
@@ -11906,7 +12132,7 @@ function renderDueDates(filterText){
 
   function badgeSelectCell(options, val, styleFn, onSave){
     const td = document.createElement("td");
-    if(!canEditDashboard()){
+    if(!canEditStatusLocationNotes()){
       const pair = val ? styleFn(val) : null;
       const span = document.createElement("span");
       span.className = "due-readonly-badge";
@@ -11924,7 +12150,7 @@ function renderDueDates(filterText){
 
   function editableCell(jobId, rowIndex, value, field, extraClass){
     const td = document.createElement("td");
-    if(!canEditDashboard()){
+    if(!canFullyEditDashboard()){
       const span = document.createElement("span");
       span.className = "due-readonly-text" + (extraClass ? " " + extraClass : "");
       span.textContent = value || "";
@@ -11988,7 +12214,7 @@ function renderDueDates(filterText){
     }
     travelerTd.innerHTML = "";
     wrapDiv.appendChild(travInput);
-    if(row.isMain && canEditDashboard()){
+    if(row.isMain && canFullyEditDashboard()){
       const addSubBtn = document.createElement("button");
       addSubBtn.className = "due-add-sub-btn";
       addSubBtn.textContent = "+";
@@ -12015,7 +12241,7 @@ function renderDueDates(filterText){
     dueInput.className = "due-table-input";
     dueInput.value = dueSplit.date;
     dueInput.placeholder = "No due date";
-    if(canEditDashboard()){
+    if(canFullyEditDashboard()){
       dueInput.addEventListener("change", ()=>{
         const newVal = dueSplit.label ? (dueSplit.label + " " + dueInput.value.trim()) : dueInput.value.trim();
         saveRowField(job.id, rowIndex, "due", newVal);
@@ -12046,7 +12272,7 @@ function renderDueDates(filterText){
     notesPreview.textContent = row.notes || "—";
     notesPreview.title = row.notes ? (row.notes + "\n" + (row.notesAuthor || "") + " · " + (row.notesTimestamp || "")) : "";
     notesInner.appendChild(notesPreview);
-    if(canEditDashboard()){
+    if(canEditStatusLocationNotes()){
       const notesBtn = document.createElement("button");
       notesBtn.className = "due-notes-btn";
       notesBtn.textContent = row.notes ? "Update" : "Add";
@@ -12192,7 +12418,7 @@ function renderCompletedJobs(filterText){
       meta.textContent = "Completed by " + (job.completedBy || "Unknown") + " · " + (job.completedAt || "");
       card.appendChild(meta);
 
-      if(canEditDashboard() && myPermissions.signOff){
+      if(canEditStatusLocationNotes() && myPermissions.signOff){
         const reopenBtn = document.createElement("button");
         reopenBtn.className = "reopen-btn";
         reopenBtn.textContent = "Reopen";
@@ -12492,12 +12718,17 @@ function hasBetaAccess(){
   return isAdmin && currentUserEmail.toLowerCase() === BETA_ACCESS_EMAIL;
 }
 
-// Production Dashboard is now view-only for everyone except this one
-// account — regular status/location/notes updates happen on Quick
-// Update instead, which stays open to everyone as before.
+// Production Dashboard is now view-only for most people. Full editing
+// (identity fields, creating jobs, due dates) is stefano-only. A second,
+// narrower tier can update Status/Location/Requires/Notes, sign off
+// completed jobs, and log shipments — everything else stays locked.
 const DASHBOARD_EDIT_EMAIL = "stefano@iso-lux.com";
-function canEditDashboard(){
+const DASHBOARD_LIMITED_EDIT_EMAILS = ["crystal@iso-lux.com", "shawn@iso-lux.com"];
+function canFullyEditDashboard(){
   return isAdmin && currentUserEmail.toLowerCase() === DASHBOARD_EDIT_EMAIL;
+}
+function canEditStatusLocationNotes(){
+  return canFullyEditDashboard() || (isAdmin && DASHBOARD_LIMITED_EDIT_EMAILS.includes(currentUserEmail.toLowerCase()));
 }
 
 function updateBetaTabAccess(){
@@ -14079,63 +14310,104 @@ function buildJobUsageColumn(){
 
 // ================= BETA Job (sandbox — separate collection, zero
 // connection to real jobs/production data) =================
-// The 8 real stations from JobBoss, in a sensible default flow order.
-// Which ones apply, and their order, genuinely varies job to job — this
-// tab exists purely to experiment with that idea on a few throwaway
-// test jobs before deciding whether/how to build it into the real app.
-const BETA_STEPS_ORDER = ["MATERIAL REQUIRED", "PROGRAM", "SHEAR", "BRAKE PRESS", "WELDING", "CLEAN UP", "VENDOR", "FINISHING", "INSPECT"];
-// Which specific services fall under each operation. Only PROGRAM and
-// CLEAN UP have real lists so far (from what was specified) — the rest
-// fall back to a free-text detail field in the create form until their
-// real service lists are defined.
-const BETA_OPERATION_SERVICES = {
+// A job is now a set of ROWS, same shape as the real app: a main
+// traveler, any number of sub-travelers (each with its OWN process
+// routing, since a sub-part can go through completely different
+// stations than the main part), and any number of extra shipment
+// dates (which just carry a due date + qty, no routing of their own —
+// same as the real Production Dashboard's "LINE 2/3" shipment splits).
+const DEFAULT_BETA_STEPS_ORDER = ["MATERIAL REQUIRED", "PROGRAM", "SHEAR", "BRAKE PRESS", "WELDING", "CLEAN UP", "VENDOR", "FINISHING", "INSPECT"];
+const DEFAULT_BETA_OPERATION_SERVICES = {
   "PROGRAM": ["LASER", "TURRET"],
   "CLEAN UP": ["ORBITAL SAND", "GRINDING", "DEBURR"]
 };
+let BETA_STEPS_ORDER = [...DEFAULT_BETA_STEPS_ORDER];
+let BETA_OPERATION_SERVICES = { ...DEFAULT_BETA_OPERATION_SERVICES };
+const betaConfigDoc = doc(db, "settings", "betaConfig");
+
+async function seedBetaConfigIfEmpty(){
+  const snap = await getDoc(betaConfigDoc);
+  if(!snap.exists()){
+    await setDoc(betaConfigDoc, { operations: DEFAULT_BETA_STEPS_ORDER, services: DEFAULT_BETA_OPERATION_SERVICES });
+  }
+}
+function saveBetaConfig(){
+  setDoc(betaConfigDoc, { operations: BETA_STEPS_ORDER, services: BETA_OPERATION_SERVICES })
+    .catch(err => console.error("Couldn't save operations/services config:", err));
+}
+(async function initBetaConfigSync(){
+  try{
+    await seedBetaConfigIfEmpty();
+    onSnapshot(betaConfigDoc, (docSnap)=>{
+      const data = docSnap.data();
+      if(data){
+        BETA_STEPS_ORDER = data.operations || DEFAULT_BETA_STEPS_ORDER;
+        BETA_OPERATION_SERVICES = data.services || {};
+      }
+      if(currentView === "betajob") renderBetaJobList();
+    }, (err)=> console.error("Beta config listener error:", err));
+  }catch(err){
+    console.error("Beta config sync failed:", err);
+  }
+})();
+
 const betaJobsCol = collection(db, "betaJobs");
 let betaJobsCache = [];
 
+function betaMainRow(job){
+  return job.rows.find(r => r.isMain) || job.rows[0];
+}
+// Which jobs currently have their sub-travelers expanded — same idea as
+// Production Dashboard's expand tracking, just scoped to Beta Job.
+const betaExpandedSubs = new Set();
+const betaDashExpandedSubs = new Set();
+
 const BETA_SEED = [
-  { customer: "K.N. CROWDR", traveler: "135510-L1", partName: "CNC STEEL CASE", color: "#660000",
-    steps: [
-      { name: "MATERIAL REQUIRED", included: true, status: "done" },
-      { name: "SHEAR", included: true, status: "done" },
-      { name: "BRAKE PRESS", included: true, status: "in_progress" },
-      { name: "WELDING", included: true, status: "not_started" },
-      { name: "FINISHING", included: true, status: "not_started" },
-      { name: "INSPECT", included: true, status: "not_started" }
-    ] },
-  { customer: "WITTMANN", traveler: "135659-L1", partName: "LCV-1600-F", color: "#FFC8AA",
-    steps: [
-      { name: "PROGRAM", included: true, status: "done" },
-      { name: "SHEAR", included: true, status: "done" },
-      { name: "BRAKE PRESS", included: true, status: "done" },
-      { name: "WELDING", included: true, status: "done" },
-      { name: "FINISHING", included: true, status: "in_progress" },
-      { name: "INSPECT", included: true, status: "not_started" }
-    ] },
-  { customer: "COLM CAMPBELL", traveler: "135319-L1", partName: "BRACKET", color: "#8E7CC3",
-    steps: [
-      { name: "MATERIAL REQUIRED", included: true, status: "done" },
-      { name: "SHEAR", included: true, status: "in_progress" },
-      { name: "INSPECT", included: true, status: "not_started" }
-    ] },
-  { customer: "GEPR ENERGY", traveler: "135539-L2", partName: "FAB STATOR CHASSIS", color: "#57DBEA",
-    steps: [
-      { name: "PROGRAM", included: true, status: "done" },
-      { name: "SHEAR", included: true, status: "done" },
-      { name: "VENDOR", included: true, status: "in_progress" },
-      { name: "INSPECT", included: true, status: "not_started" }
-    ] },
-  { customer: "CURTISS WRIGHT", traveler: "135576-L2", partName: "THERMAL GASKET", color: "#D4EDBC",
-    steps: [
-      { name: "MATERIAL REQUIRED", included: true, status: "done" },
-      { name: "SHEAR", included: true, status: "done" },
-      { name: "BRAKE PRESS", included: true, status: "done" },
-      { name: "WELDING", included: true, status: "done" },
-      { name: "FINISHING", included: true, status: "done" },
-      { name: "INSPECT", included: true, status: "done" }
-    ] }
+  { customer: "K.N. CROWDR", color: "#660000", rows: [
+    { traveler: "135510-L1", isMain: true, drawing: "", name: "CNC STEEL CASE", qty: "50", bo: "", due: "", notes: "",
+      steps: [
+        { name: "MATERIAL REQUIRED", included: true, status: "done" },
+        { name: "SHEAR", included: true, status: "done" },
+        { name: "BRAKE PRESS", included: true, status: "in_progress" },
+        { name: "WELDING", included: true, status: "not_started" },
+        { name: "FINISHING", included: true, status: "not_started" },
+        { name: "INSPECT", included: true, status: "not_started" }
+      ], reruns: [] } ] },
+  { customer: "WITTMANN", color: "#FFC8AA", rows: [
+    { traveler: "135659-L1", isMain: true, drawing: "", name: "LCV-1600-F", qty: "50", bo: "", due: "", notes: "",
+      steps: [
+        { name: "PROGRAM", included: true, status: "done" },
+        { name: "SHEAR", included: true, status: "done" },
+        { name: "BRAKE PRESS", included: true, status: "done" },
+        { name: "WELDING", included: true, status: "done" },
+        { name: "FINISHING", included: true, status: "in_progress" },
+        { name: "INSPECT", included: true, status: "not_started" }
+      ], reruns: [] } ] },
+  { customer: "COLM CAMPBELL", color: "#8E7CC3", rows: [
+    { traveler: "135319-L1", isMain: true, drawing: "", name: "BRACKET", qty: "120", bo: "", due: "", notes: "",
+      steps: [
+        { name: "MATERIAL REQUIRED", included: true, status: "done" },
+        { name: "SHEAR", included: true, status: "in_progress" },
+        { name: "INSPECT", included: true, status: "not_started" }
+      ], reruns: [] } ] },
+  { customer: "GEPR ENERGY", color: "#57DBEA", rows: [
+    { traveler: "135539-L2", isMain: true, drawing: "", name: "FAB STATOR CHASSIS", qty: "50", bo: "", due: "", notes: "",
+      steps: [
+        { name: "PROGRAM", included: true, status: "done" },
+        { name: "SHEAR", included: true, status: "done" },
+        { name: "VENDOR", included: true, status: "in_progress" },
+        { name: "INSPECT", included: true, status: "not_started" }
+      ], reruns: [] } ] },
+  { customer: "CURTISS WRIGHT", color: "#D4EDBC", rows: [
+    { traveler: "135576-L2", isMain: true, drawing: "", name: "THERMAL GASKET", qty: "300", bo: "", due: "", notes: "",
+      steps: [
+        { name: "MATERIAL REQUIRED", included: true, status: "done" },
+        { name: "SHEAR", included: true, status: "done" },
+        { name: "BRAKE PRESS", included: true, status: "done" },
+        { name: "WELDING", included: true, status: "done" },
+        { name: "FINISHING", included: true, status: "done" },
+        { name: "INSPECT", included: true, status: "done" }
+      ], reruns: [] } ] }
 ];
 
 async function seedBetaJobsIfEmpty(){
@@ -14143,14 +14415,14 @@ async function seedBetaJobsIfEmpty(){
   if(!snap.empty) return;
   for(const job of BETA_SEED){
     const newDoc = doc(betaJobsCol);
-    // Every job carries the full 8-station list — steps not relevant to
-    // it just start excluded, so any test job can have stations added
-    // to it live without needing new data.
-    const fullSteps = BETA_STEPS_ORDER.map(name=>{
-      const existing = job.steps.find(s => s.name === name);
-      return existing || { name, included: false, status: "not_started" };
+    const rows = job.rows.map(row=>{
+      const fullSteps = BETA_STEPS_ORDER.map(name=>{
+        const existing = row.steps.find(s => s.name === name);
+        return existing || { name, included: false, status: "not_started" };
+      });
+      return { ...row, steps: fullSteps, reruns: row.reruns || [] };
     });
-    await setDoc(newDoc, { ...job, steps: fullSteps });
+    await setDoc(newDoc, { customer: job.customer, color: job.color, rows });
   }
 }
 
@@ -14167,21 +14439,16 @@ async function seedBetaJobsIfEmpty(){
   }
 })();
 
-// Every step now moves through 5 real stages, not just 3 — weighted
-// roughly by how far through that journey it is.
 const BETA_STATUS_WEIGHT = { not_started: 0, in_progress: 0.5, done: 1 };
-function betaProgress(job){
-  const steps = (job.steps || []).filter(s => s.included !== false);
+function betaProgress(row){
+  const steps = (row.steps || []).filter(s => s.included !== false);
   if(steps.length === 0) return 0;
   const total = steps.reduce((sum, s) => sum + (BETA_STATUS_WEIGHT[s.status] ?? 0), 0);
   return Math.round((total / steps.length) * 100);
 }
 
-// The job's current step is the first one not yet marked done — once
-// that's done, this naturally moves on to the next one. If every step
-// is done, it just returns the last one, complete.
-function getCurrentBetaStep(job){
-  const steps = (job.steps || []).filter(s => s.included !== false);
+function getCurrentBetaStep(row){
+  const steps = (row.steps || []).filter(s => s.included !== false);
   if(steps.length === 0) return { step: null, position: 0, index: -1, allDone: false };
   const idx = steps.findIndex(s => s.status !== "done");
   if(idx === -1) return { step: steps[steps.length - 1], position: steps.length, index: steps.length - 1, allDone: true };
@@ -14189,43 +14456,34 @@ function getCurrentBetaStep(job){
 }
 
 // Test-only access rules for specific operations/services — add more
-// rows here any time another process needs to be locked to a specific
-// login. Checked by service first (e.g. Laser), then by operation name.
-const BETA_LOGIN_REQUIREMENTS = [
-  { matches: (step) => step.services && step.services.includes("LASER"), email: "laser@iso-lux.com" },
-  { matches: (step) => step.name === "MATERIAL REQUIRED", email: "stefano@iso-lux.com" }
+// rows here any time another process needs to be locked behind a
+// passcode. Checked by service first (e.g. Laser), then by operation
+// name. No login/account involved at all — just a shared code.
+const BETA_ACCESS_RULES = [
+  { matches: (step) => step.services && step.services.includes("LASER"), passcode: "1234", label: "Laser" },
+  { matches: (step) => step.name === "MATERIAL REQUIRED", passcode: "5678", label: "Material Required" }
 ];
-function getRequiredLoginFor(step){
-  const rule = BETA_LOGIN_REQUIREMENTS.find(r => r.matches(step));
-  return rule ? rule.email : null;
+function getAccessRuleFor(step){
+  return BETA_ACCESS_RULES.find(r => r.matches(step)) || null;
 }
 
-// Signing in fires Firebase's own auth listener, which rebuilds the
-// whole tab on its own timing — this flag lets whichever render happens
-// next automatically re-open the same job instead of leaving someone
-// staring at a blank search box after they just logged in.
-let betaAutoSearchTraveler = null;
-
-// One combined form for a gate-locked step: password to sign in as the
-// required account, plus name and qty, submitted together — no need to
-// close a separate login popup and re-search the job afterward.
-function buildBetaLockedStepForm(container, requiredEmail, label, onAuthenticated){
+function buildBetaLockedStepForm(container, passcode, label, onUnlocked){
   const lockLine = document.createElement("div");
   lockLine.className = "quick-tag-preview-change beta-wait-warning";
-  lockLine.textContent = "🔒 " + label + " can only be started while logged in as " + requiredEmail + ".";
+  lockLine.textContent = "🔒 " + label + " requires a passcode to start.";
   container.appendChild(lockLine);
 
-  const pwWrap = document.createElement("div");
-  pwWrap.className = "quick-tag-preview-note-wrap";
-  const pwLabel = document.createElement("div");
-  pwLabel.className = "quick-tag-preview-note-label";
-  pwLabel.textContent = "Password for " + requiredEmail;
-  const pwInput = document.createElement("input");
-  pwInput.type = "password";
-  pwInput.className = "quick-tag-note-input";
-  pwWrap.appendChild(pwLabel);
-  pwWrap.appendChild(pwInput);
-  container.appendChild(pwWrap);
+  const codeWrap = document.createElement("div");
+  codeWrap.className = "quick-tag-preview-note-wrap";
+  const codeLabel = document.createElement("div");
+  codeLabel.className = "quick-tag-preview-note-label";
+  codeLabel.textContent = "Passcode";
+  const codeInput = document.createElement("input");
+  codeInput.type = "password";
+  codeInput.className = "quick-tag-note-input";
+  codeWrap.appendChild(codeLabel);
+  codeWrap.appendChild(codeInput);
+  container.appendChild(codeWrap);
 
   const errorLine = document.createElement("div");
   errorLine.className = "quick-tag-feedback";
@@ -14259,7 +14517,7 @@ function buildBetaLockedStepForm(container, requiredEmail, label, onAuthenticate
   btnRow.className = "quick-tag-preview-actions";
   const submitBtn = document.createElement("button");
   submitBtn.className = "quick-tag-commit-btn";
-  submitBtn.textContent = "Log In & Start";
+  submitBtn.textContent = "Unlock & Start";
   btnRow.appendChild(submitBtn);
   container.appendChild(btnRow);
 
@@ -14273,38 +14531,16 @@ function buildBetaLockedStepForm(container, requiredEmail, label, onAuthenticate
       errorLine.textContent = "Enter your name too.";
       return;
     }
-    if(!pwInput.value){
-      pwInput.style.borderColor = "var(--danger)";
+    if(codeInput.value !== passcode){
+      codeInput.style.borderColor = "var(--danger)";
       errorLine.className = "quick-tag-feedback error";
-      errorLine.textContent = "Enter the password.";
+      errorLine.textContent = "Wrong passcode — try again.";
       return;
     }
     submitBtn.disabled = true;
-    try{
-      await signInWithEmailAndPassword(auth, requiredEmail, pwInput.value);
-    }catch(err){
-      submitBtn.disabled = false;
-      errorLine.className = "quick-tag-feedback error";
-      errorLine.textContent = "Login failed — check the password and try again.";
-      return;
-    }
-    await onAuthenticated(who, qtyInput.value.trim());
+    await onUnlocked(who, qtyInput.value.trim());
   });
-  pwInput.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitBtn.click(); });
-}
-
-// A job's routing is an ordered sequence now, so a step is identified
-// by its position, not its name — the same operation can legitimately
-// appear more than once (e.g. Clean Up happening twice).
-async function cycleBetaStepAt(jobId, index){
-  const job = betaJobsCache.find(j => j.id === jobId);
-  if(!job) return;
-  const steps = job.steps.map((s, i)=>{
-    if(i !== index) return s;
-    const next = s.status === "not_started" ? "in_progress" : s.status === "in_progress" ? "done" : "not_started";
-    return { ...s, status: next };
-  });
-  await updateDoc(doc(db, "betaJobs", jobId), { steps });
+  codeInput.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitBtn.click(); });
 }
 
 function formatDuration(ms){
@@ -14314,7 +14550,23 @@ function formatDuration(ms){
   return h > 0 ? (h + "h " + m + "m") : (m + "m");
 }
 
-function buildBetaStepChip(job, step, index, position){
+// Saves a change to one specific row's steps array, by rebuilding the
+// job's whole `rows` array with just that row's steps swapped out —
+// same read-whole-write-whole pattern the real app uses for job.rows.
+async function saveBetaRowSteps(jobId, rowIndex, newSteps){
+  const job = betaJobsCache.find(j => j.id === jobId);
+  if(!job) return;
+  const newRows = job.rows.map((r, i) => i === rowIndex ? { ...r, steps: newSteps } : r);
+  await updateDoc(doc(db, "betaJobs", jobId), { rows: newRows });
+}
+async function saveBetaRowReruns(jobId, rowIndex, newReruns){
+  const job = betaJobsCache.find(j => j.id === jobId);
+  if(!job) return;
+  const newRows = job.rows.map((r, i) => i === rowIndex ? { ...r, reruns: newReruns } : r);
+  await updateDoc(doc(db, "betaJobs", jobId), { rows: newRows });
+}
+
+function buildBetaStepChip(step, position){
   const chip = document.createElement("div");
   chip.className = "beta-step-chip beta-step-" + step.status;
   const serviceText = (step.services && step.services.length) ? " (" + step.services.join(", ") + ")" : "";
@@ -14341,65 +14593,33 @@ function buildBetaStepChip(job, step, index, position){
 
   const nameLine = byLine ? "<div class=\"beta-step-by\">" + byLine + "</div>" : "";
   const rerunPrefix = step.isRerun ? "🔁 RERUN: " : "";
-  if(step.isRerun) chip.classList.add("beta-step-rerun");
   chip.innerHTML = "<div>" + rerunPrefix + position + ". " + step.name + serviceText + statusLabel + "</div>" + nameLine + waitLine;
-  chip.title = step.status.replace("_", " ") + (step.rerunReason ? " · " + step.rerunReason : "");
+  chip.title = step.status.replace("_", " ");
   return chip;
 }
 
-function buildBetaJobCard(job){
-  const card = document.createElement("div");
-  card.className = "beta-job-card";
-  card.style.borderLeftColor = job.color || "#999";
+// One row's worth of process chips + progress bar — reused for the
+// main traveler and for every sub-traveler, since each has its own
+// independent routing.
+function buildBetaRowStepsBlock(row){
+  const wrap = document.createElement("div");
+  wrap.className = "beta-row-steps-block";
 
   const header = document.createElement("div");
-  header.className = "beta-job-header";
-  const custTag = document.createElement("span");
-  custTag.className = "beta-job-cust";
-  custTag.style.background = job.color || "#999";
-  custTag.textContent = job.customer;
-  const trav = document.createElement("span");
-  trav.className = "beta-job-trav";
-  trav.textContent = job.traveler;
-  const part = document.createElement("span");
-  part.className = "beta-job-part";
-  part.textContent = job.partName;
-  header.appendChild(custTag);
-  header.appendChild(trav);
-  header.appendChild(part);
+  header.className = "beta-row-steps-header";
+  const travSpan = document.createElement("span");
+  travSpan.className = "beta-row-steps-trav";
+  travSpan.textContent = row.traveler + (row.isMain ? "" : " (sub)");
+  header.appendChild(travSpan);
+  if(row.name){
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "beta-row-steps-name";
+    nameSpan.textContent = row.name;
+    header.appendChild(nameSpan);
+  }
+  wrap.appendChild(header);
 
-  const resetBtn = document.createElement("button");
-  resetBtn.className = "beta-job-reset-btn";
-  resetBtn.textContent = "🔄 Reset All Processes";
-  resetBtn.addEventListener("click", async ()=>{
-    if(!confirm("Reset every process on this job back to Not Started? Names, quantities, timers, and any reruns will all be cleared.")) return;
-    try{
-      const resetSteps = job.steps.map(s => ({ name: s.name, services: s.services || [], included: true, status: "not_started" }));
-      await updateDoc(doc(db, "betaJobs", job.id), { steps: resetSteps, reruns: [] });
-    }catch(err){
-      console.error("Reset test job failed:", err);
-      alert("Couldn't reset — check your connection and try again.");
-    }
-  });
-  header.appendChild(resetBtn);
-
-  const deleteBtn = document.createElement("button");
-  deleteBtn.className = "beta-job-delete-btn";
-  deleteBtn.textContent = "🗑 Delete";
-  deleteBtn.addEventListener("click", async ()=>{
-    if(!confirm("Delete this test job (" + job.traveler + ")? This can't be undone.")) return;
-    try{
-      await deleteDoc(doc(db, "betaJobs", job.id));
-    }catch(err){
-      console.error("Delete test job failed:", err);
-      alert("Couldn't delete — check your connection and try again.");
-    }
-  });
-  header.appendChild(deleteBtn);
-
-  card.appendChild(header);
-
-  const pct = betaProgress(job);
+  const pct = betaProgress(row);
   const barWrap = document.createElement("div");
   barWrap.className = "beta-progress-wrap";
   const barTrack = document.createElement("div");
@@ -14414,16 +14634,15 @@ function buildBetaJobCard(job){
   barPct.textContent = pct + "%";
   barWrap.appendChild(barTrack);
   barWrap.appendChild(barPct);
-  card.appendChild(barWrap);
+  wrap.appendChild(barWrap);
 
   const stepsRow = document.createElement("div");
   stepsRow.className = "beta-steps-row";
   let position = 0;
-  const visibleSteps = (job.steps || []).filter(s => s.included !== false);
+  const visibleSteps = (row.steps || []).filter(s => s.included !== false);
   visibleSteps.forEach((step, i)=>{
-    const realIndex = job.steps.indexOf(step);
     position++;
-    stepsRow.appendChild(buildBetaStepChip(job, step, realIndex, position));
+    stepsRow.appendChild(buildBetaStepChip(step, position));
     if(i < visibleSteps.length - 1){
       const arrow = document.createElement("span");
       arrow.className = "beta-step-arrow";
@@ -14431,10 +14650,10 @@ function buildBetaJobCard(job){
       stepsRow.appendChild(arrow);
     }
   });
-  card.appendChild(stepsRow);
+  wrap.appendChild(stepsRow);
 
-  const activeReruns = (job.reruns || []).filter(r => r.status !== "done");
-  const doneReruns = (job.reruns || []).filter(r => r.status === "done");
+  const activeReruns = (row.reruns || []).filter(r => r.status !== "done");
+  const doneReruns = (row.reruns || []).filter(r => r.status === "done");
   if(activeReruns.length || doneReruns.length){
     const rerunRow = document.createElement("div");
     rerunRow.className = "beta-rerun-row";
@@ -14446,12 +14665,125 @@ function buildBetaJobCard(job){
         "<div class=\"beta-step-by\">" + rerun.rerunReason + "</div>";
       rerunRow.appendChild(chip);
     });
-    card.appendChild(rerunRow);
+    wrap.appendChild(rerunRow);
   }
 
-  // The chips are a compact summary — this is the actual full record:
-  // every name, quantity, timestamp, and scrap count ever logged on
-  // this job, for anyone who needs the real detail instead of a glance.
+  return wrap;
+}
+
+function buildBetaJobCard(job){
+  const card = document.createElement("div");
+  card.className = "beta-job-card";
+  card.style.borderLeftColor = job.color || "#999";
+  const main = betaMainRow(job);
+
+  const header = document.createElement("div");
+  header.className = "beta-job-header";
+  const custTag = document.createElement("span");
+  custTag.className = "beta-job-cust";
+  custTag.style.background = job.color || "#999";
+  custTag.textContent = job.customer;
+  header.appendChild(custTag);
+
+  const resetBtn = document.createElement("button");
+  resetBtn.className = "beta-job-reset-btn";
+  resetBtn.textContent = "🔄 Reset All Processes";
+  resetBtn.addEventListener("click", async ()=>{
+    if(!confirm("Reset every process on every traveler in this job back to Not Started? Names, quantities, timers, and reruns will all be cleared.")) return;
+    try{
+      const newRows = job.rows.map(r => ({
+        ...r,
+        steps: (r.steps || []).map(s => ({ name: s.name, services: s.services || [], included: true, status: "not_started" })),
+        reruns: []
+      }));
+      await updateDoc(doc(db, "betaJobs", job.id), { rows: newRows });
+    }catch(err){
+      console.error("Reset test job failed:", err);
+      alert("Couldn't reset — check your connection and try again.");
+    }
+  });
+  header.appendChild(resetBtn);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "beta-job-delete-btn";
+  deleteBtn.textContent = "🗑 Delete";
+  deleteBtn.addEventListener("click", async ()=>{
+    if(!confirm("Delete this entire test job (" + main.traveler + " and all its sub-travelers)? This can't be undone.")) return;
+    try{
+      await deleteDoc(doc(db, "betaJobs", job.id));
+    }catch(err){
+      console.error("Delete test job failed:", err);
+      alert("Couldn't delete — check your connection and try again.");
+    }
+  });
+  header.appendChild(deleteBtn);
+  card.appendChild(header);
+
+  const infoLine = document.createElement("div");
+  infoLine.className = "beta-job-info-line";
+  infoLine.textContent = [
+    main.drawing ? "Drawing " + main.drawing : "",
+    main.po ? "PO# " + main.po : "",
+    main.part ? "Part# " + main.part : "",
+    main.rev ? "Rev " + main.rev : ""
+  ].filter(Boolean).join(" · ");
+  if(infoLine.textContent) card.appendChild(infoLine);
+
+  // Only the main traveler shows by default — sub-travelers (if any)
+  // stay tucked behind the amber arrow, same pattern as Production
+  // Dashboard, since a job with several sub-travelers gets long fast.
+  card.appendChild(buildBetaRowStepsBlock(main));
+
+  const subRows = job.rows.filter(r => r.traveler && !r.isMain);
+  if(subRows.length){
+    const expandRow = document.createElement("div");
+    expandRow.className = "beta-subs-expand-row";
+    const expandBtn = document.createElement("button");
+    const isExpanded = betaExpandedSubs.has(job.id);
+    expandBtn.className = "due-subs-expand-btn beta-subs-expand-btn";
+    expandBtn.textContent = isExpanded ? "▾" : "▸";
+    expandBtn.title = isExpanded ? "Hide sub-travelers" : "Show sub-travelers";
+    const expandLabel = document.createElement("span");
+    expandLabel.className = "beta-subs-expand-label";
+    expandLabel.textContent = subRows.length + " Sub-Traveler" + (subRows.length === 1 ? "" : "s");
+    expandRow.appendChild(expandBtn);
+    expandRow.appendChild(expandLabel);
+    card.appendChild(expandRow);
+
+    const subsContainer = document.createElement("div");
+    subsContainer.className = "beta-subs-container" + (isExpanded ? " open" : "");
+    subRows.forEach(row=>{
+      subsContainer.appendChild(buildBetaRowStepsBlock(row));
+    });
+    card.appendChild(subsContainer);
+
+    expandBtn.addEventListener("click", ()=>{
+      if(betaExpandedSubs.has(job.id)) betaExpandedSubs.delete(job.id);
+      else betaExpandedSubs.add(job.id);
+      renderBetaJobList();
+    });
+  }
+
+  const travelerRows = job.rows.filter(r => r.traveler);
+  // Extra shipment dates (blank traveler, just a due date/qty) — same
+  // idea as the real app's "LINE 2/3" splits, shown as a simple list.
+  const shipmentRows = job.rows.filter(r => !r.traveler && r.due);
+  if(shipmentRows.length){
+    const shipWrap = document.createElement("div");
+    shipWrap.className = "beta-shipment-list";
+    const shipTitle = document.createElement("div");
+    shipTitle.className = "beta-shipment-title";
+    shipTitle.textContent = "Other Shipment Dates";
+    shipWrap.appendChild(shipTitle);
+    shipmentRows.forEach(sr=>{
+      const line = document.createElement("div");
+      line.className = "beta-shipment-line";
+      line.textContent = sr.due + (sr.qty ? " · Qty " + sr.qty : "") + (sr.bo ? " · B.O " + sr.bo : "");
+      shipWrap.appendChild(line);
+    });
+    card.appendChild(shipWrap);
+  }
+
   const detailToggle = document.createElement("button");
   detailToggle.className = "beta-detail-toggle";
   detailToggle.textContent = "🔍 View Full Details";
@@ -14465,43 +14797,68 @@ function buildBetaJobCard(job){
 
   function rebuildDetailBox(){
     detailBox.innerHTML = "";
-    const jobMeta = document.createElement("div");
-    jobMeta.className = "beta-detail-jobmeta";
-    jobMeta.innerHTML = "PO#: " + (job.po || "—") + " · Part#: " + (job.part || "—") + " · Rev: " + (job.rev || "—") +
-      " · Order Qty: " + (job.qty || "—") + " · B.O: " + (job.bo || "—") + " · Due: " + (job.due || "—") +
-      (job.notes ? "<br>Notes: " + job.notes : "");
-    detailBox.appendChild(jobMeta);
+    travelerRows.forEach(row=>{
+      const rowHeader = document.createElement("div");
+      rowHeader.className = "beta-detail-jobmeta";
+      rowHeader.innerHTML = "<strong>" + row.traveler + (row.isMain ? "" : " (sub-traveler)") + "</strong> — " +
+        [row.drawing ? "Drawing " + row.drawing : "", row.po ? "PO# " + row.po : "", row.part ? "Part# " + row.part : "", row.rev ? "Rev " + row.rev : "", row.qty ? "Qty " + row.qty : "", row.bo ? "B.O " + row.bo : "", row.due ? "Due " + row.due : "", row.notes ? "Notes: " + row.notes : ""].filter(Boolean).join(" · ");
+      detailBox.appendChild(rowHeader);
 
-    const visible = (job.steps || []).filter(s => s.included !== false);
-    visible.forEach((step, i)=>{
-      const row = document.createElement("div");
-      row.className = "beta-detail-step";
-      const title = document.createElement("div");
-      title.className = "beta-detail-step-title";
-      const serviceText = step.services && step.services.length ? " (" + step.services.join(", ") + ")" : "";
-      title.textContent = (step.isRerun ? "🔁 RERUN — " : "") + (i + 1) + ". " + step.name + serviceText + " — " + step.status.replace("_", " ").toUpperCase() + (step.rerunReason ? " (" + step.rerunReason + ")" : "");
-      row.appendChild(title);
+      const visible = (row.steps || []).filter(s => s.included !== false);
+      visible.forEach((step, i)=>{
+        const stepRow = document.createElement("div");
+        stepRow.className = "beta-detail-step";
+        const title = document.createElement("div");
+        title.className = "beta-detail-step-title";
+        const serviceText = step.services && step.services.length ? " (" + step.services.join(", ") + ")" : "";
+        title.textContent = (i + 1) + ". " + step.name + serviceText + " — " + step.status.replace("_", " ").toUpperCase();
+        stepRow.appendChild(title);
 
-      const fields = [];
-      if(step.acceptedBy) fields.push(["Accepted by", step.acceptedBy]);
-      if(step.acceptedAt) fields.push(["Accepted at", step.acceptedAt]);
-      if(step.qty) fields.push(["Qty running", step.qty]);
-      if(typeof step.waitMinutes === "number") fields.push(["Wait before starting", formatDuration(step.waitMinutes * 60000)]);
-      if(step.startedAt) fields.push(["Started at", new Date(step.startedAt).toLocaleString()]);
-      if(step.status === "in_progress" && step.startedAt) fields.push(["Elapsed so far", formatDuration(Date.now() - step.startedAt)]);
-      if(step.finishedBy) fields.push(["Finished by", step.finishedBy]);
-      if(step.finishedAt) fields.push(["Finished at", step.finishedAt]);
-      if(typeof step.totalMinutes === "number") fields.push(["Total time", formatDuration(step.totalMinutes * 60000)]);
-      if(step.startedQty) fields.push(["Started qty", step.startedQty]);
-      if(step.goodQty) fields.push(["Good qty", step.goodQty]);
-      if(step.scrapQty) fields.push(["Scrap qty", step.scrapQty]);
+        const fields = [];
+        if(step.acceptedBy) fields.push(["Accepted by", step.acceptedBy]);
+        if(step.acceptedAt) fields.push(["Accepted at", step.acceptedAt]);
+        if(step.qty) fields.push(["Qty running", step.qty]);
+        if(typeof step.waitMinutes === "number") fields.push(["Wait before starting", formatDuration(step.waitMinutes * 60000)]);
+        if(step.startedAt) fields.push(["Started at", new Date(step.startedAt).toLocaleString()]);
+        if(step.status === "in_progress" && step.startedAt) fields.push(["Elapsed so far", formatDuration(Date.now() - step.startedAt)]);
+        if(step.finishedBy) fields.push(["Finished by", step.finishedBy]);
+        if(step.finishedAt) fields.push(["Finished at", step.finishedAt]);
+        if(typeof step.totalMinutes === "number") fields.push(["Total time", formatDuration(step.totalMinutes * 60000)]);
+        if(step.startedQty) fields.push(["Started qty", step.startedQty]);
+        if(step.goodQty) fields.push(["Good qty", step.goodQty]);
+        if(step.scrapQty) fields.push(["Scrap qty", step.scrapQty]);
 
-      if(fields.length === 0){
-        const none = document.createElement("div");
-        none.className = "beta-detail-step-empty";
-        none.textContent = "Nothing logged yet.";
-        row.appendChild(none);
-      } else {
+        if(fields.length === 0){
+          const none = document.createElement("div");
+          none.className = "beta-detail-step-empty";
+          none.textContent = "Nothing logged yet.";
+          stepRow.appendChild(none);
+        } else {
+          const grid = document.createElement("div");
+          grid.className = "beta-detail-step-grid";
+          fields.forEach(([label, val])=>{
+            const f = document.createElement("div");
+            f.className = "beta-detail-field";
+            f.innerHTML = "<div class=\"beta-detail-field-label\">" + label + "</div><div class=\"beta-detail-field-value\">" + val + "</div>";
+            grid.appendChild(f);
+          });
+          stepRow.appendChild(grid);
+        }
+        detailBox.appendChild(stepRow);
+      });
+
+      (row.reruns || []).forEach(rerun=>{
+        const rrow = document.createElement("div");
+        rrow.className = "beta-detail-step beta-detail-rerun";
+        const title = document.createElement("div");
+        title.className = "beta-detail-step-title";
+        title.textContent = "🔁 RERUN — " + rerun.name + " — " + rerun.status.replace("_", " ").toUpperCase() + " (" + rerun.rerunReason + ")";
+        rrow.appendChild(title);
+        const fields = [["Qty", rerun.qty]];
+        if(rerun.acceptedBy) fields.push(["Accepted by", rerun.acceptedBy]);
+        if(rerun.startedAt) fields.push(["Started at", new Date(rerun.startedAt).toLocaleString()]);
+        if(rerun.finishedBy) fields.push(["Finished by", rerun.finishedBy]);
+        if(typeof rerun.totalMinutes === "number") fields.push(["Total time", formatDuration(rerun.totalMinutes * 60000)]);
         const grid = document.createElement("div");
         grid.className = "beta-detail-step-grid";
         fields.forEach(([label, val])=>{
@@ -14510,38 +14867,9 @@ function buildBetaJobCard(job){
           f.innerHTML = "<div class=\"beta-detail-field-label\">" + label + "</div><div class=\"beta-detail-field-value\">" + val + "</div>";
           grid.appendChild(f);
         });
-        row.appendChild(grid);
-      }
-      detailBox.appendChild(row);
-    });
-
-    (job.reruns || []).forEach(rerun=>{
-      const row = document.createElement("div");
-      row.className = "beta-detail-step beta-detail-rerun";
-      const title = document.createElement("div");
-      title.className = "beta-detail-step-title";
-      title.textContent = "🔁 RERUN — " + rerun.name + " — " + rerun.status.replace("_", " ").toUpperCase() + " (" + rerun.rerunReason + ")";
-      row.appendChild(title);
-
-      const fields = [];
-      fields.push(["Qty", rerun.qty]);
-      if(rerun.acceptedBy) fields.push(["Accepted by", rerun.acceptedBy]);
-      if(rerun.startedAt) fields.push(["Started at", new Date(rerun.startedAt).toLocaleString()]);
-      if(rerun.status === "in_progress" && rerun.startedAt) fields.push(["Elapsed so far", formatDuration(Date.now() - rerun.startedAt)]);
-      if(rerun.finishedBy) fields.push(["Finished by", rerun.finishedBy]);
-      if(rerun.finishedAt) fields.push(["Finished at", rerun.finishedAt]);
-      if(typeof rerun.totalMinutes === "number") fields.push(["Total time", formatDuration(rerun.totalMinutes * 60000)]);
-
-      const grid = document.createElement("div");
-      grid.className = "beta-detail-step-grid";
-      fields.forEach(([label, val])=>{
-        const f = document.createElement("div");
-        f.className = "beta-detail-field";
-        f.innerHTML = "<div class=\"beta-detail-field-label\">" + label + "</div><div class=\"beta-detail-field-value\">" + val + "</div>";
-        grid.appendChild(f);
+        rrow.appendChild(grid);
+        detailBox.appendChild(rrow);
       });
-      row.appendChild(grid);
-      detailBox.appendChild(row);
     });
   }
 
@@ -14555,6 +14883,7 @@ function buildBetaJobCard(job){
 const betaCreateJobOverlay = document.getElementById("betaCreateJobOverlay");
 const betaCjCustomer = document.getElementById("betaCjCustomer");
 const betaCjTraveler = document.getElementById("betaCjTraveler");
+const betaCjDrawing = document.getElementById("betaCjDrawing");
 const betaCjPo = document.getElementById("betaCjPo");
 const betaCjPart = document.getElementById("betaCjPart");
 const betaCjRev = document.getElementById("betaCjRev");
@@ -14565,17 +14894,18 @@ const betaCjDue = document.getElementById("betaCjDue");
 const betaCjNotes = document.getElementById("betaCjNotes");
 const betaCjOpsList = document.getElementById("betaCjOpsList");
 const betaCjAddProcessBtn = document.getElementById("betaCjAddProcessBtn");
+const betaCjSubsList = document.getElementById("betaCjSubsList");
+const betaCjAddSubBtn = document.getElementById("betaCjAddSubBtn");
+const betaCjShipDatesList = document.getElementById("betaCjShipDatesList");
+const betaCjAddShipDateBtn = document.getElementById("betaCjAddShipDateBtn");
 const betaCjError = document.getElementById("betaCjError");
 const betaCjCloseBtn = document.getElementById("betaCjCloseBtn");
 const betaCjCancelBtn = document.getElementById("betaCjCancelBtn");
 const betaCjSubmitBtn = document.getElementById("betaCjSubmitBtn");
-let betaCjOpEntries = []; // [{ name, checkbox, serviceInputs: {checkboxes} or freeTextInput }]
-
-// Each process is added one at a time, in order — Process 1, Process
-// 2, etc. — rather than picked from a fixed checklist, since a job's
-// real routing is an ordered sequence and the same operation could
-// even repeat (e.g. Clean Up happening twice).
+let betaCjOpEntries = []; // main job's process rows
 let betaCjProcessCount = 0;
+let betaCjSubEntries = []; // [{ fields..., opEntries: [], processCount }]
+let betaCjShipDateEntries = [];
 
 function buildBetaServiceField(opName, wrap){
   wrap.innerHTML = "";
@@ -14607,8 +14937,11 @@ function buildBetaServiceField(opName, wrap){
   }
 }
 
-function addBetaProcessRow(){
-  betaCjProcessCount++;
+// Generic process-row builder — used for the main job's routing AND for
+// each sub-traveler's own routing, just pointed at a different list
+// container and a different entries array to push into.
+function addBetaProcessRowTo(listEl, entriesArr, counterObj){
+  counterObj.count++;
   const row = document.createElement("div");
   row.className = "beta-cj-op-row";
 
@@ -14616,7 +14949,7 @@ function addBetaProcessRow(){
   header.className = "beta-cj-process-header";
   const title = document.createElement("span");
   title.className = "beta-cj-process-title";
-  title.textContent = "Process " + betaCjProcessCount;
+  title.textContent = "Process " + counterObj.count;
   const removeBtn = document.createElement("button");
   removeBtn.type = "button";
   removeBtn.className = "cj-sub-remove-btn";
@@ -14646,29 +14979,151 @@ function addBetaProcessRow(){
   }
   opSelect.addEventListener("change", refreshServices);
   refreshServices();
-
   row.appendChild(serviceWrap);
 
   removeBtn.addEventListener("click", ()=>{
-    betaCjOpEntries = betaCjOpEntries.filter(e => e !== entry);
+    const idx = entriesArr.indexOf(entry);
+    if(idx > -1) entriesArr.splice(idx, 1);
     row.remove();
-    renumberBetaProcessRows();
+    entriesArr.forEach((e, i)=>{ e.row.querySelector(".beta-cj-process-title").textContent = "Process " + (i + 1); });
+    counterObj.count = entriesArr.length;
   });
 
-  betaCjOpsList.appendChild(row);
-  betaCjOpEntries.push(entry);
+  listEl.appendChild(row);
+  entriesArr.push(entry);
 }
 
-function renumberBetaProcessRows(){
-  betaCjOpEntries.forEach((entry, i)=>{
-    entry.row.querySelector(".beta-cj-process-title").textContent = "Process " + (i + 1);
+function collectStepsFromEntries(entries){
+  return entries.map(entry=>{
+    let services = [];
+    if(entry.serviceCheckboxes){
+      services = entry.serviceCheckboxes.filter(cb=>cb.checked).map(cb=>cb.value);
+    } else if(entry.freeTextInput && entry.freeTextInput.value.trim()){
+      services = [entry.freeTextInput.value.trim()];
+    }
+    return { name: entry.opSelect.value, included: true, status: "not_started", services };
   });
-  betaCjProcessCount = betaCjOpEntries.length;
+}
+
+function addBetaSubTravelerCard(){
+  const card = document.createElement("div");
+  card.className = "cj-sub-card";
+
+  const header = document.createElement("div");
+  header.className = "cj-sub-card-header";
+  const title = document.createElement("span");
+  title.className = "cj-sub-card-title";
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "cj-sub-remove-btn";
+  removeBtn.textContent = "Remove";
+  header.appendChild(title);
+  header.appendChild(removeBtn);
+  card.appendChild(header);
+
+  function field(label, ph){
+    const wrap = document.createElement("div");
+    wrap.className = "beta-cj-sub-field";
+    const l = document.createElement("div");
+    l.className = "beta-cj-sub-field-label";
+    l.textContent = label;
+    const i = document.createElement("input");
+    i.type = "text";
+    if(ph) i.placeholder = ph;
+    wrap.appendChild(l);
+    wrap.appendChild(i);
+    card.appendChild(wrap);
+    return i;
+  }
+  const travInput = field("Traveler #", "e.g. 135510-L2");
+  const drawingInput = field("Drawing");
+  const poInput = field("PO#");
+  const partInput = field("Part#");
+  const revInput = field("Rev");
+  const nameInput = field("Part Name");
+  const qtyInput = field("Qty");
+  const boInput = field("B.O");
+
+  const subOpsLabel = document.createElement("div");
+  subOpsLabel.className = "beta-cj-sub-field-label";
+  subOpsLabel.textContent = "This sub-traveler's own processes";
+  card.appendChild(subOpsLabel);
+  const subOpsList = document.createElement("div");
+  card.appendChild(subOpsList);
+  const addSubProcessBtn = document.createElement("button");
+  addSubProcessBtn.type = "button";
+  addSubProcessBtn.className = "cj-add-sub-btn";
+  addSubProcessBtn.textContent = "+ Add Process to This Sub-Traveler";
+  card.appendChild(addSubProcessBtn);
+
+  const subEntry = { card, travInput, drawingInput, poInput, partInput, revInput, nameInput, qtyInput, boInput, opEntries: [], counter: { count: 0 } };
+  addSubProcessBtn.addEventListener("click", ()=> addBetaProcessRowTo(subOpsList, subEntry.opEntries, subEntry.counter));
+
+  removeBtn.addEventListener("click", ()=>{
+    betaCjSubEntries = betaCjSubEntries.filter(e => e !== subEntry);
+    card.remove();
+    renumberBetaSubCards();
+  });
+
+  betaCjSubsList.appendChild(card);
+  betaCjSubEntries.push(subEntry);
+  renumberBetaSubCards();
+  travInput.focus();
+}
+function renumberBetaSubCards(){
+  betaCjSubEntries.forEach((entry, i)=>{
+    entry.card.querySelector(".cj-sub-card-title").textContent = "Sub-Traveler " + (i + 1);
+  });
+}
+
+function addBetaShipDateCard(){
+  const card = document.createElement("div");
+  card.className = "cj-sub-card";
+  const header = document.createElement("div");
+  header.className = "cj-sub-card-header";
+  const title = document.createElement("span");
+  title.className = "cj-sub-card-title";
+  title.textContent = "Shipment " + (betaCjShipDateEntries.length + 2);
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "cj-sub-remove-btn";
+  removeBtn.textContent = "Remove";
+  header.appendChild(title);
+  header.appendChild(removeBtn);
+  card.appendChild(header);
+
+  const row = document.createElement("div");
+  row.className = "cj-sub-row";
+  const dueInput = document.createElement("input");
+  dueInput.type = "text";
+  dueInput.placeholder = "Due date, e.g. October 9th 2026";
+  const qtyInput = document.createElement("input");
+  qtyInput.type = "text";
+  qtyInput.placeholder = "Qty";
+  qtyInput.classList.add("cj-sub-narrow");
+  const boInput = document.createElement("input");
+  boInput.type = "text";
+  boInput.placeholder = "B.O";
+  boInput.classList.add("cj-sub-narrow");
+  row.appendChild(dueInput);
+  row.appendChild(qtyInput);
+  row.appendChild(boInput);
+  card.appendChild(row);
+
+  const entry = { card, due: dueInput, qty: qtyInput, bo: boInput };
+  removeBtn.addEventListener("click", ()=>{
+    betaCjShipDateEntries = betaCjShipDateEntries.filter(e => e !== entry);
+    card.remove();
+    betaCjShipDateEntries.forEach((e, i)=>{ e.card.querySelector(".cj-sub-card-title").textContent = "Shipment " + (i + 2); });
+  });
+
+  betaCjShipDatesList.appendChild(card);
+  betaCjShipDateEntries.push(entry);
+  dueInput.focus();
 }
 
 function openBetaCreateJobModal(){
   betaCjCustomer.value = "";
   betaCjTraveler.value = "";
+  betaCjDrawing.value = "";
   betaCjPo.value = "";
   betaCjPart.value = "";
   betaCjRev.value = "";
@@ -14681,7 +15136,11 @@ function openBetaCreateJobModal(){
   betaCjOpsList.innerHTML = "";
   betaCjOpEntries = [];
   betaCjProcessCount = 0;
-  addBetaProcessRow(); // start with one — "+ Add Another Process" adds more
+  addBetaProcessRowTo(betaCjOpsList, betaCjOpEntries, { get count(){ return betaCjProcessCount; }, set count(v){ betaCjProcessCount = v; } });
+  betaCjSubsList.innerHTML = "";
+  betaCjSubEntries = [];
+  betaCjShipDatesList.innerHTML = "";
+  betaCjShipDateEntries = [];
   betaCreateJobOverlay.classList.add("open");
   betaCjCustomer.focus();
 }
@@ -14690,7 +15149,9 @@ function closeBetaCreateJobModal(){
 }
 betaCjCloseBtn.addEventListener("click", closeBetaCreateJobModal);
 betaCjCancelBtn.addEventListener("click", closeBetaCreateJobModal);
-betaCjAddProcessBtn.addEventListener("click", addBetaProcessRow);
+betaCjAddProcessBtn.addEventListener("click", ()=> addBetaProcessRowTo(betaCjOpsList, betaCjOpEntries, { get count(){ return betaCjProcessCount; }, set count(v){ betaCjProcessCount = v; } }));
+betaCjAddSubBtn.addEventListener("click", addBetaSubTravelerCard);
+betaCjAddShipDateBtn.addEventListener("click", addBetaShipDateCard);
 
 betaCjSubmitBtn.addEventListener("click", async ()=>{
   betaCjError.textContent = "";
@@ -14701,52 +15162,78 @@ betaCjSubmitBtn.addEventListener("click", async ()=>{
     return;
   }
   if(betaCjOpEntries.length === 0){
-    betaCjError.textContent = "Add at least one process for this job.";
+    betaCjError.textContent = "Add at least one process for the main job.";
     return;
   }
 
-  // Order here is exactly the order they were added in — that order IS
-  // the job's routing, not just an unordered set of stations.
-  const steps = betaCjOpEntries.map(entry=>{
-    let services = [];
-    if(entry.serviceCheckboxes){
-      services = entry.serviceCheckboxes.filter(cb=>cb.checked).map(cb=>cb.value);
-    } else if(entry.freeTextInput && entry.freeTextInput.value.trim()){
-      services = [entry.freeTextInput.value.trim()];
-    }
-    return { name: entry.opSelect.value, included: true, status: "not_started", services };
-  });
-
   betaCjSubmitBtn.disabled = true;
   try{
-    const newDoc = doc(betaJobsCol);
-    await setDoc(newDoc, {
-      customer: customer,
+    const mainRow = {
       traveler: traveler,
+      isMain: true,
+      drawing: betaCjDrawing.value.trim(),
       po: betaCjPo.value.trim(),
       part: betaCjPart.value.trim(),
       rev: betaCjRev.value.trim(),
-      partName: betaCjName.value.trim(),
+      name: betaCjName.value.trim(),
       qty: betaCjQty.value.trim(),
       bo: betaCjBo.value.trim(),
       due: betaCjDue.value.trim(),
       notes: betaCjNotes.value.trim(),
+      steps: collectStepsFromEntries(betaCjOpEntries),
+      reruns: []
+    };
+
+    const subRows = betaCjSubEntries
+      .filter(e => e.travInput.value.trim())
+      .map(e => ({
+        traveler: e.travInput.value.trim(),
+        isMain: false,
+        drawing: e.drawingInput.value.trim(),
+        po: e.poInput.value.trim(),
+        part: e.partInput.value.trim(),
+        rev: e.revInput.value.trim(),
+        name: e.nameInput.value.trim(),
+        qty: e.qtyInput.value.trim(),
+        bo: e.boInput.value.trim(),
+        due: "",
+        notes: "",
+        steps: collectStepsFromEntries(e.opEntries),
+        reruns: []
+      }));
+
+    const shipDateRows = betaCjShipDateEntries
+      .filter(e => e.due.value.trim())
+      .map(e => ({
+        traveler: "",
+        isMain: false,
+        drawing: "",
+        po: "",
+        part: "",
+        rev: "",
+        name: "",
+        qty: e.qty.value.trim(),
+        bo: e.bo.value.trim(),
+        due: e.due.value.trim(),
+        notes: "",
+        steps: [],
+        reruns: []
+      }));
+
+    const newDoc = doc(betaJobsCol);
+    await setDoc(newDoc, {
+      customer: customer,
       color: "#9CA3AF",
-      steps: steps
+      rows: [mainRow, ...shipDateRows, ...subRows]
     });
     closeBetaCreateJobModal();
   }catch(err){
     console.error("Create test job failed:", err);
-    betaCjError.textContent = "Something went wrong — check your connection and try again.";
+    betaCjError.textContent = "Something went wrong: " + (err && err.message ? err.message : "check your connection and try again.");
   }
   betaCjSubmitBtn.disabled = false;
 });
 
-// ---- BETA Production Dashboard ----
-// Same spreadsheet-style table as the real Production Dashboard, same
-// one-row-per-line pattern (here, one row per process instead of per
-// shipment date) — just with Completion %, Operation, and Service
-// standing in for Status, Location, and Requires.
 function betaCompletionColorClass(pct){
   if(pct >= 100) return "due-later-cell";
   if(pct >= 34) return "due-soon-cell";
@@ -14776,6 +15263,7 @@ function renderBetaDashboardTab(){
   const columns = [
     { label: "Customer", width: 150 },
     { label: "Traveler", width: 100 },
+    { label: "Drawing", width: 90 },
     { label: "PO#", width: 100 },
     { label: "Part#", width: 110 },
     { label: "Rev", width: 55 },
@@ -14808,49 +15296,74 @@ function renderBetaDashboardTab(){
 
   const tbody = document.createElement("tbody");
 
-betaJobsCache.forEach(job=>{
-    const pct = betaProgress(job);
-    const { step, position } = getCurrentBetaStep(job);
-    const tr = document.createElement("tr");
+  betaJobsCache.forEach(job=>{
+    try{
+    // Only the main traveler shows by default here too — sub-travelers
+    // sit behind the same amber expand arrow as Production Dashboard.
+    const main = betaMainRow(job);
+    const subRows = job.rows.filter(r => r.traveler && !r.isMain);
+    const isExpanded = betaDashExpandedSubs.has(job.id);
+    const rowsToShow = [main, ...(isExpanded ? subRows : [])];
 
-    const custTd = document.createElement("td");
-    custTd.className = "due-cust-cell";
-    custTd.style.background = job.color || "#999";
-    custTd.style.color = "#000";
-    custTd.textContent = job.customer;
-    tr.appendChild(custTd);
+    rowsToShow.forEach((row, rowPos)=>{
+      const pct = betaProgress(row);
+      const { step, position } = getCurrentBetaStep(row);
+      const tr = document.createElement("tr");
 
-    const travTd = document.createElement("td");
-    travTd.className = "traveler-main-cell";
-    travTd.textContent = job.traveler;
-    tr.appendChild(travTd);
+      const custTd = document.createElement("td");
+      custTd.className = "due-cust-cell";
+      custTd.style.background = job.color || "#999";
+      custTd.style.color = "#000";
+      custTd.textContent = job.customer;
+      tr.appendChild(custTd);
 
-    [job.po, job.part, job.rev, job.partName, job.qty, job.bo, job.due].forEach(val=>{
-      const td = document.createElement("td");
-      td.textContent = val || "";
-      tr.appendChild(td);
+      const travTd = document.createElement("td");
+      travTd.className = "traveler-main-cell";
+      if(rowPos === 0 && subRows.length){
+        const arrowBtn = document.createElement("button");
+        arrowBtn.className = "due-subs-expand-btn";
+        arrowBtn.textContent = isExpanded ? "▾" : "▸";
+        arrowBtn.title = isExpanded ? "Hide sub-travelers" : "Show " + subRows.length + " sub-traveler" + (subRows.length === 1 ? "" : "s");
+        arrowBtn.addEventListener("click", ()=>{
+          if(betaDashExpandedSubs.has(job.id)) betaDashExpandedSubs.delete(job.id);
+          else betaDashExpandedSubs.add(job.id);
+          renderBetaDashboardTab();
+        });
+        travTd.appendChild(arrowBtn);
+      }
+      travTd.appendChild(document.createTextNode(row.traveler));
+      tr.appendChild(travTd);
+
+      [row.drawing, row.po, row.part, row.rev, row.name, row.qty, row.bo, row.due].forEach(val=>{
+        const td = document.createElement("td");
+        td.textContent = val || "";
+        tr.appendChild(td);
+      });
+
+      const pctTd = document.createElement("td");
+      pctTd.className = betaCompletionColorClass(pct);
+      pctTd.textContent = pct + "%";
+      tr.appendChild(pctTd);
+
+      const statusSuffix = { in_progress: " (RUNNING)" }[step && step.status] || "";
+      const bottleneckFlag = (step && typeof step.waitMinutes === "number" && step.waitMinutes >= 120) ? " ⚠ LONG WAIT" : "";
+      const opTd = document.createElement("td");
+      opTd.textContent = step ? position + ". " + step.name + statusSuffix + bottleneckFlag : "—";
+      tr.appendChild(opTd);
+
+      const svcTd = document.createElement("td");
+      svcTd.textContent = step && step.services && step.services.length ? step.services.join(", ") : "—";
+      tr.appendChild(svcTd);
+
+      const notesTd = document.createElement("td");
+      notesTd.textContent = row.notes || "";
+      tr.appendChild(notesTd);
+
+      tbody.appendChild(tr);
     });
-
-    const pctTd = document.createElement("td");
-    pctTd.className = betaCompletionColorClass(pct);
-    pctTd.textContent = pct + "%";
-    tr.appendChild(pctTd);
-
-    const opTd = document.createElement("td");
-    const statusSuffix = { pending: " (PENDING)", accepted: " (ACCEPTED)", in_progress: " (RUNNING)" }[step && step.status] || "";
-    const bottleneckFlag = (step && typeof step.waitMinutes === "number" && step.waitMinutes >= 120) ? " ⚠ LONG WAIT" : "";
-    opTd.textContent = step ? position + ". " + step.name + statusSuffix + bottleneckFlag : "—";
-    tr.appendChild(opTd);
-
-    const svcTd = document.createElement("td");
-    svcTd.textContent = step && step.services && step.services.length ? step.services.join(", ") : "—";
-    tr.appendChild(svcTd);
-
-    const notesTd = document.createElement("td");
-    notesTd.textContent = job.notes || "";
-    tr.appendChild(notesTd);
-
-    tbody.appendChild(tr);
+    }catch(err){
+      console.error("Couldn't render test job on dashboard", job.id, err);
+    }
   });
 
   table.appendChild(tbody);
@@ -14866,8 +15379,6 @@ betaJobsCache.forEach(job=>{
 }
 
 // ---- "What job are you working on?" — the actual day-to-day flow ----
-// Find the job, see exactly where it is right now, and get prompted to
-// advance it — rather than browsing the whole test-job list to find it.
 function buildBetaFindJobPanel(){
   const wrap = document.createElement("div");
   wrap.className = "quick-tag-panel";
@@ -14882,7 +15393,7 @@ function buildBetaFindJobPanel(){
   const input = document.createElement("input");
   input.type = "text";
   input.className = "quick-tag-input";
-  input.placeholder = "Job or traveler #";
+  input.placeholder = "Job or traveler # — main or sub-traveler";
   const findBtn = document.createElement("button");
   findBtn.className = "quick-tag-btn";
   findBtn.textContent = "Find It";
@@ -14894,28 +15405,24 @@ function buildBetaFindJobPanel(){
   result.className = "quick-tag-preview";
   wrap.appendChild(result);
 
-  function showResult(job){
+  function showResult(job, rowIndex){
     result.innerHTML = "";
     result.classList.add("open");
+    const row = job.rows[rowIndex];
+    const main = betaMainRow(job);
 
     const info = document.createElement("div");
     info.className = "quick-tag-preview-info";
-    info.innerHTML = "<strong>" + job.traveler + "</strong> — " + job.customer + (job.partName ? " · " + job.partName : "");
+    info.innerHTML = "<strong>" + row.traveler + "</strong> — " + job.customer + (row.isMain ? "" : " (sub-traveler of " + main.traveler + ")") + (row.name ? " · " + row.name : "");
     result.appendChild(info);
 
-    // Always available, not just a one-time popup right after Finished —
-    // that moment is easy to miss (or the need for a rerun might only
-    // become obvious later), so this has to be reachable any time.
     const addRerunBtn = document.createElement("button");
     addRerunBtn.className = "beta-add-rerun-btn";
     addRerunBtn.textContent = "+ Add Rerun";
-    addRerunBtn.addEventListener("click", ()=> showRerunPicker(job));
+    addRerunBtn.addEventListener("click", ()=> showRerunPicker(job, rowIndex));
     result.appendChild(addRerunBtn);
 
-    // Reruns are a separate, parallel track — shown and workable here no
-    // matter what the main routing's current step is doing, so rework
-    // never has to wait on (or block) the good parts moving forward.
-    (job.reruns || []).filter(r => r.status !== "done").forEach(rerun=>{
+    (row.reruns || []).filter(r => r.status !== "done").forEach(rerun=>{
       const rerunBox = document.createElement("div");
       rerunBox.className = "beta-rerun-box";
       const rerunTitle = document.createElement("div");
@@ -14924,12 +15431,14 @@ function buildBetaFindJobPanel(){
       rerunBox.appendChild(rerunTitle);
 
       if(rerun.status === "not_started"){
-        const requiredEmail = getRequiredLoginFor(rerun);
-        if(requiredEmail && (!isAdmin || currentUserEmail.toLowerCase() !== requiredEmail)){
-          buildBetaLockedStepForm(rerunBox, requiredEmail, "This rerun", async (who, qty)=>{
-            betaAutoSearchTraveler = job.traveler;
-            const newReruns = job.reruns.map(r => r.id === rerun.id ? { ...r, status: "in_progress", acceptedBy: who, qty: qty || r.qty, startedAt: Date.now() } : r);
-            await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
+        const accessRule = getAccessRuleFor(rerun);
+        if(accessRule){
+          buildBetaLockedStepForm(rerunBox, accessRule.passcode, "This rerun", async (who, qty)=>{
+            const newReruns = row.reruns.map(r => r.id === rerun.id ? { ...r, status: "in_progress", acceptedBy: who, qty: qty || r.qty, startedAt: Date.now() } : r);
+            await saveBetaRowReruns(job.id, rowIndex, newReruns);
+            const newRow = { ...row, reruns: newReruns };
+            const newJob = { ...job, rows: job.rows.map((r,i)=> i===rowIndex ? newRow : r) };
+            showResult(newJob, rowIndex);
           });
           result.appendChild(rerunBox);
           return;
@@ -14966,9 +15475,11 @@ function buildBetaFindJobPanel(){
             const who = nameInput.value.trim();
             if(!who){ nameInput.style.borderColor = "var(--danger)"; return; }
             confirmBtn.disabled = true;
-            const newReruns = job.reruns.map(r => r.id === rerun.id ? { ...r, status: "in_progress", acceptedBy: who, startedAt: Date.now() } : r);
-            await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
-            showResult({ ...job, reruns: newReruns });
+            const newReruns = row.reruns.map(r => r.id === rerun.id ? { ...r, status: "in_progress", acceptedBy: who, startedAt: Date.now() } : r);
+            await saveBetaRowReruns(job.id, rowIndex, newReruns);
+            const newRow = { ...row, reruns: newReruns };
+            const newJob = { ...job, rows: job.rows.map((r,i)=> i===rowIndex ? newRow : r) };
+            showResult(newJob, rowIndex);
           });
         });
       } else if(rerun.status === "in_progress"){
@@ -15010,21 +15521,23 @@ function buildBetaFindJobPanel(){
             if(!who){ nameInput.style.borderColor = "var(--danger)"; return; }
             confirmBtn.disabled = true;
             const totalMinutes = rerun.startedAt ? Math.round((Date.now() - rerun.startedAt) / 60000) : 0;
-            const newReruns = job.reruns.map(r => r.id === rerun.id ? { ...r, status: "done", finishedBy: who, finishedAt: timestampNow(), totalMinutes } : r);
-            await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
-            showResult({ ...job, reruns: newReruns });
+            const newReruns = row.reruns.map(r => r.id === rerun.id ? { ...r, status: "done", finishedBy: who, finishedAt: timestampNow(), totalMinutes } : r);
+            await saveBetaRowReruns(job.id, rowIndex, newReruns);
+            const newRow = { ...row, reruns: newReruns };
+            const newJob = { ...job, rows: job.rows.map((r,i)=> i===rowIndex ? newRow : r) };
+            showResult(newJob, rowIndex);
           });
         });
       }
       result.appendChild(rerunBox);
     });
 
-    const { step, position, index, allDone } = getCurrentBetaStep(job);
+    const { step, position, index, allDone } = getCurrentBetaStep(row);
 
     if(!step){
       const none = document.createElement("div");
       none.className = "quick-tag-preview-change";
-      none.textContent = "This job has no processes set up yet.";
+      none.textContent = "This traveler has no processes set up yet.";
       result.appendChild(none);
       return;
     }
@@ -15033,7 +15546,7 @@ function buildBetaFindJobPanel(){
     if(allDone){
       const statusLine = document.createElement("div");
       statusLine.className = "quick-tag-preview-change";
-      statusLine.innerHTML = "🎉 <strong>This job is complete.</strong> Last step: " + position + ". " + step.name + serviceText;
+      statusLine.innerHTML = "🎉 <strong>This traveler is complete.</strong> Last step: " + position + ". " + step.name + serviceText;
       result.appendChild(statusLine);
       return;
     }
@@ -15044,10 +15557,85 @@ function buildBetaFindJobPanel(){
     result.appendChild(statusLine);
 
     function applyUpdate(newStep){
-      const newSteps = job.steps.map((s, i)=> i === index ? newStep : s);
-      return updateDoc(doc(db, "betaJobs", job.id), { steps: newSteps }).then(()=>{
-        showResult({ ...job, steps: newSteps });
+      const newSteps = row.steps.map((s, i)=> i === index ? newStep : s);
+      return saveBetaRowSteps(job.id, rowIndex, newSteps).then(()=>{
+        const newRow = { ...row, steps: newSteps };
+        const newJob = { ...job, rows: job.rows.map((r,i)=> i===rowIndex ? newRow : r) };
+        showResult(newJob, rowIndex);
       });
+    }
+
+    if(step.status === "not_started"){
+      const accessRule = getAccessRuleFor(step);
+      if(accessRule){
+        buildBetaLockedStepForm(result, accessRule.passcode, step.name + serviceText, async (who, qty)=>{
+          const prevStep = index > 0 ? row.steps[index - 1] : null;
+          const waitMinutes = (prevStep && prevStep.finishedAtMs) ? Math.round((Date.now() - prevStep.finishedAtMs) / 60000) : null;
+          await applyUpdate({ ...step, status: "in_progress", acceptedBy: who, acceptedAt: timestampNow(), qty: qty, startedAt: Date.now(), waitMinutes: waitMinutes });
+        });
+        return;
+      }
+
+      const ask = document.createElement("div");
+      ask.className = "quick-tag-preview-change";
+      ask.textContent = "Ready to start " + step.name + serviceText + "?";
+      result.appendChild(ask);
+
+      const prevStep = index > 0 ? row.steps[index - 1] : null;
+      if(prevStep && prevStep.finishedAtMs){
+        const waitingMs = Date.now() - prevStep.finishedAtMs;
+        const waitLine = document.createElement("div");
+        waitLine.className = "quick-tag-preview-change" + (waitingMs > 2 * 60 * 60 * 1000 ? " beta-wait-warning" : "");
+        waitLine.textContent = "This traveler has been waiting " + formatDuration(waitingMs) + " since " + prevStep.name + " finished.";
+        result.appendChild(waitLine);
+      }
+
+      const btnRow = document.createElement("div");
+      btnRow.className = "quick-tag-preview-actions";
+      const acceptBtn = document.createElement("button");
+      acceptBtn.className = "quick-tag-commit-btn";
+      acceptBtn.textContent = "✓ Accept & Start";
+      btnRow.appendChild(acceptBtn);
+      result.appendChild(btnRow);
+
+      acceptBtn.addEventListener("click", ()=>{
+        btnRow.remove();
+        ask.remove();
+        buildNamePrompt("Your name", async (who, qtyInput)=>{
+          const qty = qtyInput.value.trim();
+          const waitMinutes = (prevStep && prevStep.finishedAtMs) ? Math.round((Date.now() - prevStep.finishedAtMs) / 60000) : null;
+          await applyUpdate({ ...step, status: "in_progress", acceptedBy: who, acceptedAt: timestampNow(), qty: qty, startedAt: Date.now(), waitMinutes: waitMinutes });
+        }, (actionArea)=>{
+          const qtyWrap = document.createElement("div");
+          qtyWrap.className = "quick-tag-preview-note-wrap";
+          const qtyLabel = document.createElement("div");
+          qtyLabel.className = "quick-tag-preview-note-label";
+          qtyLabel.textContent = "Qty you're running" + (row.qty ? " (order qty is " + row.qty + ")" : "");
+          const qtyInput = document.createElement("input");
+          qtyInput.type = "text";
+          qtyInput.className = "quick-tag-note-input";
+          qtyInput.placeholder = "e.g. 50";
+          qtyWrap.appendChild(qtyLabel);
+          qtyWrap.appendChild(qtyInput);
+          actionArea.appendChild(qtyWrap);
+          if(row.qty){
+            const warn = document.createElement("div");
+            warn.className = "quick-tag-feedback";
+            qtyInput.addEventListener("input", ()=>{
+              if(qtyInput.value.trim() && qtyInput.value.trim() !== String(row.qty)){
+                warn.className = "quick-tag-feedback error";
+                warn.textContent = "That doesn't match the order qty of " + row.qty + " — double check before confirming.";
+              } else {
+                warn.className = "quick-tag-feedback";
+                warn.textContent = "";
+              }
+            });
+            actionArea.appendChild(warn);
+          }
+          return qtyInput;
+        });
+      });
+      return;
     }
 
     function buildNamePrompt(promptLabel, onConfirm, extraFieldsFn){
@@ -15090,100 +15678,14 @@ function buildBetaFindJobPanel(){
         confirmBtn.disabled = true;
         await onConfirm(who, extra);
       });
-      cancelBtn.addEventListener("click", ()=> showResult(job));
+      cancelBtn.addEventListener("click", ()=> showResult(job, rowIndex));
 
       result.appendChild(actionArea);
       nameInput.focus();
     }
 
-    // ---- not started: accept it, log the qty, and start the timer — all in one visit ----
-    if(step.status === "not_started"){
-      // Test-only restriction: certain operations/services can only be
-      // started while logged in as one specific account — not tied to
-      // whoever the current admin session happens to be otherwise.
-      const requiredEmail = getRequiredLoginFor(step);
-      if(requiredEmail && (!isAdmin || currentUserEmail.toLowerCase() !== requiredEmail)){
-        buildBetaLockedStepForm(result, requiredEmail, step.name + serviceText, async (who, qty)=>{
-          betaAutoSearchTraveler = job.traveler;
-          const prevStep = index > 0 ? job.steps[index - 1] : null;
-          const waitMinutes = (prevStep && prevStep.finishedAtMs) ? Math.round((Date.now() - prevStep.finishedAtMs) / 60000) : null;
-          const newSteps = job.steps.map((s, i)=> i === index ? { ...s, status: "in_progress", acceptedBy: who, acceptedAt: timestampNow(), qty: qty, startedAt: Date.now(), waitMinutes: waitMinutes } : s);
-          await updateDoc(doc(db, "betaJobs", job.id), { steps: newSteps });
-        });
-        return;
-      }
-
-      const ask = document.createElement("div");
-      ask.className = "quick-tag-preview-change";
-      ask.textContent = "Ready to start " + step.name + serviceText + "?";
-      result.appendChild(ask);
-
-      // Surfaced the moment someone looks at this job, before they even
-      // accept it — that's what actually catches a job sitting cut and
-      // forgotten on the floor, not just a number buried after the fact.
-      const prevStep = index > 0 ? job.steps[index - 1] : null;
-      if(prevStep && prevStep.finishedAtMs){
-        const waitingMs = Date.now() - prevStep.finishedAtMs;
-        const waitLine = document.createElement("div");
-        waitLine.className = "quick-tag-preview-change" + (waitingMs > 2 * 60 * 60 * 1000 ? " beta-wait-warning" : "");
-        waitLine.textContent = "This job has been waiting " + formatDuration(waitingMs) + " since " + prevStep.name + " finished.";
-        result.appendChild(waitLine);
-      }
-
-      const btnRow = document.createElement("div");
-      btnRow.className = "quick-tag-preview-actions";
-      const acceptBtn = document.createElement("button");
-      acceptBtn.className = "quick-tag-commit-btn";
-      acceptBtn.textContent = "✓ Accept & Start";
-      btnRow.appendChild(acceptBtn);
-      result.appendChild(btnRow);
-
-      acceptBtn.addEventListener("click", ()=>{
-        btnRow.remove();
-        ask.remove();
-        buildNamePrompt("Your name", async (who, qtyInput)=>{
-          const qty = qtyInput.value.trim();
-          // How long this job sat idle since the previous step finished —
-          // the whole point being to catch exactly the "cut and forgotten
-          // on the floor" gap, not just how long the work itself takes.
-          const prevStep = index > 0 ? job.steps[index - 1] : null;
-          const waitMinutes = (prevStep && prevStep.finishedAtMs) ? Math.round((Date.now() - prevStep.finishedAtMs) / 60000) : null;
-          await applyUpdate({ ...step, status: "in_progress", acceptedBy: who, acceptedAt: timestampNow(), qty: qty, startedAt: Date.now(), waitMinutes: waitMinutes });
-        }, (actionArea)=>{
-          const qtyWrap = document.createElement("div");
-          qtyWrap.className = "quick-tag-preview-note-wrap";
-          const qtyLabel = document.createElement("div");
-          qtyLabel.className = "quick-tag-preview-note-label";
-          qtyLabel.textContent = "Qty you're running" + (job.qty ? " (order qty is " + job.qty + ")" : "");
-          const qtyInput = document.createElement("input");
-          qtyInput.type = "text";
-          qtyInput.className = "quick-tag-note-input";
-          qtyInput.placeholder = "e.g. 50";
-          qtyWrap.appendChild(qtyLabel);
-          qtyWrap.appendChild(qtyInput);
-          actionArea.appendChild(qtyWrap);
-          if(job.qty){
-            const warn = document.createElement("div");
-            warn.className = "quick-tag-feedback";
-            qtyInput.addEventListener("input", ()=>{
-              if(qtyInput.value.trim() && qtyInput.value.trim() !== String(job.qty)){
-                warn.className = "quick-tag-feedback error";
-                warn.textContent = "That doesn't match the order qty of " + job.qty + " — double check before confirming.";
-              } else {
-                warn.className = "quick-tag-feedback";
-                warn.textContent = "";
-              }
-            });
-            actionArea.appendChild(warn);
-          }
-          return qtyInput;
-        });
-      });
-      return;
-    }
-
-    // ---- in_progress: timer running ----
     if(step.status === "in_progress"){
+      const needsScrapTracking = ["BRAKE PRESS", "WELDING", "CLEAN UP"].includes(step.name);
       const runningLine = document.createElement("div");
       runningLine.className = "quick-tag-preview-change";
       const elapsed = step.startedAt ? formatDuration(Date.now() - step.startedAt) : "—";
@@ -15198,11 +15700,6 @@ function buildBetaFindJobPanel(){
       btnRow.appendChild(finishBtn);
       result.appendChild(btnRow);
 
-      // Parts get damaged or need rework at these specific operations —
-      // not something that happens at Program/Laser, so no reason to
-      // ask there and add friction for no benefit.
-      const needsScrapTracking = ["BRAKE PRESS", "WELDING", "CLEAN UP"].includes(step.name);
-
       finishBtn.addEventListener("click", ()=>{
         btnRow.remove();
         buildNamePrompt("Your name, to log this as finished", async (who, qtyFields)=>{
@@ -15215,13 +15712,14 @@ function buildBetaFindJobPanel(){
             update.scrapQty = qtyFields.scrapInput.value.trim();
             scrapQty = parseFloat(update.scrapQty) || 0;
           }
-          const newSteps = job.steps.map((s, i)=> i === index ? update : s);
-          await updateDoc(doc(db, "betaJobs", job.id), { steps: newSteps });
-          const updatedJob = { ...job, steps: newSteps };
+          const newSteps = row.steps.map((s, i)=> i === index ? update : s);
+          await saveBetaRowSteps(job.id, rowIndex, newSteps);
+          const newRow = { ...row, steps: newSteps };
+          const updatedJob = { ...job, rows: job.rows.map((r,i)=> i===rowIndex ? newRow : r) };
           if(scrapQty > 0){
-            showRerunPrompt(updatedJob, scrapQty, index);
+            showRerunPromptAfterScrap(updatedJob, rowIndex, scrapQty, index);
           } else {
-            showResult(updatedJob);
+            showResult(updatedJob, rowIndex);
           }
         }, needsScrapTracking ? (actionArea)=>{
           function qtyField(label, prefill){
@@ -15248,33 +15746,28 @@ function buildBetaFindJobPanel(){
     }
   }
 
-  // Scrap at a downstream operation often means going back to an
-  // earlier one (e.g. Brake Press scrap needs replacement parts cut on
-  // Program/Laser again) — this inserts a brand-new step right after
-  // where the scrap happened, rather than reopening and overwriting the
-  // original step's own history.
   // Reachable from the "+ Add Rerun" button at any time — lets someone
-  // pick which already-done step the rework relates to, instead of
-  // needing to catch a one-time prompt right when scrap was logged.
-  function showRerunPicker(job){
+  // pick which already-done step the rework relates to.
+  function showRerunPicker(job, rowIndex){
     result.innerHTML = "";
     result.classList.add("open");
+    const row = job.rows[rowIndex];
 
     const info = document.createElement("div");
     info.className = "quick-tag-preview-info";
-    info.innerHTML = "<strong>" + job.traveler + "</strong> — " + job.customer + (job.partName ? " · " + job.partName : "");
+    info.innerHTML = "<strong>" + row.traveler + "</strong> — " + job.customer;
     result.appendChild(info);
 
-    const doneSteps = job.steps.map((s, i) => ({ s, i })).filter(x => x.s.status === "done" && x.s.scrapQty && Number(x.s.scrapQty) > 0);
+    const doneSteps = row.steps.map((s, i) => ({ s, i })).filter(x => x.s.status === "done" && x.s.scrapQty && Number(x.s.scrapQty) > 0);
     if(doneSteps.length === 0){
       const none = document.createElement("div");
       none.className = "quick-tag-preview-change";
-      none.textContent = "No scrap has been logged on this job yet — a rerun only makes sense once there's something to replace.";
+      none.textContent = "No scrap has been logged on this traveler yet — a rerun only makes sense once there's something to replace.";
       result.appendChild(none);
       const backBtn = document.createElement("button");
       backBtn.className = "quick-tag-cancel-btn";
       backBtn.textContent = "Back";
-      backBtn.addEventListener("click", ()=> showResult(job));
+      backBtn.addEventListener("click", ()=> showResult(job, rowIndex));
       result.appendChild(backBtn);
       return;
     }
@@ -15294,7 +15787,7 @@ function buildBetaFindJobPanel(){
     doneSteps.slice().reverse().forEach(({ s, i })=>{
       const opt = document.createElement("option");
       opt.value = i;
-      opt.textContent = s.name + (s.scrapQty ? " (scrap logged: " + s.scrapQty + ")" : "");
+      opt.textContent = s.name + " (scrap logged: " + s.scrapQty + ")";
       fromSelect.appendChild(opt);
     });
     fromWrap.appendChild(fromLabel);
@@ -15318,9 +15811,6 @@ function buildBetaFindJobPanel(){
     opWrap.appendChild(opSelect);
     result.appendChild(opWrap);
 
-    // Program/Clean Up need their actual service picked too — a rerun
-    // that's secretly a Laser job with no service recorded would slip
-    // right past the Laser-terminal login check entirely.
     const svcWrap = document.createElement("div");
     svcWrap.className = "quick-tag-preview-note-wrap";
     result.appendChild(svcWrap);
@@ -15357,10 +15847,10 @@ function buildBetaFindJobPanel(){
     const qtyInput = document.createElement("input");
     qtyInput.type = "text";
     qtyInput.className = "quick-tag-note-input";
-    const selectedStep = job.steps[doneSteps[doneSteps.length - 1].i];
+    const selectedStep = row.steps[doneSteps[doneSteps.length - 1].i];
     if(selectedStep.scrapQty) qtyInput.value = selectedStep.scrapQty;
     fromSelect.addEventListener("change", ()=>{
-      const chosen = job.steps[parseInt(fromSelect.value, 10)];
+      const chosen = row.steps[parseInt(fromSelect.value, 10)];
       if(chosen.scrapQty) qtyInput.value = chosen.scrapQty;
     });
     qtyWrap.appendChild(qtyLabel);
@@ -15381,169 +15871,194 @@ function buildBetaFindJobPanel(){
 
     addBtn.addEventListener("click", async ()=>{
       addBtn.disabled = true;
-      const fromStep = job.steps[parseInt(fromSelect.value, 10)];
+      const fromStep = row.steps[parseInt(fromSelect.value, 10)];
       const rerun = {
         id: "r" + Date.now() + Math.random().toString(36).slice(2, 7),
         name: opSelect.value,
-        services: serviceCheckboxes.filter(cb => cb.checked).map(cb => cb.value),
+        services: serviceCheckboxes.filter(cb=>cb.checked).map(cb=>cb.value),
         status: "not_started",
         qty: qtyInput.value.trim(),
         rerunReason: "Rework from " + fromStep.name
       };
-      const newReruns = [...(job.reruns || []), rerun];
-      await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
-      showResult({ ...job, reruns: newReruns });
+      const newReruns = [...(row.reruns || []), rerun];
+      await saveBetaRowReruns(job.id, rowIndex, newReruns);
+      const newRow = { ...row, reruns: newReruns };
+      const newJob = { ...job, rows: job.rows.map((r,i)=> i===rowIndex ? newRow : r) };
+      showResult(newJob, rowIndex);
     });
-    cancelBtn.addEventListener("click", ()=> showResult(job));
+    cancelBtn.addEventListener("click", ()=> showResult(job, rowIndex));
   }
 
-  function showRerunPrompt(job, scrapQty, afterIndex){
+  // Auto-offered immediately after logging scrap on Finish — same
+  // picker, just pre-aimed at the step that was just closed out.
+  function showRerunPromptAfterScrap(job, rowIndex, scrapQty, afterIndex){
+    const row = job.rows[rowIndex];
     result.innerHTML = "";
     result.classList.add("open");
 
     const info = document.createElement("div");
     info.className = "quick-tag-preview-info";
-    info.innerHTML = "<strong>" + job.traveler + "</strong> — " + job.customer + (job.partName ? " · " + job.partName : "");
+    info.innerHTML = "<strong>" + row.traveler + "</strong> — " + job.customer;
     result.appendChild(info);
 
     const ask = document.createElement("div");
     ask.className = "quick-tag-preview-change beta-wait-warning";
-    ask.textContent = scrapQty + " pcs scrapped. Does this job need to go back through an earlier process to replace them?";
+    ask.textContent = scrapQty + " pcs scrapped. Does this need to go back through an earlier process to replace them?";
     result.appendChild(ask);
-
-    const opWrap = document.createElement("div");
-    opWrap.className = "quick-tag-preview-note-wrap";
-    const opLabel = document.createElement("div");
-    opLabel.className = "quick-tag-preview-note-label";
-    opLabel.textContent = "Which process needs to rerun?";
-    const opSelect = document.createElement("select");
-    opSelect.className = "quick-tag-note-input";
-    // Earlier steps in THIS job's own routing are almost always the
-    // relevant choice, so they're listed first — but any operation can
-    // be picked in case the rework needs something not already used.
-    const earlierOps = job.steps.slice(0, afterIndex).map(s => s.name);
-    const seen = new Set();
-    [...earlierOps, ...BETA_STEPS_ORDER].forEach(name=>{
-      if(seen.has(name)) return;
-      seen.add(name);
-      const opt = document.createElement("option");
-      opt.value = name;
-      opt.textContent = name + (earlierOps.includes(name) ? " (used earlier on this job)" : "");
-      opSelect.appendChild(opt);
-    });
-    opWrap.appendChild(opLabel);
-    opWrap.appendChild(opSelect);
-    result.appendChild(opWrap);
-
-    // Program/Clean Up need their actual service picked too — a rerun
-    // that's secretly a Laser job with no service recorded would slip
-    // right past the Laser-terminal login check entirely.
-    const svcWrap = document.createElement("div");
-    svcWrap.className = "quick-tag-preview-note-wrap";
-    result.appendChild(svcWrap);
-    let serviceCheckboxes = [];
-    function refreshRerunServices(){
-      svcWrap.innerHTML = "";
-      serviceCheckboxes = [];
-      const services = BETA_OPERATION_SERVICES[opSelect.value];
-      if(!services || !services.length) return;
-      const svcLabel = document.createElement("div");
-      svcLabel.className = "quick-tag-preview-note-label";
-      svcLabel.textContent = "Which service?";
-      svcWrap.appendChild(svcLabel);
-      services.forEach(svc=>{
-        const label = document.createElement("label");
-        label.className = "beta-cj-service-check";
-        const box = document.createElement("input");
-        box.type = "checkbox";
-        box.value = svc;
-        label.appendChild(box);
-        label.appendChild(document.createTextNode(" " + svc));
-        svcWrap.appendChild(label);
-        serviceCheckboxes.push(box);
-      });
-    }
-    opSelect.addEventListener("change", refreshRerunServices);
-    refreshRerunServices();
-
-    const qtyWrap = document.createElement("div");
-    qtyWrap.className = "quick-tag-preview-note-wrap";
-    const qtyLabel = document.createElement("div");
-    qtyLabel.className = "quick-tag-preview-note-label";
-    qtyLabel.textContent = "Qty to rerun";
-    const qtyInput = document.createElement("input");
-    qtyInput.type = "text";
-    qtyInput.className = "quick-tag-note-input";
-    qtyInput.value = String(scrapQty);
-    qtyWrap.appendChild(qtyLabel);
-    qtyWrap.appendChild(qtyInput);
-    result.appendChild(qtyWrap);
 
     const btnRow = document.createElement("div");
     btnRow.className = "quick-tag-preview-actions";
-    const addBtn = document.createElement("button");
-    addBtn.className = "quick-tag-commit-btn";
-    addBtn.textContent = "+ Add Rerun Step";
+    const yesBtn = document.createElement("button");
+    yesBtn.className = "quick-tag-commit-btn";
+    yesBtn.textContent = "Yes, Add Rerun";
     const skipBtn = document.createElement("button");
     skipBtn.className = "quick-tag-cancel-btn";
     skipBtn.textContent = "Skip";
-    btnRow.appendChild(addBtn);
+    btnRow.appendChild(yesBtn);
     btnRow.appendChild(skipBtn);
     result.appendChild(btnRow);
 
-    addBtn.addEventListener("click", async ()=>{
-      addBtn.disabled = true;
-      const rerun = {
-        id: "r" + Date.now() + Math.random().toString(36).slice(2, 7),
-        name: opSelect.value,
-        services: serviceCheckboxes.filter(cb => cb.checked).map(cb => cb.value),
-        status: "not_started",
-        qty: qtyInput.value.trim(),
-        rerunReason: "Scrap from " + job.steps[afterIndex].name
-      };
-      // A separate track, not spliced into the main sequence — the good
-      // parts keep moving through the rest of the routing on their own
-      // schedule instead of waiting on this rework to finish.
-      const newReruns = [...(job.reruns || []), rerun];
-      await updateDoc(doc(db, "betaJobs", job.id), { reruns: newReruns });
-      showResult({ ...job, reruns: newReruns });
-    });
-    skipBtn.addEventListener("click", ()=> showResult(job));
+    yesBtn.addEventListener("click", ()=> showRerunPicker(job, rowIndex));
+    skipBtn.addEventListener("click", ()=> showResult(job, rowIndex));
   }
 
   function submitFind(){
     const val = input.value.trim().toLowerCase();
     if(!val) return;
-    const job = betaJobsCache.find(j => j.traveler.toLowerCase() === val);
-    if(!job){
-      result.innerHTML = "";
-      result.classList.remove("open");
-      const err = document.createElement("div");
-      err.className = "quick-tag-feedback error";
-      err.textContent = "Couldn't find a test job with that traveler #.";
-      result.appendChild(err);
-      result.classList.add("open");
-      return;
+    for(const job of betaJobsCache){
+      const rowIndex = job.rows.findIndex(r => r.traveler && r.traveler.toLowerCase() === val);
+      if(rowIndex > -1){
+        showResult(job, rowIndex);
+        return;
+      }
     }
-    showResult(job);
+    result.innerHTML = "";
+    result.classList.remove("open");
+    const err = document.createElement("div");
+    err.className = "quick-tag-feedback error";
+    err.textContent = "Couldn't find a test job with that traveler #.";
+    result.appendChild(err);
+    result.classList.add("open");
   }
   findBtn.addEventListener("click", submitFind);
   input.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitFind(); });
 
-  // If a locked step's login+action form just completed (which forces a
-  // fresh render of this whole panel via Firebase's own auth listener),
-  // jump straight back to that same job instead of leaving a blank box.
-  if(betaAutoSearchTraveler){
-    const t = betaAutoSearchTraveler;
-    betaAutoSearchTraveler = null;
-    input.value = t;
-    submitFind();
+  return wrap;
+}
+
+// Only stefano@iso-lux.com ever sees this (BETA Job is already gated to
+// that account) — lets operations and their services be added directly
+// instead of needing a code change every time.
+function buildBetaOpsManagerPanel(){
+  const wrap = document.createElement("div");
+  wrap.className = "beta-ops-manager";
+
+  const toggle = document.createElement("button");
+  toggle.className = "beta-ops-manager-toggle";
+  toggle.textContent = "⚙ Manage Operations & Services";
+  const body = document.createElement("div");
+  body.className = "beta-ops-manager-body";
+  toggle.addEventListener("click", ()=>{
+    const open = body.classList.toggle("open");
+    if(open) rebuildOpsManagerBody();
+  });
+  wrap.appendChild(toggle);
+  wrap.appendChild(body);
+
+  function rebuildOpsManagerBody(){
+    body.innerHTML = "";
+
+    BETA_STEPS_ORDER.forEach(opName=>{
+      const row = document.createElement("div");
+      row.className = "beta-ops-manager-row";
+
+      const header = document.createElement("div");
+      header.className = "beta-ops-manager-row-header";
+      const title = document.createElement("span");
+      title.textContent = opName;
+      const removeOpBtn = document.createElement("button");
+      removeOpBtn.className = "beta-ops-remove-btn";
+      removeOpBtn.textContent = "Remove Operation";
+      removeOpBtn.addEventListener("click", ()=>{
+        if(!confirm("Remove \"" + opName + "\" as an operation entirely?")) return;
+        BETA_STEPS_ORDER = BETA_STEPS_ORDER.filter(n => n !== opName);
+        const newServices = { ...BETA_OPERATION_SERVICES };
+        delete newServices[opName];
+        BETA_OPERATION_SERVICES = newServices;
+        saveBetaConfig();
+        rebuildOpsManagerBody();
+      });
+      header.appendChild(title);
+      header.appendChild(removeOpBtn);
+      row.appendChild(header);
+
+      const services = BETA_OPERATION_SERVICES[opName] || [];
+      const svcRow = document.createElement("div");
+      svcRow.className = "beta-ops-service-chips";
+      services.forEach(svc=>{
+        const chip = document.createElement("span");
+        chip.className = "beta-ops-service-chip";
+        chip.textContent = svc;
+        const x = document.createElement("button");
+        x.textContent = "×";
+        x.addEventListener("click", ()=>{
+          BETA_OPERATION_SERVICES = { ...BETA_OPERATION_SERVICES, [opName]: services.filter(s => s !== svc) };
+          saveBetaConfig();
+          rebuildOpsManagerBody();
+        });
+        chip.appendChild(x);
+        svcRow.appendChild(chip);
+      });
+      row.appendChild(svcRow);
+
+      const addSvcRow = document.createElement("div");
+      addSvcRow.className = "beta-ops-add-row";
+      const svcInput = document.createElement("input");
+      svcInput.type = "text";
+      svcInput.placeholder = "Add a service to " + opName + "...";
+      const addSvcBtn = document.createElement("button");
+      addSvcBtn.textContent = "+ Add Service";
+      function submitAddService(){
+        const val = svcInput.value.trim().toUpperCase();
+        if(!val) return;
+        const current = BETA_OPERATION_SERVICES[opName] || [];
+        if(current.includes(val)) return;
+        BETA_OPERATION_SERVICES = { ...BETA_OPERATION_SERVICES, [opName]: [...current, val] };
+        saveBetaConfig();
+        rebuildOpsManagerBody();
+      }
+      addSvcBtn.addEventListener("click", submitAddService);
+      svcInput.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitAddService(); });
+      addSvcRow.appendChild(svcInput);
+      addSvcRow.appendChild(addSvcBtn);
+      row.appendChild(addSvcRow);
+
+      body.appendChild(row);
+    });
+
+    const addOpRow = document.createElement("div");
+    addOpRow.className = "beta-ops-add-row beta-ops-add-op-row";
+    const opInput = document.createElement("input");
+    opInput.type = "text";
+    opInput.placeholder = "New operation name...";
+    const addOpBtn = document.createElement("button");
+    addOpBtn.textContent = "+ Add New Operation";
+    function submitAddOp(){
+      const val = opInput.value.trim().toUpperCase();
+      if(!val || BETA_STEPS_ORDER.includes(val)) return;
+      BETA_STEPS_ORDER = [...BETA_STEPS_ORDER, val];
+      saveBetaConfig();
+      rebuildOpsManagerBody();
+    }
+    addOpBtn.addEventListener("click", submitAddOp);
+    opInput.addEventListener("keydown", (e)=>{ if(e.key === "Enter") submitAddOp(); });
+    addOpRow.appendChild(opInput);
+    addOpRow.appendChild(addOpBtn);
+    body.appendChild(addOpRow);
   }
 
   return wrap;
 }
-
-let betaJobListContainer = null;
 
 function renderBetaJobTab(){
   content.classList.add("wide");
@@ -15559,6 +16074,8 @@ function renderBetaJobTab(){
   banner.className = "beta-banner";
   banner.innerHTML = "🧪 <strong>This is a sandbox.</strong> These are test jobs only — nothing here touches Production Dashboard, Quick Update, or your real job data in any way. Use it to try out step-by-step progress tracking before we decide how (or whether) to build it for real.";
   content.appendChild(banner);
+
+  content.appendChild(buildBetaOpsManagerPanel());
 
   content.appendChild(buildBetaFindJobPanel());
 
@@ -15576,15 +16093,12 @@ function renderBetaJobTab(){
     "<span class=\"beta-legend-hint\">These are read-only here — use \"What job are you working on?\" above to actually advance a step (it'll ask for your name too).</span>";
   content.appendChild(legend);
 
-  // A separate, stable container for the job cards — live updates only
-  // ever touch this, never the search panel above. Rebuilding the whole
-  // tab on every save was wiping out prompts (like the rerun ask) a
-  // split second after they appeared, before anyone could see them.
   betaJobListContainer = document.createElement("div");
   content.appendChild(betaJobListContainer);
   renderBetaJobList();
 }
 
+let betaJobListContainer = null;
 function renderBetaJobList(){
   if(!betaJobListContainer) return;
   betaJobListContainer.innerHTML = "";
@@ -15594,9 +16108,33 @@ function renderBetaJobList(){
     empty.textContent = "Loading test jobs...";
     betaJobListContainer.appendChild(empty);
   } else {
-    betaJobsCache.forEach(job => betaJobListContainer.appendChild(buildBetaJobCard(job)));
+    betaJobsCache.forEach(job=>{
+      try{
+        betaJobListContainer.appendChild(buildBetaJobCard(job));
+      }catch(err){
+        console.error("Couldn't render test job", job.id, err);
+        const errBox = document.createElement("div");
+        errBox.className = "beta-job-card";
+        // Most likely cause: this job was created before test jobs moved
+        // to the new sub-traveler-capable format, so it's still saved in
+        // the old shape the current code doesn't know how to read.
+        errBox.innerHTML = "⚠ Couldn't display this test job (" + (job.customer || job.id) + ") — it's most likely saved in the old format from before sub-travelers were added. Safe to delete and recreate.";
+        const delBtn = document.createElement("button");
+        delBtn.className = "beta-job-delete-btn";
+        delBtn.textContent = "🗑 Delete";
+        delBtn.style.marginTop = "8px";
+        delBtn.addEventListener("click", async ()=>{
+          if(!confirm("Delete this old-format test job?")) return;
+          try{ await deleteDoc(doc(db, "betaJobs", job.id)); }
+          catch(e){ alert("Couldn't delete — check your connection and try again."); }
+        });
+        errBox.appendChild(delBtn);
+        betaJobListContainer.appendChild(errBox);
+      }
+    });
   }
 }
+
 
 function renderInventoryTab(filterText){
   content.classList.add("wide");
